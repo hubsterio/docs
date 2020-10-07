@@ -1,4 +1,4 @@
-Welcome to IdentityServer4 (latest)
+Welcome to IdentityServer4 (latest) - Test
 =============================================
 
 .. image:: images/logo.png
@@ -47,8 +47,7 @@ It enables the following features in your applications:
    :hidden:
    :caption: Introduction
 
-   intro/big_picture
-   intro/architecture
+   intro/big_picture   
    intro/terminology
    intro/specs
    intro/packaging
@@ -68,17 +67,7 @@ It enables the following features in your applications:
    quickstarts/4_javascript_client
    quickstarts/5_entityframework
    quickstarts/6_aspnet_identity
-   
-.. toctree::
-   :maxdepth: 3
-   :hidden:
-   :caption: Configuration
 
-   configuration/startup
-   configuration/resources
-   configuration/clients
-   configuration/mvc
-   configuration/apis
 
 .. toctree::
    :maxdepth: 3
@@ -100,7 +89,7 @@ It enables the following features in your applications:
    topics/deployment
    topics/logging
    topics/events
-   topics/crypto
+   topics/crypto 
    topics/grant_types
    topics/client_authentication
    topics/extension_grants

@@ -71,3 +71,4 @@ dev.db-journal
 /readthedocs/settings/celery_docker.py
 /readthedocs/settings/proxito_docker.py
 /readthedocs/settings/web_docker.py
+/build

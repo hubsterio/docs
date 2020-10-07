@@ -1,9 +1,9 @@
-# IdentityServer4 documentation
+# Hubster.io documentation
 
-The folder contains the documentation for identityserver4.
+The folder contains the documentation for Hubster.io .
 
 We are using [Read the docs](https://readthedocs.org/) to host the documentation and the rendered version
-can be found [here](https://identityserver4.readthedocs.io).
+can be found [here](https://hubster.readthedocs.io).
 
 Doc pages are authored in ReStructuredText (RST) - you can find a primer [here](http://www.sphinx-doc.org/en/stable/rest.html).
 
@@ -12,3 +12,11 @@ You can find more information about RTD and Sphinx under the following links:
 * [Read the Docs documentation](https://docs.readthedocs.io/en/latest/index.html)
 * [Sphinx](http://www.sphinx-doc.org/)
 * [Getting started Screencast](https://www.youtube.com/watch?feature=player_embedded&v=oJsUvBQyHBs)
+
+### Configuration
+* https://docs.restructuredtext.net/articles/configuration.html
+* pip install sphinx_rtd_theme
+
+
+
+
