@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'hubster'
-copyright = '2020, Ross Pellegrino'
-author = 'Ross Pellegrino'
+copyright = '2020, Hubster.io'
+author = 'Hubster.io'
 
 # The full version, including alpha/beta/rc tags
 release = '1.0.0'
