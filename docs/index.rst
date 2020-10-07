@@ -1,4 +1,4 @@
-Welcome to IdentityServer4 (latest) - Test
+Welcome to IdentityServer4 (latest) - Test2
 =============================================
 
 .. image:: images/logo.png
