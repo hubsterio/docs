@@ -1,5 +1,5 @@
 .. _refSupport:
-Support and Consulting Options
+Support
 ==============================
 
 We have several free and commercial support and consulting options for IdentityServer.

@@ -13,8 +13,9 @@ You can find more information about RTD and Sphinx under the following links:
 * [Sphinx](http://www.sphinx-doc.org/)
 * [Getting started Screencast](https://www.youtube.com/watch?feature=player_embedded&v=oJsUvBQyHBs)
 
-### Configuration
+### Configuration and help 
 * https://docs.restructuredtext.net/articles/configuration.html
+* https://draft-edx-style-guide.readthedocs.io/en/latest/ExampleRSTFile.html
 * pip install sphinx_rtd_theme
 
 
