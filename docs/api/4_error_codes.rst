@@ -257,5 +257,127 @@ Below is a full list of all possible Hubster Engine REST API error codes.
    * - ENG000300 
      - 400
      - Criteria parameter is required when suppling a ``searchBy`` parameter.
+   * - ENG002000
+     - 400
+     - Provided tenant is invalid.
+   * - ENG002001
+     - 400
+     - Your account is disabled.
+   * - ENG002002
+     - 400
+     - Account evaluation period has expired.
+   * - ENG003000
+     - 400
+     - Conversation request requires ``body`` to be present.
+   * - ENG003001
+     - 400
+     - Conversation request is missing required property.
+   * - ENG003002
+     - 400
+     - Conversation request parameter has bad format. Expected to be a valid ``GUID`` value.
+   * - ENG005000
+     - 400
+     - Direct Inbound request requires ``body`` to be present.
+   * - ENG005001
+     - 400
+     - Direct Inbound request is missing required property.
+   * - ENG005002
+     - 400
+     - Direct Inbound request does not support provided property.
+   * - ENG005003
+     - 400
+     - Direct Inbound request must contain one of the following sections: ``root.message`` or ``root.action``.
+   * - ENG005004
+     - 400
+     - Direct Inbound request can only contain one root with the following sections: ``root.message`` or ``root.action``.
+   * - ENG005015
+     - 400
+     - Direct Inbound request collection must contain one or more elements.
+   * - ENG005020
+     - 400
+     - Direct Inbound request parameter has bad format. Expected to be a valid ``GUID`` value.
+   * - ENG005021
+     - 400
+     - Direct Inbound request parameter has bad format. Expected to be a valid ``decimal`` value.
+   * - ENG005023
+     - 400
+     - Direct Inbound request body was empty.
+   * - ENG005024
+     - 400
+     - Direct Inbound request body must contain ``Location``, either an ``address`` and/or ``latitude/longitude`` coordinates.
 
+Events
+^^^^^^^^
 
+Below is a full list of all possible Hubster Events REST API error codes.
+
+.. list-table::
+   :widths: 15 5 70
+   :header-rows: 1
+
+   * - Error
+     - HTTP Status
+     - Description
+   * - EVT000100
+     - 500
+     - System Error.
+   * - EVT000101
+     - 403
+     - Forbidden.
+   * - EVT000102
+     - 400 
+     - Unauthorized access.
+   * - EVT000103 
+     - 400 
+     - Requested operation is not implemented.
+   * - EVT000104 
+     - 400 
+     - Requested resource or operation is not available.
+   * - EVT000105 
+     - 400 
+     - Requested resource was not found.
+   * - EVT000106 
+     - 400
+     - Resource you are trying to create already exists.
+   * - EVT000107 
+     - 400
+     - Current request or operation is not valid.
+   * - EVT000108 
+     - 400 
+     - Request took too long to execute and timed out.
+   * - EVT000109 
+     - 400 
+     - Requested action was aborted.
+   * - EVT000110 
+     - 400 
+     - Requested action is not allowed.
+   * - EVT000200 
+     - 400 
+     - Required query parameter was not supplied.
+   * - EVT000201 
+     - 400
+     - One or more parameters have invalid format.
+   * - EVT000202 
+     - 400
+     - Please correct supplied format for used paramere(s).
+   * - EVT000203 
+     - 400
+     - Provided ``GUID`` has bad format. Please use sequential ``GUID`` format.
+   * - EVT000204 
+     - 400
+     - Provided date has bad format.
+   * - EVT000205 
+     - 400
+     - One or more parameters have invalid date format.
+   * - EVT000206 
+     - 400
+     - Provided parameter value is not supported (out of range).
+   * - EVT000207 
+     - 400
+     - Provided parameter is out of predefined range.
+   * - EVT000208 
+     - 400
+     - Provided parameter has to be greater than zero.
+   * - EVT000300 
+     - 400
+     - Criteria parameter is required when suppling a ``searchBy`` parameter.
