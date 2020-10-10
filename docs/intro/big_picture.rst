@@ -1,76 +1,39 @@
 The Big Picture
 ===============
 
-Most modern applications look more or less like this:
+Hubster’s 10,000 - foot, High Level Architecture
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. image:: images/appArch.png
+Hubster’s platform was designed with simplicity in mind, yet power enough to allow a business to extend the platform to meet their specific needs, on a per hub basis. 
 
-The most common interactions are:
+.. image:: images/arch_full.png
 
-* Browsers communicate with web applications
+**Hubster’s Engine workflow and feature annotation:**
 
-* Web applications communicate with web APIs (sometimes on their own, sometimes on behalf of a user)
+#. Customer channels initiate a conversation with the engine
+#. The engine detects the request and reverse engineers the channel’s proprietary format to common Hubster format.
+#. The engine reads the channel’s Hub configuration and determines if there are any preliminary pipeline actions to take:
 
-* Browser-based applications communicate with web APIs
+    * Does the message require translations?
+    * Is sentiment required and if so, what is the analysis?
+    * Are open hours configured?     
 
-* Native applications communicate with web APIs
+#. Once preliminary actions have been completed, the engine then determines if there are any auxillary actions to take:
 
-* Server-based applications communicate with web APIs
+    * Are there any custom plugins configured?
+    * Are there any webhooks configure and what filter rule should be triggered?
+    * Are there any keyword spotting phrases configured and if so, what CRM endpoint should be invoked?
+    * What is the active business destination (agent or bot)?
 
-* Web APIs communicate with web APIs (sometimes on their own, sometimes on behalf of a user)
+#. If an agent is the **active business destination*, the engine will send the rendered response to the agent's configured endpoint.
+#. If a bot is the **active business destination*, the engine will send appropriate response to the bot's configured endpoint.
 
-Typically each and every layer (front-end, middle-tier and back-end) has to protect resources and
-implement authentication and/or authorization – often against the same user store.
 
-Outsourcing these fundamental security functions to a security token service prevents duplicating that functionality across those applications and endpoints.
+The Hub Anatomy	
+^^^^^^^^^^^^^^^
 
-Restructuring the application to support a security token service leads to the following architecture and protocols:
+Pipeline
+^^^^^^^^
 
-.. image:: images/protocols.png
-
-Such a design divides security concerns into two parts:
-
-Authentication
-^^^^^^^^^^^^^^
-Authentication is needed when an application needs to know the identity of the current user.
-Typically these applications manage data on behalf of that user and need to make sure that this user can only
-access the data for which he is allowed. The most common example for that is (classic) web applications –
-but native and JS-based applications also have a need for authentication.
-
-The most common authentication protocols are SAML2p, WS-Federation and OpenID Connect – SAML2p being the
-most popular and the most widely deployed.
-
-OpenID Connect is the newest of the three, but is considered to be the future because it has the
-most potential for modern applications. It was built for mobile application scenarios right from the start
-and is designed to be API friendly.
-
-API Access
-^^^^^^^^^^
-
-Applications have two fundamental ways with which they communicate with APIs – using the application identity,
-or delegating the user’s identity. Sometimes both methods need to be combined.
-
-OAuth2 is a protocol that allows applications to request access tokens from a security token service and use them
-to communicate with APIs. This delegation reduces complexity in both the client applications as well as the APIs since
-authentication and authorization can be centralized.
-
-OpenID Connect and OAuth 2.0 – better together
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-OpenID Connect and OAuth 2.0 are very similar – in fact OpenID Connect is an extension on top of OAuth 2.0.
-The two fundamental security concerns, authentication and API access, are combined into a  single protocol - often with a single round trip to the security token service. 
-
-We believe that the combination of OpenID Connect and OAuth 2.0 is the best approach to secure modern
-applications for the foreseeable future. IdentityServer4 is an implementation of these two protocols and is
-highly optimized to solve the typical security problems of today’s mobile, native and web applications.
-
-How IdentityServer4 can help
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-IdentityServer is middleware that adds the spec compliant OpenID Connect and OAuth 2.0 endpoints to an arbitrary ASP.NET Core application.
-
-Typically, you build (or re-use) an application that contains a login and logout page (and maybe consent - depending on your needs),
-and the IdentityServer middleware adds the necessary protocol heads to it, so that client applications can talk to it using those standard protocols.
-
-.. image:: images/middleware.png
-
-The hosting application can be as complex as you want, but we typically recommend to keep the attack surface as small as possible by including
-authentication related UI only.
+Bring your own Integration (BYOI)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
