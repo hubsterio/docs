@@ -44,13 +44,6 @@ Our APIs are designed using **REST** principles and most of our payloads are str
    :caption: Quickstarts
 
    quickstarts/0_overview
-   quickstarts/1_client_credentials
-   quickstarts/2_interactive_aspnetcore
-   quickstarts/3_aspnetcore_and_apis
-   quickstarts/4_javascript_client
-   quickstarts/5_entityframework
-   quickstarts/6_aspnet_identity
-
 
 .. toctree::
    :maxdepth: 3
