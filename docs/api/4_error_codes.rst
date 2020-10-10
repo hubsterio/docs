@@ -75,6 +75,36 @@ Below is a full list of all possible Hubster Identity REST API error codes.
    * - IDT000110 
      - 400 
      - Requested action is not allowed.
+   * - IDT000200 
+     - 400 
+     - Required query parameter was not supplied.
+   * - IDT000201 
+     - 400
+     - One or more parameters have invalid format.
+   * - IDT000202 
+     - 400
+     - Please correct supplied format for used paramere(s).
+   * - IDT000203 
+     - 400
+     - Provided ``GUID`` has bad format. Please use sequential ``GUID`` format.
+   * - IDT000204 
+     - 400
+     - Provided date has bad format.
+   * - IDT000205 
+     - 400
+     - One or more parameters have invalid date format.
+   * - IDT000206 
+     - 400
+     - Provided parameter value is not supported (out of range).
+   * - IDT000207 
+     - 400
+     - Provided parameter is out of predefined range.
+   * - IDT000208 
+     - 400
+     - Provided parameter has to be greater than zero.
+   * - IDT000300 
+     - 400
+     - Criteria parameter is required when suppling a ``searchBy`` parameter.
 
 
 Portal
@@ -121,6 +151,36 @@ Below is a full list of all possible Hubster Portal REST API error codes.
    * - PRT000110 
      - 400 
      - Requested action is not allowed.
+   * - PRT000200 
+     - 400 
+     - Required query parameter was not supplied.
+   * - PRT000201 
+     - 400
+     - One or more parameters have invalid format.
+   * - PRT000202 
+     - 400
+     - Please correct supplied format for used paramere(s).
+   * - PRT000203 
+     - 400
+     - Provided ``GUID`` has bad format. Please use sequential ``GUID`` format.
+   * - PRT000204 
+     - 400
+     - Provided date has bad format.
+   * - PRT000205 
+     - 400
+     - One or more parameters have invalid date format.
+   * - PRT000206 
+     - 400
+     - Provided parameter value is not supported (out of range).
+   * - PRT000207 
+     - 400
+     - Provided parameter is out of predefined range.
+   * - PRT000208 
+     - 400
+     - Provided parameter has to be greater than zero.
+   * - PRT000300 
+     - 400
+     - Criteria parameter is required when suppling a ``searchBy`` parameter.
 
 Engine
 ^^^^^^
@@ -167,5 +227,35 @@ Below is a full list of all possible Hubster Engine REST API error codes.
    * - ENG000110 
      - 400 
      - Requested action is not allowed.
+   * - ENG000200 
+     - 400 
+     - Required query parameter was not supplied.
+   * - ENG000201 
+     - 400
+     - One or more parameters have invalid format.
+   * - ENG000202 
+     - 400
+     - Please correct supplied format for used paramere(s).
+   * - ENG000203 
+     - 400
+     - Provided ``GUID`` has bad format. Please use sequential ``GUID`` format.
+   * - ENG000204 
+     - 400
+     - Provided date has bad format.
+   * - ENG000205 
+     - 400
+     - One or more parameters have invalid date format.
+   * - ENG000206 
+     - 400
+     - Provided parameter value is not supported (out of range).
+   * - ENG000207 
+     - 400
+     - Provided parameter is out of predefined range.
+   * - ENG000208 
+     - 400
+     - Provided parameter has to be greater than zero.
+   * - ENG000300 
+     - 400
+     - Criteria parameter is required when suppling a ``searchBy`` parameter.
 
 
