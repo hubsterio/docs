@@ -46,6 +46,7 @@ and is designed to be API friendly.
 
 API Access
 ^^^^^^^^^^
+
 Applications have two fundamental ways with which they communicate with APIs – using the application identity,
 or delegating the user’s identity. Sometimes both methods need to be combined.
 

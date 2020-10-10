@@ -52,26 +52,18 @@ Our APIs are designed using **REST** principles and most of our payloads are str
    quickstarts/6_aspnet_identity
 
 
-.. .. toctree::
-..    :maxdepth: 3
-..    :hidden:
-..    :caption: Topics
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+   :caption: Topics
 
-.. .. toctree::
-..    :maxdepth: 3
-..    :hidden:
-..    :caption: Endpoints
+.. toctree::
+   :maxdepth: 3
+   :hidden:
+   :caption: API
 
-..    endpoints/discovery
-..    endpoints/authorize
-..    endpoints/token
-..    endpoints/userinfo
-..    endpoints/device_authorization
-..    endpoints/introspection
-..    endpoints/revocation
-..    endpoints/endsession
-
-.. .. toctree::
-..    :maxdepth: 3
-..    :hidden:
-..    :caption: Reference
+   api/0_overview
+   api/1_identity
+   api/2_portal
+   api/3_engine
+   api/4_error_codes
