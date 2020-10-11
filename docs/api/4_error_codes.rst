@@ -332,6 +332,84 @@ Below is a full list of all possible Hubster Engine REST API error codes.
    * - ENG005024
      - 400
      - Direct Inbound request body must contain ``Location``, either an ``address`` and/or ``latitude/longitude`` coordinates.
+   * - ENG005500
+     - 400
+     - Hub does not exist.
+   * - ENG005501
+     - 400
+     - Provided Hub does not have any Agent or Bot integration configured to receive or interact with customer messages.
+   * - ENG006000
+     - 400
+     - Provided integration does not exist.
+   * - ENG006500
+     - 400
+     - Provided conversation does not exist.
+   * - ENG006501
+     - 400
+     - Customer is no longer responding to messages.
+   * - ENG006502
+     - 400
+     - Your Hubster integration has been terminated and is no longer active. Please contact your Administrator.
+   * - ENG006503
+     - 400
+     - Conversation was paused.
+   * - ENG007500
+     - 400
+     - Conversation encountered a web related issue.
+   * - ENG007501
+     - 400
+     - Conversation encountered a web security related issue.
+   * - ENG007502
+     - 400
+     - Conversation encountered a runtime related issue.
+   * - ENG007510
+     - 400
+     - Customer failed to receive your message. This was due to an unauthorized issue on their end. Please check with your Administrator.
+   * - ENG007511
+     - 400
+     - A web related issue was detected on Hub.
+   * - ENG007512
+     - 400
+     - An unreachable web-endpoint was detected on Hub.
+   * - ENG008000
+     - 400
+     - Message Spark encountered a web related issue.
+   * - ENG008001
+     - 400
+     - Message Spark encountered a web security related issue.
+   * - ENG008002
+     - 400
+     - Message Spark encountered a runtime related issue.
+   * - ENG008500
+     - 400
+     - No upload files were provided.
+   * - ENG008501
+     - 400
+     - Invalid ``URL`` was provided.
+   * - ENG008502
+     - 400
+     - File you submitted was not received by the other party.
+   * - ENG008503
+     - 400
+     - The other party tried to send you a file but failed.
+   * - ENG009000
+     - 400
+     - Invalid command. You must have an actually command in front of the double colon e.g. ``::mycommand [args]...``
+   * - ENG009001
+     - 400
+     - Unknown command.
+   * - ENG009200
+     - 400
+     - Command was not found. Please type ``::{1} --list`` to see the full list of available commands.
+   * - ENG009201
+     - 400
+     - No commands have been configured for this hub.
+   * - ENG009202
+     - 400
+     - No commands were found for the category.
+   * - ENG009299
+     - 400
+     - There was an error while executing command. Please contact technical support.
 
 Events
 ^^^^^^^^
@@ -417,81 +495,3 @@ Below is a full list of all possible Hubster Events REST API error codes.
    * - EVT000212 
      - 400
      - Criteria parameter is required when suppling a ``searchBy`` parameter.
-   * - ENG005500
-     - 400
-     - Hub does not exist.
-   * - ENG005501
-     - 400
-     - Provided Hub does not have any Agent or Bot integration configured to receive or interact with customer messages.
-   * - ENG006000
-     - 400
-     - Provided integration does not exist.
-   * - ENG006500
-     - 400
-     - Provided conversation does not exist.
-   * - ENG006501
-     - 400
-     - Customer is no longer responding to messages.
-   * - ENG006502
-     - 400
-     - Your Hubster integration has been terminated and is no longer active. Please contact your Administrator.
-   * - ENG006503
-     - 400
-     - Conversation was paused.
-   * - ENG007500
-     - 400
-     - Conversation encountered a web related issue.
-   * - ENG007501
-     - 400
-     - Conversation encountered a web security related issue.
-   * - ENG007502
-     - 400
-     - Conversation encountered a runtime related issue.
-   * - ENG007510
-     - 400
-     - Customer failed to receive your message. This was due to an unauthorized issue on their end. Please check with your Administrator.
-   * - ENG007511
-     - 400
-     - A web related issue was detected on Hub.
-   * - ENG007512
-     - 400
-     - An unreachable web-endpoint was detected on Hub.
-   * - ENG008000
-     - 400
-     - Message Spark encountered a web related issue.
-   * - ENG008001
-     - 400
-     - Message Spark encountered a web security related issue.
-   * - ENG008002
-     - 400
-     - Message Spark encountered a runtime related issue.
-   * - ENG008500
-     - 400
-     - No upload files were provided.
-   * - ENG008501
-     - 400
-     - Invalid ``URL`` was provided.
-   * - ENG008502
-     - 400
-     - File you submitted was not received by the other party.
-   * - ENG008503
-     - 400
-     - The other party tried to send you a file but failed.
-   * - ENG009000
-     - 400
-     - Invalid command. You must have an actually command in front of the double colon e.g. ``::mycommand [args]...``
-   * - ENG009001
-     - 400
-     - Unknown command.
-   * - ENG009200
-     - 400
-     - Command was not found. Please type ``::{1} --list`` to see the full list of available commands.
-   * - ENG009201
-     - 400
-     - No commands have been configured for this hub.
-   * - ENG009202
-     - 400
-     - No commands were found for the category.
-   * - ENG009299
-     - 400
-     - There was an error while executing command. Please contact technical support.
