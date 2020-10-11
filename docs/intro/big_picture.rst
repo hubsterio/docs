@@ -25,8 +25,8 @@ Hubster’s platform was designed with simplicity in mind, yet power enough to a
     * Are there any keyword spotting phrases configured and if so, what CRM endpoint should be invoked?
     * What is the active business destination (agent or bot)?
 
-#. If an agent is the **active business destination*, the engine will send the rendered response to the agent's configured endpoint.
-#. If a bot is the **active business destination*, the engine will send appropriate response to the bot's configured endpoint.
+#. If an agent is the **active business destination**, the engine will send the rendered response to the agent's configured endpoint.
+#. If a bot is the **active business destination**, the engine will send appropriate response to the bot's configured endpoint.
 
 
 The Hub Anatomy	
@@ -37,3 +37,5 @@ Pipeline
 
 Bring your own Integration (BYOI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+

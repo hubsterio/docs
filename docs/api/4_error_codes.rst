@@ -22,10 +22,20 @@ The following standard HTTP Status codes are used.
       - Unauthorized. Your token is invalid.
     * - 403
       - Forbidden. You do not have access to the requested resource.
+    * - 408
+      - Timed out. Your request was timed out.
+    * - 409
+      - Conflict. You request has caused a conflict.
+    * - 410
+      - Not available. The request you are trying to invoke is no longer available.
+    * - 417
+      - Expectation Failed. The operation was aborted.
     * - 429
       - Too many requests. You have reach your API usage limits.
     * - 500
-      - PRTernal server error. There was an internal issue with the Hubster service.
+      - Internal server error. There was an internal issue with the Hubster service.
+    * - 501
+      - Not implemented. The service you requested is not implemented.
     * - 503
       - Service unavailable. The Hubster service is unavailable.
 
@@ -49,31 +59,31 @@ Below is a full list of all possible Hubster Identity REST API error codes.
      - 403
      - Forbidden.
    * - IDT000102
-     - 400 
+     - 401
      - Unauthorized access.
    * - IDT000103 
-     - 400 
+     - 501 
      - Requested operation is not implemented.
    * - IDT000104 
-     - 400 
+     - 410
      - Requested resource or operation is not available.
    * - IDT000105 
-     - 400 
+     - 404
      - Requested resource was not found.
    * - IDT000106 
-     - 400
+     - 409
      - Resource you are trying to create already exists.
    * - IDT000107 
-     - 400
+     - 417
      - Current request or operation is not valid.
    * - IDT000108 
-     - 400 
+     - 408 
      - Request took too long to execute and timed out.
    * - IDT000109 
-     - 400 
+     - 417 
      - Requested action was aborted.
    * - IDT000110 
-     - 400 
+     - 403 
      - Requested action is not allowed.
    * - IDT000200 
      - 400 
@@ -83,7 +93,7 @@ Below is a full list of all possible Hubster Identity REST API error codes.
      - One or more parameters have invalid format.
    * - IDT000202 
      - 400
-     - Please correct supplied format for used paramere(s).
+     - Please correct supplied format for used parameter(s).
    * - IDT000203 
      - 400
      - Provided ``GUID`` has bad format.
@@ -113,7 +123,7 @@ Below is a full list of all possible Hubster Identity REST API error codes.
      - Invalid email format provided.
    * - IDT000212 
      - 400
-     - Criteria parameter is required when suppling a ``searchBy`` parameter.
+     - Criteria parameter is required when supplying a ``searchBy`` parameter.
 
 
 Portal
@@ -134,31 +144,31 @@ Below is a full list of all possible Hubster Portal REST API error codes.
      - 403
      - Forbidden.
    * - PRT000102
-     - 400 
+     - 401
      - Unauthorized access.
    * - PRT000103 
-     - 400 
+     - 501 
      - Requested operation is not implemented.
    * - PRT000104 
-     - 400 
+     - 410
      - Requested resource or operation is not available.
    * - PRT000105 
-     - 400 
+     - 404
      - Requested resource was not found.
    * - PRT000106 
-     - 400
+     - 409
      - Resource you are trying to create already exists.
    * - PRT000107 
-     - 400
+     - 417
      - Current request or operation is not valid.
    * - PRT000108 
-     - 400 
+     - 408 
      - Request took too long to execute and timed out.
    * - PRT000109 
-     - 400 
+     - 417 
      - Requested action was aborted.
    * - PRT000110 
-     - 400 
+     - 403 
      - Requested action is not allowed.
    * - PRT000200 
      - 400 
@@ -168,7 +178,7 @@ Below is a full list of all possible Hubster Portal REST API error codes.
      - One or more parameters have invalid format.
    * - PRT000202 
      - 400
-     - Please correct supplied format for used paramere(s).
+     - Please correct supplied format for used parameter(s).
    * - PRT000203 
      - 400
      - Provided ``GUID`` has bad format.
@@ -198,7 +208,7 @@ Below is a full list of all possible Hubster Portal REST API error codes.
      - Invalid email format provided.
    * - PRT000212 
      - 400
-     - Criteria parameter is required when suppling a ``searchBy`` parameter.
+     - Criteria parameter is required when supplying a ``searchBy`` parameter.
 
 Engine
 ^^^^^^
@@ -211,7 +221,7 @@ Below is a full list of all possible Hubster Engine REST API error codes.
 
    * - Error
      - HTTP Status
-     - Description  
+     - Description
    * - ENG000100
      - 500
      - System Error.
@@ -219,31 +229,31 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - 403
      - Forbidden.
    * - ENG000102
-     - 400 
+     - 401
      - Unauthorized access.
    * - ENG000103 
-     - 400 
+     - 501 
      - Requested operation is not implemented.
    * - ENG000104 
-     - 400 
+     - 410
      - Requested resource or operation is not available.
    * - ENG000105 
-     - 400 
+     - 404
      - Requested resource was not found.
    * - ENG000106 
-     - 400
+     - 409
      - Resource you are trying to create already exists.
    * - ENG000107 
-     - 400
+     - 417
      - Current request or operation is not valid.
    * - ENG000108 
-     - 400 
+     - 408 
      - Request took too long to execute and timed out.
    * - ENG000109 
-     - 400 
+     - 417 
      - Requested action was aborted.
    * - ENG000110 
-     - 400 
+     - 403 
      - Requested action is not allowed.
    * - ENG000200 
      - 400 
@@ -253,7 +263,7 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - One or more parameters have invalid format.
    * - ENG000202 
      - 400
-     - Please correct supplied format for used paramere(s).
+     - Please correct supplied format for used parameter(s).
    * - ENG000203 
      - 400
      - Provided ``GUID`` has bad format.
@@ -283,7 +293,7 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - Invalid email format provided.
    * - ENG000212 
      - 400
-     - Criteria parameter is required when suppling a ``searchBy`` parameter.
+     - Criteria parameter is required when supplying a ``searchBy`` parameter.
    * - ENG002000
      - 400
      - Provided tenant is invalid.
@@ -430,31 +440,31 @@ Below is a full list of all possible Hubster Events REST API error codes.
      - 403
      - Forbidden.
    * - EVT000102
-     - 400 
+     - 401
      - Unauthorized access.
    * - EVT000103 
-     - 400 
+     - 501 
      - Requested operation is not implemented.
    * - EVT000104 
-     - 400 
+     - 410
      - Requested resource or operation is not available.
    * - EVT000105 
-     - 400 
+     - 404
      - Requested resource was not found.
    * - EVT000106 
-     - 400
+     - 409
      - Resource you are trying to create already exists.
    * - EVT000107 
-     - 400
+     - 417
      - Current request or operation is not valid.
    * - EVT000108 
-     - 400 
+     - 408 
      - Request took too long to execute and timed out.
    * - EVT000109 
-     - 400 
+     - 417 
      - Requested action was aborted.
    * - EVT000110 
-     - 400 
+     - 403 
      - Requested action is not allowed.
    * - EVT000200 
      - 400 
@@ -464,7 +474,7 @@ Below is a full list of all possible Hubster Events REST API error codes.
      - One or more parameters have invalid format.
    * - EVT000202 
      - 400
-     - Please correct supplied format for used paramere(s).
+     - Please correct supplied format for used parameter(s).
    * - EVT000203 
      - 400
      - Provided ``GUID`` has bad format.
@@ -494,4 +504,4 @@ Below is a full list of all possible Hubster Events REST API error codes.
      - Invalid email format provided.
    * - EVT000212 
      - 400
-     - Criteria parameter is required when suppling a ``searchBy`` parameter.
+     - Criteria parameter is required when supplying a ``searchBy`` parameter.
