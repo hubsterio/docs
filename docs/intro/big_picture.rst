@@ -6,18 +6,16 @@ Hubster’s 10,000 - foot, High Level Architecture
 
 Hubster’s platform was designed with simplicity in mind, yet power enough to allow a business to extend the platform to meet their specific needs, on a per hub basis. 
 
+Engine
+******
+
 .. image:: images/arch_full.png
 
 **Hubster’s Engine workflow and feature annotation:**
 
 #. Customer channels initiate a conversation with the engine
-#. The engine detects the request and reverse engineers the channel’s proprietary format to common Hubster format.
+#. The engine detects the request and reverse engineers [link to UX] the channel’s proprietary format to common Hubster format.
 #. The engine reads the channel’s Hub configuration and determines if there are any preliminary pipeline actions to take:
-
-    * Does the message require translations?
-    * Is sentiment required and if so, what is the analysis?
-    * Are open hours configured?     
-
 #. Once preliminary actions have been completed, the engine then determines if there are any auxillary actions to take:
 
     * Are there any custom plugins configured?
@@ -32,10 +30,11 @@ Hubster’s platform was designed with simplicity in mind, yet power enough to a
 The Hub Anatomy	
 ^^^^^^^^^^^^^^^
 
-Pipeline
-^^^^^^^^
+Engine Pipeline
+^^^^^^^^^^^^^^^
 
 Bring your own Integration (BYOI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-
+UX Multi-rendering/Response Framework
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
