@@ -1,8 +1,8 @@
 The Big Picture
 ===============
 
-Hubster’s 10,000 - foot, High Level Architecture
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+High Level Architecture
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Hubster’s platform was designed with simplicity in mind, yet power enough to allow a business to extend the platform to meet their specific needs, on a per hub basis. 
 
@@ -18,7 +18,7 @@ Hubster’s platform was designed with simplicity in mind, yet power enough to a
 #. Based on the hub’s configuration and channel :ref:`source type<ref_source>`, the pipeline determines the appropriate **preliminary** flow actions required
 #. The pipeline then determines the appropriate **auxiliary** flow actions required
 #. Once both **preliminary** and **auxiliary** flows have been executed, the pipeline then determines the **active business destination** and reverse engineers the activity to the proprietary format specific to the destination source – agent or bot
-#. The agent may initiate a **takeover** from a bot, handle the request, and eventually **handover** the conversation back to the bot. Conversely, if the bot has difficulty handling a request, the bot can initiate a **handover** and redirect the conversation to the agent.
+#. The agent may initiate a **takeover** from a bot, handles the request, and eventually hands the conversation back to the bot. Conversely, if the bot has difficulty handling a request, the bot can initiate a **handover** and redirect the conversation to the agent.
 
 .. _ref_hub_anatomy:
 
