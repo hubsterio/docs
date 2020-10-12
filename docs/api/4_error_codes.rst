@@ -124,6 +124,114 @@ Below is a full list of all possible Hubster Identity REST API error codes.
    * - IDT000212 
      - 400
      - Criteria parameter is required when supplying a ``searchBy`` parameter.
+   * - IDT000300 
+     - 400
+     - Token request root body was empty.
+   * - IDT000301 
+     - 400
+     - Token request is missing required property.
+   * - IDT000302
+     - 400
+     - Token request operaion has failed while authenticating user.
+   * - IDT000303
+     - 400
+     - Token request has invalid client scopes.
+   * - IDT000397
+     - 400
+     - Token request could not find ``Client``.
+   * - IDT005000
+     - 400
+     - User request root body was empty.
+   * - IDT005001
+     - 400
+     - User request required property is missing.
+   * - IDT005002
+     - 400
+     - User email is not in proper format.
+   * - IDT005003
+     - 400
+     - User request can have only one claim of type ``name``.
+   * - IDT005004
+     - 400
+     - User provider type is not supported.
+   * - IDT005005
+     - 400
+     - User is not allowed to manage password through Hubster's Identity Server.
+   * - IDT005096
+     - 400
+     - User ``name`` is already taken.
+   * - IDT005097
+     - 400
+     - User not found.
+   * - IDT005100
+     - 400
+     - Claim type is missing .
+   * - IDT005101
+     - 400
+     - Claim type is not allowed.
+   * - IDT005102
+     - 400
+     - Claim/value has been defined more than once and is not permissible.
+   * - IDT005200
+     - 400
+     - Client request root body was empty.
+   * - IDT005201
+     - 400
+     - Client request required property is missing.
+   * - IDT005202
+     - 400
+     - Client must contain at least one ``Scope``.
+   * - IDT005203
+     - 400
+     - Client duplicate scopes detected.
+   * - IDT005204
+     - 400
+     - Client scopes cannot contain any empty strings.
+   * - IDT005205
+     - 400
+     - Specified client scope does not exist.
+   * - IDT005206
+     - 400
+     - Client ``Id`` already exists.
+   * - IDT005207
+     - 400
+     - Client ``tenant Id`` does not exists.
+   * - IDT005208
+     - 400
+     - Client token name already exists.
+   * - IDT005297
+     - 400
+     - Client not found.
+   * - IDT005300
+     - 400
+     - Client secret empty root body was supplied.
+   * - IDT005301
+     - 400
+     - Client secret required property is missing.
+   * - IDT005397
+     - 400
+     - Client secret not found.
+   * - IDT005400
+     - 400
+     - Tenant empty root body was supplied.
+   * - IDT005401
+     - 400
+     - Tenant required property is missing.
+   * - IDT005402
+     - 400
+     - Tenant already exists.
+   * - IDT005497
+     - 400
+     - Tenant not found.
+   * - IDT005500
+     - 400
+     - External login request root body was empty.
+   * - IDT005501
+     - 400
+     - External login required property is missing.
+   * - IDT005502
+     - 400
+     - External login does not support specidied authentication provider.
 
 
 Portal
@@ -209,6 +317,57 @@ Below is a full list of all possible Hubster Portal REST API error codes.
    * - PRT000212 
      - 400
      - Criteria parameter is required when supplying a ``searchBy`` parameter.
+   * - PRT000300
+     - 400
+     - Root body section is missing.
+   * - PRT000301
+     - 400
+     - Reuqired property is missing.
+   * - PRT000302
+     - 400
+     - Property has is invalid type.
+   * - PRT000303
+     - 400
+     - Validation failed. Property not supported.
+   * - PRT000304
+     - 400
+     - Request parameter has bad format. Expected to be a valid ``decimal`` value.
+   * - PRT000305
+     - 400
+     - Request parameter has bad format. Expected to be a valid ``GUID`` value.
+   * - PRT000306
+     - 400
+     - Request collection must contain one or more elements.
+   * - PRT000307
+     - 400
+     - Messaged was empty.
+   * - PRT000308
+     - 400
+     - Request body must contain Location, either an address and/or latitude/longitude coordinates.
+   * - PRT000400
+     - 400
+     - Tenant already exists.
+   * - PRT000401
+     - 400
+     - User already exists.
+   * - PRT000599
+     - 400
+     - User not found.
+   * - PRT000600
+     - 400
+     - Name already exists.
+   * - PRT000699
+     - 400
+     - Hub not found.
+   * - PRT000700
+     - 400
+     - An integration with name already exists.
+   * - PRT000701
+     - 400
+     - An integration with same name has already been assign to a hub. You can only add this channel once across all hubs.
+   * - PRT000799
+     - 400
+     - Integration not found.
 
 Engine
 ^^^^^^
@@ -505,3 +664,12 @@ Below is a full list of all possible Hubster Events REST API error codes.
    * - EVT000212 
      - 400
      - Criteria parameter is required when supplying a ``searchBy`` parameter.
+   * - EVT001000
+     - 400
+     - Missing conversation id (cid).
+   * - EVT001001
+     - 400
+     - Missing integration Id (iId).
+   * - EVT001002
+     - 400
+     - Access forbidden to this conversation.
