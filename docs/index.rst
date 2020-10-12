@@ -22,7 +22,7 @@ At Hubster, we provide following ways on how you can extend our platform:
    | **Dynamic Commands**
    | Dynamic commands are a powerful concept allowing agents and/or bots through simple text, instruct Hubster to invoke your backend service to formulate the appropriate response. For example, if your business provides a command to a list a line of clothing specific to the user’s profile, your system can check to see what are the best options and construct a targeted response that is meaningful to the end user.
 
-Our APIs are designed using **REST** principles and most of our payloads are structured using **JSON**. Any exception to this rule will be noted where necessary.
+Our :ref:`APIs<ref_api_overview>` are designed using **REST** principles and most of our payloads are structured using **JSON**. Any exception to this rule will be noted where necessary.
 
 .. note:: Hubster APIs incorporate cross-origin resource sharing (**CORS**) whereby facilitating web applications to freely use our API in an authenticated and secure manner.
 
