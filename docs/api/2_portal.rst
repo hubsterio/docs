@@ -1,14 +1,20 @@
 Portal
 ======
 
-The quickstarts provide step by step instructions for various common IdentityServer scenarios.
-They start with the absolute basics and become more complex -
-it is recommended you do them in order. Test.
+Hubs
+^^^^
 
-* adding IdentityServer to an ASP.NET Core application
-* configuring IdentityServer
-* issuing tokens for various clients
-* securing web applications and APIs
-* adding support for EntityFramework based configuration
-* adding support for ASP.NET Identity
+Create
+******
 
+.. code-block:: JSON
+
+    {
+        "name": "Ross Dev Hub",
+        "description": "Ross Dev Hub",
+        "statusId": 2000
+    }
+
+
+Integrations
+^^^^^^^^^^^^
