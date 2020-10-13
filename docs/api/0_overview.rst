@@ -161,6 +161,7 @@ Below is an example returning the Hubs from the Portal API resource.
     * - pageSize
       - The requested page size.
     * - total
+
       - | The total number of results across all pages. 
         | **Note**: the total number of items does not necessary equal the number of result items.            
     * - results
@@ -173,8 +174,7 @@ Below is an example returning the Hubs from the Portal API resource.
 HTTP Status Codes
 ^^^^^^^^^^^^^^^^^
 
-Ever Hubster API related service will return one of the following standard HTTP Status codes.
-
+Hubster API HTTP Status codes.
 
 .. list-table::
     :widths: 5 50
