@@ -114,6 +114,7 @@ Below is an example of a **Bad Request** (400) returned by the Portal API.
     * - errors
       - The list of :ref:`errors<ref_api_error_codes>`.
    
+.. _ref_api_paginated_results:
 
 Paginated Results 
 ^^^^^^^^^^^^^^^^^
@@ -122,7 +123,7 @@ In some cases, Hubster may return a **paginated** response whereby, the business
 based on **page number** and **page size**. This is typically when certain **GET** requests may yield 
 a large number of records. 
 
-Below is an example returning the Hubs from the Portal API resource.
+Below is an example from Portal API resource returning Hubs as paginated response.
 
 **Response** : 200 (OK)
 
@@ -157,11 +158,10 @@ Below is an example returning the Hubs from the Portal API resource.
     * - Property
       - Meaning
     * - pageNumber
-      - The requested page number.
+      - The requested page number. 
     * - pageSize
       - The requested page size.
     * - total
-
       - | The total number of results across all pages. 
         | **Note**: the total number of items does not necessary equal the number of result items.            
     * - results
@@ -192,6 +192,8 @@ Hubster API HTTP Status codes.
       - Unauthorized. Token is invalid.
     * - 403
       - Forbidden. Access to the requested resource is forbidden.
+    * - 404
+      - Not found. Resource not found.
     * - 408
       - Timed out. The request timed out.
     * - 409
