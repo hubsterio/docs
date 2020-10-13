@@ -5,6 +5,8 @@ Error Codes
 
 Below are a list of all possible REST API error codes for all Hubster API related services. 
 
+.. _ref_api_portal_error_codes:
+
 Portal
 ^^^^^^
 Below is a full list of all possible Hubster Portal REST API error codes.
