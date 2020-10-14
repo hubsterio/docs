@@ -1,3 +1,6 @@
+.. role:: underline
+    :class: underline
+
 Portal
 ======
 
@@ -46,7 +49,7 @@ Create Hub.
        | a command has been initiated.
    * - statusId
      - No
-     - | Hub status. If no value, the default is *Active* = 2000
+     - | Hub status. Default is *Active* = 2000, if no value supplied.
        | Valid options are:        
        | -  *Active* = 2000
        | -  *Paused* = 2002
@@ -143,7 +146,7 @@ Update Hub.
        | a command has been initiated.
    * - statusId
      - No
-     - | Hub status. If no value, the default is *Active* = 2000
+     - | Hub status. Default is *Active* = 2000, if no value supplied.
        | Valid options are:        
        | -  *Active* = 2000
        | -  *Paused* = 2002
@@ -393,8 +396,8 @@ Get Hub Collection.
 Integrations
 ^^^^^^^^^^^^
 
-Create Slack
-************
+Create
+******
 
 **POST** */api/v1/integrations/hubs/{hubId}*
 
@@ -422,132 +425,34 @@ Create Slack
      - Details
    * - channelId
      - Yes
-     - Has to be ``Slack``
+     - Has to be one of the following :ref:`Channel Types<ref_api_channel_types>`.
    * - name
      - Yes
-     - Unique name for Slack integration per Hub.
+     - Unique name for integration per Hub.
    * - statusId
      - No
-     - | Integration status. If no value, the default is *Active* = 3000
+     - | Integration status. Default is *Active* = 3000, if no value supplied.
        | Valid options are:        
        | -  *Active* = 3000
        | -  *Paused* = 3002
    * - configuration
      - Yes
-     - | JSON sub object with ``code`` complex property.
+     - See :ref:`configuration<ref_portal_integration_create_config>` properties for each individual **channelId**.
 
-       .. code-block:: JSON
+**Example Request Body** 
 
-          {
-              "code": "EAAFBmgAdBToBADCvmo5w10tmlh ..."
-          }
-
-**Example Request Body**
+.. note:: The :ref:`configuration<ref_portal_integration_create_config>` properties for each channel type may differ. Please use the correct JSON format 
+          specific to the **channelId** value defined.
 
 .. code-block:: JSON
 
-    {
-        "channelId": "channelId",
-        "name": "Slack: Hubster",
-        "statusId": 3000,
-        "configuration": 
-        {
-          "name": "EAAFBmgAdBToBADCvmo5w10tmlh ...",
-        }
-    }
+  {                        	
+    "channelId": "see channel types...",
+    "name": "My cool integration name.",
+    "statusId": 3000,    
+    "configuration": {  }	
+  }	
 
-**Response** : 200 (OK)
-
-.. code-block:: JSON
-
-    {
-        "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
-        "tenantId": "00000000-0000-0000-0000-000000000001",
-        "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",        
-        "closeDormantConversation": 30,
-        "statusId": 2000,
-        "created": "2020-10-13T02:42:26.9932101Z",
-        "modified": "2020-10-13T02:42:26.9932101Z"
-    }
-
-Create Messenger
-************
-
-**POST** */api/v1/integrations/hubs/{hubId}*
-
-**Headers**
-
-.. list-table::
-   :widths: 15 60
-   :header-rows: 1
-
-   * - Header     
-     - Details
-   * - Authorization
-     - Bearer ``your portal access token``
-   * - Content-Type
-     - ``application/json``
-
-**Request Properties**
-
-.. list-table::
-   :widths: 15 10 60
-   :header-rows: 1
-
-   * - Property     
-     - Mandatory
-     - Details
-   * - channelId
-     - Yes
-     - Has to be ``Messenger``
-   * - name
-     - Yes
-     - Unique name for Messenger integration per Hub.
-   * - statusId
-     - No
-     - | Integration status. If no value, the default is *Active* = 3000
-       | Valid options are:        
-       | -  *Active* = 3000
-       | -  *Paused* = 3002
-   * - configuration
-     - Yes
-     - | JSON sub object with ``pageAccessToken`` complex property.
-
-       .. code-block:: JSON
-
-          {
-              "pageAccessToken": "EAAFBmgAdBToBADCvmo5w10tmlh ..."
-          }
-
-**Example Request Body**
-
-.. code-block:: JSON
-
-    {
-        "channelId": "channelId",
-        "name": "Messenger: Hubster",
-        "statusId": 3000,
-        "configuration": 
-        {
-          "pageAccessToken": "EAAFBmgAdBToBADCvmo5w10tmlh ...",
-        }
-    }
-    
-**Response** : 200 (OK)
-
-.. code-block:: JSON
-
-    {
-        "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
-        "tenantId": "00000000-0000-0000-0000-000000000001",
-        "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",        
-        "closeDormantConversation": 30,
-        "statusId": 2000,
-        "created": "2020-10-13T02:42:26.9932101Z",
-        "modified": "2020-10-13T02:42:26.9932101Z"
-    }
 
 .. list-table::
     :widths: 5 50
@@ -571,3 +476,56 @@ Create Messenger
       - Internal server error. There was an internal issue with the service.
     * - 503
       - Service unavailable. The service is unavailable.
+
+.. _ref_portal_integration_create_config:
+
+**Configurations**
+
+  :underline:`Messenger`
+
+  .. code-block:: JSON
+
+    {
+      "pageAccessToken": "EAAFBmgA..."
+    }	
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - pageAccessToken
+      - Yes
+      - Facebook page access token.
+
+  :underline:`TwilioSMS`
+
+  .. code-block:: JSON
+
+    {
+      "authToken": "cb8c5367c3c4586ecb589e25570c019e",
+      "accountSid": "AC1fc1c1722444b0c6313d3ae988bb000f",        
+      "numberSid": "PN667435536f4d1cefdf054abf99220d00"      
+    }	
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - authToken
+      - Yes
+      - Authorization token.
+    * - accountSid
+      - Yes
+      - Account SID.
+    * - numberSid
+      - Yes
+      - Phone number SID.
+
+
+

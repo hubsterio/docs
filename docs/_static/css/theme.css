@@ -8,3 +8,6 @@ html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}article,aside,det
 	max-width: 900px;
 }
  
+.underline {
+	text-decoration: underline;
+}
