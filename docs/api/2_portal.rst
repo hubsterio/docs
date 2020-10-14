@@ -441,16 +441,20 @@ Create
 
 **Example Request Body** 
 
-.. note:: The :ref:`configuration<ref_portal_integration_create_config>` properties for each channel type may differ. Please use the correct JSON format 
-          specific to the **channelId** value defined.
+.. note:: The request body below is using **TwilioSMS** as an example. However, The :ref:`configuration<ref_portal_integration_create_config>` 
+          properties for each channel type differs. Please use the correct JSON format specific to the **channelId** value defined. 
 
 .. code-block:: JSON
 
   {                        	
-    "channelId": "see channel types...",
+    "channelId": "TwilioSMS",
     "name": "My cool integration name.",
     "statusId": 3000,    
-    "configuration": {  }	
+    "configuration": {  
+      "authToken": "cb8c5367c3c4586ecb589e25570c019e",
+      "accountSid": "AC1fc1c1722444b0c6313d3ae988bb000f",
+      "numberSid": "PN667435536f4d1cefdf054abf99220d00"
+    }	
   }	
 
 
@@ -481,6 +485,33 @@ Create
 
 **Configurations**
 
+  :underline:`TwilioSMS`
+
+  .. code-block:: JSON
+
+    {
+      "authToken": "cb8c5367c3c4586ecb589e25570c019e",
+      "accountSid": "AC1fc1c1722444b0c6313d3ae988bb000f",
+      "numberSid": "PN667435536f4d1cefdf054abf99220d00"    
+    }	
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - authToken
+      - Yes
+      - Authorization token.
+    * - accountSid
+      - Yes
+      - Account SID.
+    * - numberSid
+      - Yes
+      - Phone number SID.
+
   :underline:`Messenger`
 
   .. code-block:: JSON
@@ -500,32 +531,6 @@ Create
       - Yes
       - Facebook page access token.
 
-  :underline:`TwilioSMS`
-
-  .. code-block:: JSON
-
-    {
-      "authToken": "cb8c5367c3c4586ecb589e25570c019e",
-      "accountSid": "AC1fc1c1722444b0c6313d3ae988bb000f",        
-      "numberSid": "PN667435536f4d1cefdf054abf99220d00"      
-    }	
-
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
-
-    * - Property     
-      - Mandatory
-      - Details
-    * - authToken
-      - Yes
-      - Authorization token.
-    * - accountSid
-      - Yes
-      - Account SID.
-    * - numberSid
-      - Yes
-      - Phone number SID.
 
 
 
