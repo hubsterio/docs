@@ -486,7 +486,7 @@ Create
   .. code-block:: JSON
 
     {
-      "pageAccessToken": "EAAFBmgA..."
+      "pageAccessToken": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR..."
     }	
 
   .. list-table::
