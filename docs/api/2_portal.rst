@@ -451,9 +451,9 @@ Create
     "name": "My cool integration name.",
     "statusId": 3000,    
     "configuration": {  
-      "authToken": "cb8c5367c3c4586ecb589e25570c019e",
-      "accountSid": "AC1fc1c1722444b0c6313d3ae988bb000f",
-      "numberSid": "PN667435536f4d1cefdf054abf99220d00"
+      "authToken": "cb8c5367c3c4586ecb589e25570...",
+      "accountSid": "AC1fc1c1722444b0c6313d3ae988b...",
+      "numberSid": "PN667435536f4d1cefdf054abf99..."    
     }	
   }	
 
