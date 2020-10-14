@@ -30,8 +30,56 @@ enrich the messaging pipeline by injecting their own custom :ref:`integrations a
 The Hub Anatomy	
 ^^^^^^^^^^^^^^^
 
+At Hubster, a **hub** (hence our company name), is the center where all configurations are managed and stored. 
+Hubs are used by engine’s :ref:`pipeline<ref_pipeline>` which drives the workflows and what actions are taken. 
+A business can create as many hubs they need, each having specific configurations for different aspects of the business. 
+For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+
 .. image:: images/hub.png
    :align: center
+
+=================
+Customer Channels
+=================
+
+For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+
+=================
+Business Channels
+=================
+
+For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+
+* **Agents**
+    For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+    
+* **Bots**
+    For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+
+* **Handover rules**
+
+============
+CRM Channels
+============
+.. 	Keyword/Phrase spotting
+
+========
+Webhooks
+========
+
+========
+Commands
+========
+.. 	Quick Response
+.. 	Dynamic
+.. 	Transfer
+
+=============
+Preliminaries
+=============
+.. 	Language Translations
+.. 	Sentiment Analysis
+.. 	Open Hours
 
 
 

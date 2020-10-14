@@ -36,7 +36,8 @@ Our :ref:`APIs<ref_api_overview>` are designed using **REST** principles and mos
 
    intro/0_big_picture
    intro/1_terminology
-   intro/2_support
+   intro/2_integrations
+   intro/3_support
 
 .. toctree::
    :maxdepth: 3
