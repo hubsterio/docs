@@ -5,6 +5,23 @@ Error Codes
 
 Below are a list of all possible REST API error codes for all Hubster API related services. 
 
+
+Identity
+^^^^^^^^
+
+Below is a full list of all possible Hubster Identity REST API error codes.
+
+.. list-table::
+   :widths: 15 5 70
+   :header-rows: 1
+
+   * - Error
+     - HTTP Status
+     - Description
+   * - IDT000100
+     - 500
+     - System Error.
+
 .. _ref_api_portal_error_codes:
 
 Portal
@@ -352,23 +369,6 @@ Below is a full list of all possible Hubster Engine REST API error codes.
    * - ENG009299
      - 400
      - There was an error while executing command. Please contact technical support.
-
-
-Identity
-^^^^^^^^
-
-Below is a full list of all possible Hubster Identity REST API error codes.
-
-.. list-table::
-   :widths: 15 5 70
-   :header-rows: 1
-
-   * - Error
-     - HTTP Status
-     - Description
-   * - IDT000100
-     - 500
-     - System Error.
 
 
 Events
