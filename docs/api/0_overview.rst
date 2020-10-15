@@ -268,3 +268,25 @@ Channel Types
       - Business
       - 1001
       - Slack channel.
+
+
+
+.. _ref_api_integration_types:
+
+Integration Types
+*****************
+
+.. list-table::
+    :widths: 5 60
+    :header-rows: 1   
+
+    * - Type            
+      - Description
+    * - Customer
+      - Integration type for Customers.
+    * - Agent            
+      - Integration type for Agents.
+    * - Bot
+      - Integration type for Bots.
+    * - System            
+      - Integration type for Webhooks.

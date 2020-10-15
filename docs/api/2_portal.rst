@@ -529,8 +529,228 @@ Create
       - Details
     * - pageAccessToken
       - Yes
-      - Facebook page access token.
+      - Facebook page access token.  
 
+  :underline:`Web Chat`
 
+  .. code-block:: JSON
 
+      {        
+        "allowedOrigins": [
+            "localhost",
+            "hubster.io",
+            "demo1.hubster.io"
+        ],        
+        "start": 
+            [
+              {
+                "type": "text",
+                "text": "Welcome to Hubster! How can we help you?"
+              }
+            ]
+	}
 
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - allowedOrigins
+      - Yes
+      - One or more domains hosting the WebChat component.
+    * - start
+      - No
+      - An array of Hubster messages types TODO:Ross.
+
+  :underline:`Direct`
+
+  .. code-block:: JSON
+
+      {        
+        "integrationType": "TODO: Ross",
+        "echo": true,
+        "webhookUrl": "http://url_end_point",
+        "start": 
+            [
+              {
+                "type": "text",
+                "text": "Welcome to Hubster! How can we help you?"
+              }
+            ]
+	}
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - integrationType
+      - Yes
+      - Must be a supported :ref:`integration<ref_api_integration_types>` type.
+    * - echo
+      - No
+      - TODO: Ross.
+    * - webhookUrl
+      - Yes (If echo = false)
+      - TODO: Ross.
+    * - start
+      - No
+      - An array of Hubster messages types TODO:Ross.
+
+  
+  :underline:`Slack`
+
+  .. code-block:: JSON
+
+    {
+      "code": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR...",
+      "state" : "TODO:"
+    }	
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - code
+      - Yes
+      - Slack oauth2 code.
+    * - state
+      - Yes
+      - UNIX timespan plus client secret.
+
+Update
+******
+
+**POST** */api/v1/integrations/hubs/{integrationId}*
+
+**Headers**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Header     
+     - Details
+   * - Authorization
+     - Bearer ``your portal access token``
+   * - Content-Type
+     - ``application/json``
+
+**Request Properties**
+
+.. list-table::
+   :widths: 15 10 60
+   :header-rows: 1
+
+   * - Property     
+     - Mandatory
+     - Details
+   * - name
+     - No
+     - Unique name for integration per Hub.
+   * - statusId
+     - No
+     - | Integration status. Default is *Active* = 3000, if no value supplied.
+       | Valid options are:        
+       | -  *Active* = 3000
+       | -  *Paused* = 3002
+   * - configuration
+     - No
+     - See :ref:`configuration<ref_portal_integration_update_config>` properties for each individual **channelId**.
+
+.. note:: Please note, if want to you update any property from Configuration object, you need to provide **all required** properties of Configuration object. In other words
+          configuration object will be replaced with new one.
+
+**Example Request Body** 
+
+.. code-block:: JSON
+
+  {    
+    "name": "Direct",
+    "statusId": 3002,
+    "configuration": {  
+       "Echo": true,
+       "webhookUrl": "http://hubster.io/v1/api/integration?customer=1"
+    }	
+  }
+
+.. _ref_portal_integration_update_config:
+
+**Configurations**
+
+  :underline:`Web Chat`
+
+  .. code-block:: JSON
+
+      {        
+        "allowedOrigins": [
+            "localhost",
+            "hubster.io",
+            "demo1.hubster.io"
+        ],        
+        "start": 
+            [
+              {
+                "type": "text",
+                "text": "Welcome to Hubster! How can we help you?"
+              }
+            ]
+	}
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - allowedOrigins
+      - Yes
+      - One or more domains hosting the WebChat component.
+    * - start
+      - No
+      - An array of Hubster messages types TODO:Ross.
+
+  :underline:`Direct`
+
+  .. code-block:: JSON
+
+      {        
+        "integrationType": "TODO: Ross",
+        "echo": true,
+        "webhookUrl": "http://url_end_point",
+        "start": 
+            [
+              {
+                "type": "text",
+                "text": "Welcome to Hubster! How can we help you?"
+              }
+            ]
+	}
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - integrationType
+      - Yes
+      - Must be a supported :ref:`integration<ref_api_integration_types>` type.
+    * - echo
+      - No
+      - TODO: Ross.
+    * - webhookUrl
+      - Yes (If echo = false)
+      - TODO: Ross.
+    * - start
+      - No
+      - An array of Hubster messages types TODO:Ross.
