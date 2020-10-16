@@ -45,6 +45,7 @@ Our :ref:`APIs<ref_api_overview>` are designed using **REST** principles and mos
    :caption: Quickstarts
 
    quickstarts/0_overview
+   quickstarts/1_webhooks
 
 .. toctree::
    :maxdepth: 3
@@ -60,4 +61,6 @@ Our :ref:`APIs<ref_api_overview>` are designed using **REST** principles and mos
    api/1_identity
    api/2_portal
    api/3_engine
-   api/4_error_codes
+   api/4_activities
+   api/5_types
+   api/6_error_codes
