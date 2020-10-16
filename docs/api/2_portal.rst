@@ -833,3 +833,161 @@ Update
     * - start
       - No
       - An array of Hubster messages types TODO:Ross.
+
+Get
+***
+
+**GET** */api/v1/integrations/{integrationId}*
+
+**Headers**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Header     
+     - Details
+   * - Authorization
+     - Bearer ``your portal access token``
+   * - Content-Type
+     - ``application/json``
+
+**Example Response Body** 
+
+.. note:: The response body below is using **TwilioSMS** as an example. However, The :ref:`configuration<ref_portal_integration_create_config>` 
+          properties for each channel type differs. Below only configuration object part will be presented since, other preperties like ``name`` will be same.
+
+
+.. code-block:: JSON
+
+    {
+      "integrationId": "00000000 ...",
+      "hubId": "00000000 ...",
+      "inboundId": "AC1fc1c1722444b0...",
+      "integrationTypeId": 2,
+      "channelId": 102,
+      "name": "Twilio Test Number: 1647...",
+      "statusId": 3000,
+      "created": "2017-01-01T00:00:00",
+      "modified": "2017-01-01T00:00:00",
+      "configuration": {
+        "AcccountSid": "AC1fc1c172244...",
+        "AuthToken": "cb8c5367c3c458...",
+        "NumberSid": "PN667435536f4d...",
+        "PhoneNumber": "+1647...",
+          "Capabilities": {
+          "Mms": true,
+          "Sms": true,
+          "Voice": true
+          }
+        }
+    }
+
+
+.. list-table::
+    :widths: 5 50
+    :header-rows: 1   
+
+    * - HTTP Status
+      - Meaning
+    * - 200
+      - OK response. The body of the response will include the data requested.
+    * - 400
+      - Bad request. The body of the response will have :ref:`more info<ref_api_portal_error_codes>`.
+    * - 401
+      - Unauthorized. Token is invalid.
+    * - 403
+      - Forbidden. Access to the requested resource is forbidden.
+    * - 408
+      - Timed out. The request timed out.
+    * - 429
+      - Too many requests. API usage limit has been reached.
+    * - 500
+      - Internal server error. There was an internal issue with the service.
+    * - 503
+      - Service unavailable. The service is unavailable.
+
+.. _ref_portal_integration_create_config:
+
+**Response Body Examples**
+
+  :underline:`TwilioSMS`
+
+  .. code-block:: JSON
+
+    {      
+      "configuration": {
+        "AcccountSid": "AC1fc1c172244...",
+        "AuthToken": "cb8c5367c3c458...",
+        "NumberSid": "PN667435536f4d...",
+        "PhoneNumber": "+1647...",
+          "Capabilities": {
+          "Mms": true,
+          "Sms": true,
+          "Voice": true
+          }
+        }
+    }
+
+  :underline:`Messenger`
+
+  .. code-block:: JSON
+
+    {        
+      "configuration": {
+        "PageAccessToken": "EAAeZ ..."
+      }
+    }
+
+  :underline:`Web Chat`
+
+  .. code-block:: JSON
+
+    {        
+      "configuration": {
+        "allowedOrigins": [
+          "localhost",
+          "hubster.io",
+          "demo1.hubster.io"
+        ],
+        "start":
+          [
+            {
+              "type": "text",
+              "text": "Welcome to Hubster! How can we help you?"
+            }
+          ]
+      }
+    }
+
+  :underline:`Direct`
+
+  .. code-block:: JSON
+
+    {        
+      "configuration": {
+        "integrationType": "TODO: Ross",
+        "echo": true,
+        "webhookUrl": "http://url_end_point",
+        "start":
+          [
+            {
+              "type": "text",
+              "text": "Welcome to Hubster! How can we help you?"
+            }
+          ]
+        }
+    }
+
+  :underline:`Slack`
+
+  .. code-block:: JSON
+
+    {        
+      "configuration": {
+        "BotAccessToken": "xoxb...",
+        "AppAccessToken": "xoxp...",
+        "DefaultPublicChannel": "general",
+        "TeamId": "T5P19466N"
+      }
+    }
