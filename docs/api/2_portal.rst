@@ -511,6 +511,27 @@ Create
     * - numberSid
       - Yes
       - Phone number SID.
+  
+  **Example Response Body**
+
+  .. code-block:: JSON
+
+    {                        	
+      "channelId": "TwilioSMS",
+      "name": "My cool integration name.",
+      "statusId": 3000,    
+      "configuration": {        
+        "accountSid": "AC1fc1c1722444b0c6313d3da98...",
+        "authToken": "cb8c5367c3c4586ecb589e25570....",
+        "numberSid": "PN667435536f4d1cefdf054ecf9....",
+        "phoneNumber": "+16476960000",
+        "capabilities": {
+          "mms": true,
+          "sms": true,
+          "voice": true
+        }
+      }	
+    }
 
   :underline:`Messenger`
 
@@ -529,7 +550,23 @@ Create
       - Details
     * - pageAccessToken
       - Yes
-      - Facebook page access token.  
+      - Facebook page access token.
+  
+
+  **Example Response Body**
+
+  .. code-block:: JSON
+
+    {                        	
+      "channelId": "Messenger",
+      "name": "My cool integration name.",
+      "statusId": 3000,    
+      "configuration": {        
+        "appId": "35360465938...",
+        "pageId": "1013889883...",
+        "pageAccessToken": "EAAFBm..."
+      }	
+    }
 
   :underline:`Web Chat`
 
@@ -601,6 +638,30 @@ Create
       - No
       - An array of Hubster messages types TODO:Ross.
 
+  **Example Response Body**
+
+  .. code-block:: JSON
+
+    {                        	
+      "channelId": "Direct",
+      "name": "My cool integration name.",
+      "statusId": 3000,    
+      "configuration": 
+      {        
+        "integrationType": "TODO: Ross",
+        "echo": true,
+        "webhookUrl": "http://url_end_point",
+        "publicSigningKey": "6DF60E ...",
+        "privateSigningKey": "E0A42 ...",
+        "start": 
+        [
+          {
+          "type": "text",
+          "text": "Welcome to Hubster! How can we help you?"
+          }
+        ]
+      }	
+   }
   
   :underline:`Slack`
 
@@ -624,6 +685,24 @@ Create
     * - state
       - Yes
       - UNIX timespan plus client secret.
+ 
+  **Example Response Body**
+
+  .. code-block:: JSON
+
+    {                        	
+      "channelId": "Slack",
+      "name": "My cool integration name.",
+      "statusId": 3000,    
+      "configuration": {        
+        "botAccessToken": "xoxb-193043142226-...",
+        "appAccessToken": "xoxp-193043142226-...",
+        "defaultPublicChannel": "general",
+        "teamId": "T5P19488N",
+        "botName": "Hubster.io"          
+      }	
+    }
+
 
 Update
 ******
@@ -731,7 +810,7 @@ Update
               {
                 "type": "text",
                 "text": "Welcome to Hubster! How can we help you?"
-              }
+              }              
             ]
 	}
 
