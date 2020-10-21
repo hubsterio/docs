@@ -517,6 +517,9 @@ Create
   .. code-block:: JSON
 
     {                        	
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",      
+      "integrationTypeId": "Customer",      
       "channelId": "TwilioSMS",
       "name": "My cool integration name.",
       "statusId": 3000,    
@@ -558,6 +561,9 @@ Create
   .. code-block:: JSON
 
     {                        	
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",      
+      "integrationTypeId": "Customer",      
       "channelId": "Messenger",
       "name": "My cool integration name.",
       "statusId": 3000,    
@@ -606,17 +612,10 @@ Create
   .. code-block:: JSON
 
       {        
-        "integrationType": "TODO: Ross",
+        "integrationType": "Agent",
         "echo": true,
-        "webhookUrl": "http://url_end_point",
-        "start": 
-            [
-              {
-                "type": "text",
-                "text": "Welcome to Hubster! How can we help you?"
-              }
-            ]
-	}
+        "webhookUrl": "https://url_end_point.com"
+	  }
 
   .. list-table::
     :widths: 15 10 60
@@ -630,10 +629,10 @@ Create
       - Must be a supported :ref:`integration<ref_api_integration_types>` type.
     * - echo
       - No
-      - TODO: Ross.
+      - If yes, when an activity is received from this integration, it will echo it back.
     * - webhookUrl
-      - Yes (If echo = false)
-      - TODO: Ross.
+      - No
+      - If not supplied, activities will be delivered via websockets.
     * - start
       - No
       - An array of Hubster messages types TODO:Ross.
@@ -643,14 +642,19 @@ Create
   .. code-block:: JSON
 
     {                        	
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "Agent",      
       "channelId": "Direct",
       "name": "My cool integration name.",
-      "statusId": 3000,    
+      "statusId": 3000,  
+      "created": "2020-10-16T22:43:53.8835551Z",
+      "modified": "2020-10-16T22:43:53.8835551Z",
       "configuration": 
       {        
-        "integrationType": "TODO: Ross",
+        "integrationType": "Agent",
         "echo": true,
-        "webhookUrl": "http://url_end_point",
+        "webhookUrl": "https://url_end_point.com",
         "publicSigningKey": "6DF60E ...",
         "privateSigningKey": "E0A42 ...",
         "start": 
@@ -663,6 +667,58 @@ Create
       }	
    }
   
+  :underline:`System`
+
+  .. code-block:: JSON
+
+    {
+      "webhookUrl": "https://url_end_point.com",
+      "events": [
+        "message:customer",
+        "message:agent",
+        "message:bot"              
+      ]
+    }
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - webhookUrl
+      - Yes
+      - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
+    * - events
+      - Yes
+      - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
+
+  **Example Response Body**
+
+  .. code-block:: JSON
+
+    {
+        "integrationId": "00000000-0000-0000-0000-000000000000",
+        "hubId": "00000000-0000-0000-0000-000000000000",
+        "integrationTypeId": "System",
+        "channelId": "System",
+        "name": "My cool integration name.",
+        "statusId": 3000,
+        "created": "2020-10-16T22:43:53.8835551Z",
+        "modified": "2020-10-16T22:43:53.8835551Z",
+        "configuration": {
+            "events": [
+                "message:customer",
+                "message:agent",
+                "message:bot"
+            ],
+            "webhookUrl": "https://url_end_point.com",
+            "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
+            "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
+        }
+    }
+
   :underline:`Slack`
 
   .. code-block:: JSON
@@ -691,6 +747,9 @@ Create
   .. code-block:: JSON
 
     {                        	
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",      
+      "integrationTypeId": "Agent",            
       "channelId": "Slack",
       "name": "My cool integration name.",
       "statusId": 3000,    
@@ -804,7 +863,7 @@ Update
       {        
         "integrationType": "TODO: Ross",
         "echo": true,
-        "webhookUrl": "http://url_end_point",
+        "webhookUrl": "https://url_end_point.com",
         "start": 
             [
               {
@@ -968,7 +1027,7 @@ Get
       "configuration": {
         "integrationType": "TODO: Ross",
         "echo": true,
-        "webhookUrl": "http://url_end_point",
+        "webhookUrl": "https://url_end_point.com",
         "start":
           [
             {
