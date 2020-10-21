@@ -914,7 +914,7 @@ Get
 **Example Response Body** 
 
 .. note:: The response body below is using **TwilioSMS** as an example. However, The :ref:`configuration<ref_portal_integration_create_config>` 
-          properties for each channel type differs. Below only configuration object part will be presented since, other preperties like ``name`` will be same.
+          properties for each channel type differs. Below only configuration object part will be presented since, other properties like ``name`` will be same.
 
 
 .. code-block:: JSON
@@ -965,8 +965,6 @@ Get
       - Internal server error. There was an internal issue with the service.
     * - 503
       - Service unavailable. The service is unavailable.
-
-.. _ref_portal_integration_create_config:
 
 **Response Body Examples**
 
