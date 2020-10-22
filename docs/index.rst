@@ -43,8 +43,8 @@ Our :ref:`APIs<ref_api_overview>` are designed using **REST** principles and mos
    :maxdepth: 3
    :hidden:
    :caption: Quickstarts
-
-   quickstarts/0_overview
+   
+   quickstarts/0_webchat_config
    quickstarts/1_webhooks
 
 .. toctree::
