@@ -1,6 +1,9 @@
 Identity
 ========
 
+The Identity Service is mainly used for Authenticating client credentials and 
+upon success, returns a **Bearer access token**. 
+
 Below is the list of API collections for Hubster's Identity service.
 
 .. toctree::

@@ -9,10 +9,11 @@ webhooks such as the integration types below:
 * Direct
 * BYOI (Bring your own Integration)
 
-.. warning:: For **Direct** and **BYOI** integration types, they have the option to either receive 
-             activities via **webhooks** vs **websockets**. If an integration has been configured using websockets and 
-             its endpoint is unreachable, Hubster will not enforce it's :ref:`retry policy<ref_webhooks_retry>` as websockets 
-             adhere to **fire-and-forget** paradigm.
+.. warning:: 
+    For **Direct** and **BYOI** integration types, they have the option to either receive 
+    activities via **webhooks** vs **websockets**. If an integration has been configured using websockets and 
+    its endpoint is unreachable, Hubster will not enforce it's :ref:`retry policy<ref_webhooks_retry>` as websockets 
+    adhere to **fire-and-forget** paradigm.
 
 
 HMAC Signature Validation
@@ -25,7 +26,9 @@ Hubster uses the `HMAC <https://en.wikipedia.org/wiki/HMAC/>`_ when signing and 
 When you :ref:`create<ref_portal_integration_create_config>` and configured your custom integration for a given hub, 
 the results of the request will yield two properties - **publicSigningKey** and **privateSigningKey** respectively. 
 
-**Note**: you can also get an existing custom integration result by calling: **GET** */api/v1/integrations/{integrationId}*
+To obtain your customer integration's public/private key pair, just call the following API: 
+
+**GET** */api/v1/integrations/{integrationId}* 
 
 .. code-block:: JSON
 
@@ -46,10 +49,12 @@ the results of the request will yield two properties - **publicSigningKey** and 
 The **publicSigningKey** is not used by Hubster when signing the request. However, the business can use 
 the **publicSigningKey** as a reference key to obtain their **privateSigningKey** from where they manage their secrets. 
 
-.. warning:: Please make sure all **private keys** are stored securely. 
-             If you suspect your private key has been compromised,  
-             delete the compromised custom integration and recreate a new one. 
-             A new public/private key set will be regenerated. 
+.. warning::
+    Please make sure all **private keys** are stored securely. 
+    If you suspect your private key was compromised, you can regenerate new public/private key pair by 
+    updating your custom integration. Just pass the argument **regenerate-keys=true** to the following API:
+             
+    **PUT** */api/v1/integrations/{integrationId}?regenerate-key=true*
 
 C# Sample
 *********
@@ -63,47 +68,90 @@ The main steps are as follows:
     #. Extract the **Signature** from the request header 
     #. Extract the **Public Key** from the request header 
     #. Obtain the **Private Key** from your secure keystore and convert it to a **UTF8** byte array
-    #. Obtain the raw request body in string format and convert it to a **UTF8** byte array
-    #. Produce the a HMAC hash (signature) by using the raw request body and applying the **Private Key**
-    #. Take the signature produced from the step above and convert it a string using **UTF8** encoding
+    #. Obtain the raw request body in byte array form
+    #. Produce the a **HMAC** hash (signature) by using the raw request body and applying the **Private Key**
+    #. Take the signature array produced from the step above and convert to 64 base encoding
     #. Compare if signatures match
-    #. If signatures don't match then respond as Unauthorized, otherwise, consume the :ref:`activities<ref_activities>` as needed
+    #. If signatures match then consume the :ref:`activities<ref_activities>` as needed
+    #. If signatures don't match then return **Forbidden** (403) 
+
+
+This sample is based off APS.NET Core, using C#. To see the full example, 
+head over to Hubster's public `sample <https://github.com/hubsterio/samples>`_  repo. 
 
 .. code-block:: CSHARP
 
-    public void Test()
+    [ApiController]
+    [Route("[controller]")]
+    public class WebhooksController : ControllerBase
     {
-        JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
+        [HttpPost("activities")]
+        public async Task<IActionResult> ReceiveActivities()
+        {
+            var publicKey = Request.Headers["x-hubster-public-key"].ToString();
+            var headerSignature = Request.Headers["x-hubster-signature"].ToString();
 
-        services.AddAuthentication(options =>
+            if (string.IsNullOrWhiteSpace(publicKey) 
+            || string.IsNullOrWhiteSpace(headerSignature))
             {
-                options.DefaultScheme = "Cookies";
-                options.DefaultChallengeScheme = "oidc";
-            })
-            .AddCookie("Cookies")
-            .AddOpenIdConnect("oidc", options =>
+                return StatusCode((int)HttpStatusCode.Forbidden, "Forbidden");
+            }
+
+            var privateKey = await GetPrivateKeyAsync(publicKey);
+
+            var rawBody = new byte[(int)Request.ContentLength];
+            await Request.BodyReader.AsStream().ReadAsync(rawBody);
+
+            // now preform HMAC signature check
+
+            using (var hasher = new HMACSHA256(privateKey))
             {
-                options.Authority = "https://localhost:5001";
+                var byteSignature = hasher.ComputeHash(rawBody);
+                var signature = Convert.ToBase64String(byteSignature);
 
-                options.ClientId = "mvc";
-                options.ClientSecret = "secret";
-                options.ResponseType = "code";
+                if (signature != headerSignature)
+                {
+                    _logger.LogWarning("Invalid signature");
+                    return StatusCode((int)HttpStatusCode.Forbidden, "Forbidden");
+                }
+            }
 
-                options.SaveTokens = true;
-            });        
+            // at this point the request is now trusted 
+            // and it came from Hubster
+
+            var json = Encoding.UTF8.GetString(rawBody);
+            var activityConverter = new DirectMessageJsonConverter();
+            var activities = JsonConvert.DeserializeObject<SystemOutboundDataModel>(json, activityConverter);
+
+            // you now have a list of activities you can process, etc.
+            
+            return Ok(); 
+        }
+
+        private Task<byte[]> GetPrivateKeyAsync(string publicKey)
+        {
+            // NOTE: for sake of sample, we are hard-coding the private key
+            // however, you should use the public key as an indexer to get
+            // the private key in some secure store like KeyVault, etc. 
+
+            var privateKey = "FA96D15568654A4482772E00BA941BCB";
+            var bPrivateKey = Encoding.UTF8.GetBytes(privateKey);
+
+            return Task.FromResult(bPrivateKey);
+        }
     }
 
-.. note:: If you're using **.NET Core**, the following nuget package has all the activity models
-          predefined and can be useful when consuming activities 
-          - `Hubster.Abstractions <https://www.nuget.org/packages/Hubster.Abstractions/1.0.1>`_
+.. note:: 
+    | If you're using **.NET Core**, the following nuget package contains all the activity model definitions.    
+    | `Hubster.Abstractions <https://www.nuget.org/packages/Hubster.Abstractions/1.0.2>`_
 
-          .. code-block:: CSHARP
+    .. code-block:: CSHARP
 
-            Install-Package Hubster.Abstractions -Version 1.0.1     
+      Install-Package Hubster.Abstractions -Version 1.0.2   
 
-.. https://www.nuget.org/packages/Hubster.Abstractions/1.0.1
-.. Install-Package Hubster.Abstractions -Version 1.0.1
-
+    To see a list of activity models, see our public 
+    `github <https://github.com/hubsterio/Hubster.Abstractions/tree/develop/Hubster.Abstractions/Models/Direct>`_  
+    for direct reference.
 
 System Integration Activity Event Filters
 *****************************************
@@ -160,7 +208,8 @@ Webhook Retry Policy
       - 10 minutes
       - 10 seconds
       
-.. warning:: Once all retries attempts have been exhausted, Hubster will send a notification to the tenant account holder
-             with details to as to why the endpoint has failed. It is up to the the account holder to rectify 
-             their integration issue. 
+.. warning:: 
+    Once all retries attempts have been exhausted, Hubster will send a notification to the tenant account holder
+    with details to as to why the endpoint has failed. It is up to the the account holder to rectify 
+    their integration issue. 
 

@@ -1,6 +1,9 @@
 Portal
 ======
 
+The Portal Service is mainly use to manage and configure a tenant's 
+hubs, integrations and access tokens.
+
 Below is the list of API collections for Hubster's Portal service.
 
 .. toctree::
