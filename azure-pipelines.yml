@@ -22,7 +22,6 @@ steps:
 
 - script: |
     python -m pip install --upgrade pip
-    pip install -r Requirements.txt
   displayName: 'Install dependencies'
 
 - script: |
@@ -52,3 +51,5 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
   displayName: 'Publish documentation as artifact'
+  
+# pip install -r Requirements.txt removed from dependencies
