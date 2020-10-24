@@ -52,11 +52,10 @@ Business Channels
 
 For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
 
-* **Agents**
-    For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+* **Agents**    
     
 * **Bots**
-    For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+    
 
 * **Handover rules**
 

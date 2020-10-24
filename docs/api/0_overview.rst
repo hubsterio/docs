@@ -64,18 +64,23 @@ Below are the list of Hubster environments:
 Identity to API Resource Interaction 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Below is a depiction on how a business application first obtains an **access token**, using Hubster’s identity service, which can later be 
-used to make authenticated requests against API services, such as Hubster’s Portal, Engine and Events resources.
+Below is a depiction on how a business application first obtains an **access token**, 
+using Hubster’s identity service, which can later be used to make authenticated requests against API services, 
+such as Hubster’s Portal, Engine and Events resources. 
 
 .. image:: images/identity_api_resource_interactions.png
 
 .. note:: 
-    API **access tokens** use the **client_credential** **grant_type**, meaning you can only obtain a access tokens using **client_ids** and **client_secrets** respectively.    
-    These access tokens are longed-lived and last no longer than 30 days. When an access token expires, accessing an API resource yields an HTTP Status **401** - *Unauthorized Access*. 
+    API **access tokens** use the **client_credential** **grant_type**, meaning you can only obtain a access 
+    tokens using **client_ids** and **client_secrets** respectively. These access tokens are longed-lived and last 
+    no longer than 30 days. When an access token expires, accessing an API resource yields an HTTP Status **401** - *Unauthorized Access*. 
 
-    Furthermore, access tokens are only meant for their indented API resource. For example, if a business obtains an access token for the Portal API resource, 
-    the access token cannot be used for the to gain access to the Engine API resource, and likewise. These design was intentional as scopes for each API resource are vastly different. 
+    Furthermore, access tokens are only meant for their indented API resource. For example, if a business obtains an access token for 
+    the Portal API resource, the access token cannot be used for the to gain access to the Engine API resource, and likewise. 
+    These design was intentional as scopes for each API resource are vastly different. 
     *There's an exception to this rule. Accessing the Events API requires an Engine access token.*
+
+    To obtain an access_token, please refer to our :ref:`Identity Service API documentation<ref_auth>`.
 
 Standard Error Response
 ^^^^^^^^^^^^^^^^^^^^^^^

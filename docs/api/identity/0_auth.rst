@@ -1,6 +1,8 @@
 .. role:: underline
     :class: underline
 
+.. _ref_auth:
+
 Authentication
 ^^^^^^^^^^^^^^
 
