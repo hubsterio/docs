@@ -98,301 +98,301 @@ Create
 
 **Configurations**
 
-  :underline:`TwilioSMS`
+:underline:`TwilioSMS`
 
-  .. code-block:: JSON
+.. code-block:: JSON
 
-    {
-      "authToken": "cb8c5367c3c4586ecb589e25570...",
-      "accountSid": "AC1fc1c1722444b0c6313d3ae988b...",
-      "numberSid": "PN667435536f4d1cefdf054abf99..."    
+  {
+    "authToken": "cb8c5367c3c4586ecb589e25570...",
+    "accountSid": "AC1fc1c1722444b0c6313d3ae988b...",
+    "numberSid": "PN667435536f4d1cefdf054abf99..."    
+  }	
+
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
+
+  * - Property     
+    - Mandatory
+    - Details
+  * - authToken
+    - Yes
+    - Twilio authorization token.
+  * - accountSid
+    - Yes
+    - Twilio account SID.
+  * - numberSid
+    - Yes
+    - Twilio phone number SID.
+
+**Example Response Body**
+
+.. code-block:: JSON
+
+  {                        	
+    "integrationId": "00000000-0000-0000-0000-000000000000",
+    "hubId": "00000000-0000-0000-0000-000000000000",      
+    "integrationTypeId": "Customer",      
+    "channelId": "TwilioSMS",
+    "name": "My cool integration name.",
+    "statusId": 3000,    
+    "configuration": {        
+      "accountSid": "AC1fc1c1722444b0c6313d3da98...",
+      "authToken": "cb8c5367c3c4586ecb589e25570....",
+      "numberSid": "PN667435536f4d1cefdf054ecf9....",
+      "phoneNumber": "+16476960000",
+      "capabilities": {
+        "mms": true,
+        "sms": true,
+        "voice": true
+      }
     }	
+  }
 
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
+:underline:`Messenger`
 
-    * - Property     
-      - Mandatory
-      - Details
-    * - authToken
-      - Yes
-      - Twilio authorization token.
-    * - accountSid
-      - Yes
-      - Twilio account SID.
-    * - numberSid
-      - Yes
-      - Twilio phone number SID.
-  
-  **Example Response Body**
+.. code-block:: JSON
 
-  .. code-block:: JSON
+  {
+    "pageAccessToken": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR..."
+  }	
 
-    {                        	
-      "integrationId": "00000000-0000-0000-0000-000000000000",
-      "hubId": "00000000-0000-0000-0000-000000000000",      
-      "integrationTypeId": "Customer",      
-      "channelId": "TwilioSMS",
-      "name": "My cool integration name.",
-      "statusId": 3000,    
-      "configuration": {        
-        "accountSid": "AC1fc1c1722444b0c6313d3da98...",
-        "authToken": "cb8c5367c3c4586ecb589e25570....",
-        "numberSid": "PN667435536f4d1cefdf054ecf9....",
-        "phoneNumber": "+16476960000",
-        "capabilities": {
-          "mms": true,
-          "sms": true,
-          "voice": true
-        }
-      }	
-    }
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
 
-  :underline:`Messenger`
+  * - Property     
+    - Mandatory
+    - Details
+  * - pageAccessToken
+    - Yes
+    - Facebook page access token.
 
-  .. code-block:: JSON
 
-    {
-      "pageAccessToken": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR..."
+**Example Response Body**
+
+.. code-block:: JSON
+
+  {                        	
+    "integrationId": "00000000-0000-0000-0000-000000000000",
+    "hubId": "00000000-0000-0000-0000-000000000000",      
+    "integrationTypeId": "Customer",      
+    "channelId": "Messenger",
+    "name": "My cool integration name.",
+    "statusId": 3000,    
+    "configuration": {        
+      "appId": "35360465938...",
+      "pageId": "1013889883...",
+      "pageAccessToken": "EAAFBm..."
     }	
+  }
 
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
+:underline:`WebChat`
 
-    * - Property     
-      - Mandatory
-      - Details
-    * - pageAccessToken
-      - Yes
-      - Facebook page access token.
-  
+.. code-block:: JSON
 
-  **Example Response Body**
+  {        
+    "allowedOrigins": [
+      "localhost",
+      "hubster.io"        
+    ],        
+    "start": [
+      {
+        "type": "text",
+        "text": "Welcome to Hubster! How can we help you?"
+      }
+    ]
+  }
 
-  .. code-block:: JSON
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
 
-    {                        	
-      "integrationId": "00000000-0000-0000-0000-000000000000",
-      "hubId": "00000000-0000-0000-0000-000000000000",      
-      "integrationTypeId": "Customer",      
-      "channelId": "Messenger",
-      "name": "My cool integration name.",
-      "statusId": 3000,    
-      "configuration": {        
-        "appId": "35360465938...",
-        "pageId": "1013889883...",
-        "pageAccessToken": "EAAFBm..."
-      }	
-    }
+  * - Property     
+    - Mandatory
+    - Details
+  * - allowedOrigins
+    - Yes
+    - One or more domains hosting the WebChat component.
+  * - start
+    - No
+    - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
-  :underline:`WebChat`
+**Example Response Body**
 
-  .. code-block:: JSON
+.. code-block:: JSON   
 
-    {        
-      "allowedOrigins": [
-        "localhost",
-        "hubster.io"        
-      ],        
-      "start": [
-        {
-          "type": "text",
-          "text": "Welcome to Hubster! How can we help you?"
-        }
-      ]
-    }
-
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
-
-    * - Property     
-      - Mandatory
-      - Details
-    * - allowedOrigins
-      - Yes
-      - One or more domains hosting the WebChat component.
-    * - start
-      - No
-      - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
-
-  **Example Response Body**
-
-  .. code-block:: JSON   
-
-    {
-        "integrationId": "00000000-0000-0000-0000-000000000000",
-        "hubId": "00000000-0000-0000-0000-000000000000",
-        "integrationTypeId": "Customer",
-        "channelId": "WebChat",
-        "name": "Webchat",
-        "statusId": 3000,
-        "configuration": {
-            "AllowedOrigins": [
-                "localhost",
-                "hubster.io"
-            ],
-            "Echo": true,
-            "Start": [
-                {
-                    "type": "text",
-                    "text": "Welcome to Hubster! How can we help you?"
-                }
-            ]
-        }
-    }
-
-
-  :underline:`Direct`
-
-  .. code-block:: JSON
-
-    {        
-      "integrationType": "Agent",
-      "echo": true,
-      "webhookUrl": "https://url_end_point.com"
-    }
-
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
-
-    * - Property     
-      - Mandatory
-      - Details
-    * - integrationType
-      - Yes
-      - Must be a supported :ref:`integration<ref_api_integration_types>` type.
-    * - echo
-      - No
-      - If yes, when an activity is received from this integration, it will echo it back.
-    * - webhookUrl
-      - No
-      - | The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
-        | If not supplied, activities will be delivered via websockets.        
-    * - start
-      - No
-      - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
-
-  **Example Response Body**
-
-  .. code-block:: JSON
-
-    {                        	
+  {
       "integrationId": "00000000-0000-0000-0000-000000000000",
       "hubId": "00000000-0000-0000-0000-000000000000",
-      "integrationTypeId": "Agent",      
-      "channelId": "Direct",
-      "name": "My cool integration name.",
-      "statusId": 3000,        
-      "configuration": {        
-      "integrationType": "Agent",
-      "echo": true,
-      "webhookUrl": "https://url_end_point.com",
-      "publicSigningKey": "6DF60E ...",
-      "privateSigningKey": "E0A42 ...",
-      "start": [
-        {
-          "type": "text",
-          "text": "Welcome to Hubster! How can we help you?"
-        }
-      ]      
-    }
-  
-  :underline:`System`
+      "integrationTypeId": "Customer",
+      "channelId": "WebChat",
+      "name": "Webchat",
+      "statusId": 3000,
+      "configuration": {
+          "AllowedOrigins": [
+              "localhost",
+              "hubster.io"
+          ],
+          "Echo": true,
+          "Start": [
+              {
+                  "type": "text",
+                  "text": "Welcome to Hubster! How can we help you?"
+              }
+          ]
+      }
+  }
 
-  .. code-block:: JSON
 
-    {
-      "webhookUrl": "https://url_end_point.com",
-      "events": [
-        "message:customer",
-        "message:agent",
-        "message:bot"              
-      ]
-    }
+:underline:`Direct`
 
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
+.. code-block:: JSON
 
-    * - Property     
-      - Mandatory
-      - Details
-    * - webhookUrl
-      - Yes
-      - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
-    * - events
-      - Yes
-      - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
+  {        
+    "integrationType": "Agent",
+    "echo": true,
+    "webhookUrl": "https://url_end_point.com"
+  }
 
-  **Example Response Body**
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
 
-  .. code-block:: JSON
+  * - Property     
+    - Mandatory
+    - Details
+  * - integrationType
+    - Yes
+    - Must be a supported :ref:`integration<ref_api_integration_types>` type.
+  * - echo
+    - No
+    - If yes, when an activity is received from this integration, it will echo it back.
+  * - webhookUrl
+    - No
+    - | The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
+      | If not supplied, activities will be delivered via websockets.        
+  * - start
+    - No
+    - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
-    {
-        "integrationId": "00000000-0000-0000-0000-000000000000",
-        "hubId": "00000000-0000-0000-0000-000000000000",
-        "integrationTypeId": "System",
-        "channelId": "System",
-        "name": "My cool integration name.",
-        "statusId": 3000,
-        "configuration": {
-            "events": [
-                "message:customer",
-                "message:agent",
-                "message:bot"
-            ],
-            "webhookUrl": "https://url_end_point.com",
-            "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
-            "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
-        }
-    }
+**Example Response Body**
 
-  :underline:`Slack`
+.. code-block:: JSON
 
-  .. code-block:: JSON
+  {                        	
+    "integrationId": "00000000-0000-0000-0000-000000000000",
+    "hubId": "00000000-0000-0000-0000-000000000000",
+    "integrationTypeId": "Agent",      
+    "channelId": "Direct",
+    "name": "My cool integration name.",
+    "statusId": 3000,        
+    "configuration": {        
+    "integrationType": "Agent",
+    "echo": true,
+    "webhookUrl": "https://url_end_point.com",
+    "publicSigningKey": "6DF60E ...",
+    "privateSigningKey": "E0A42 ...",
+    "start": [
+      {
+        "type": "text",
+        "text": "Welcome to Hubster! How can we help you?"
+      }
+    ]      
+  }
 
-    {
-      "code": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR...",
-      "state" : "TODO:"
-    }	
+:underline:`System`
 
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
+.. code-block:: JSON
 
-    * - Property     
-      - Mandatory
-      - Details
-    * - code
-      - Yes
-      - Slack oauth2 code.
-    * - state
-      - Yes
-      - UNIX timespan plus client secret.
- 
-  **Example Response Body**
+  {
+    "webhookUrl": "https://url_end_point.com",
+    "events": [
+      "message:customer",
+      "message:agent",
+      "message:bot"              
+    ]
+  }
 
-  .. code-block:: JSON
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
 
-    {                        	
+  * - Property     
+    - Mandatory
+    - Details
+  * - webhookUrl
+    - Yes
+    - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
+  * - events
+    - Yes
+    - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
+
+**Example Response Body**
+
+.. code-block:: JSON
+
+  {
       "integrationId": "00000000-0000-0000-0000-000000000000",
-      "hubId": "00000000-0000-0000-0000-000000000000",      
-      "integrationTypeId": "Agent",            
-      "channelId": "Slack",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "System",
+      "channelId": "System",
       "name": "My cool integration name.",
-      "statusId": 3000,    
-      "configuration": {        
-        "botAccessToken": "xoxb-193043142226-...",
-        "appAccessToken": "xoxp-193043142226-...",
-        "defaultPublicChannel": "general",
-        "teamId": "T5P19488N",
-        "botName": "Hubster.io"          
-      }	
-    }
+      "statusId": 3000,
+      "configuration": {
+          "events": [
+              "message:customer",
+              "message:agent",
+              "message:bot"
+          ],
+          "webhookUrl": "https://url_end_point.com",
+          "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
+          "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
+      }
+  }
+
+:underline:`Slack`
+
+.. code-block:: JSON
+
+  {
+    "code": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR...",
+    "state" : "TODO:"
+  }	
+
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
+
+  * - Property     
+    - Mandatory
+    - Details
+  * - code
+    - Yes
+    - Slack oauth2 code.
+  * - state
+    - Yes
+    - UNIX timespan plus client secret.
+
+**Example Response Body**
+
+.. code-block:: JSON
+
+  {                        	
+    "integrationId": "00000000-0000-0000-0000-000000000000",
+    "hubId": "00000000-0000-0000-0000-000000000000",      
+    "integrationTypeId": "Agent",            
+    "channelId": "Slack",
+    "name": "My cool integration name.",
+    "statusId": 3000,    
+    "configuration": {        
+      "botAccessToken": "xoxb-193043142226-...",
+      "appAccessToken": "xoxp-193043142226-...",
+      "defaultPublicChannel": "general",
+      "teamId": "T5P19488N",
+      "botName": "Hubster.io"          
+    }	
+  }
 
 
 Update
@@ -427,16 +427,16 @@ Update
      - Unique name for integration per Hub.
    * - statusId
      - No
-     - | Integration status. Default is *Active* = 3000, if no value supplied.
+     - | Integration status. 
+
        | Valid options are:        
-       | -  *Active* = 3000
-       | -  *Paused* = 3002
+       |  - *Active* = 3000
+       |  - *Paused* = 3002
+
    * - configuration
      - No
-     - See :ref:`configuration<ref_portal_integration_update_config>` properties for each individual **channelId**.
+     - | See :ref:`configuration<ref_portal_integration_update_config>` properties for each individual **channelId**.       
 
-.. note:: Please note, if want to you update any property from Configuration object, you need to provide **all required** properties of Configuration object. In other words
-          configuration object will be replaced with new one.
 
 **Example Request Body** 
 
@@ -455,74 +455,200 @@ Update
 
 **Configurations**
 
-  :underline:`Web Chat`
+.. note:: 
+      If you need to update any configuration value, you need to provide **all required** values specific to that channel type. 
+      In other words, the complete **configuration** object will replace the old one.
 
-  .. code-block:: JSON
+.. warning::
+      The following integration types cannot have their **configuration** values updated due to re-authenticating 
+      with their respective service providers. Any attempt will be ignored.
 
-      {        
-        "allowedOrigins": [
-            "localhost",
-            "hubster.io",
-            "demo1.hubster.io"
-        ],        
-        "start": 
-            [
-              {
-                "type": "text",
-                "text": "Welcome to Hubster! How can we help you?"
-              }
-            ]
-	}
+        * **TwilioSMS**
+        * **Messenger**
+        * **Slack** 
 
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
+      If you need to update their configuration, you must first **delete** the original integration and **recreate** a new one.
 
-    * - Property     
-      - Mandatory
-      - Details
-    * - allowedOrigins
-      - Yes
-      - One or more domains hosting the WebChat component.
-    * - start
-      - No
-      - An array of Hubster messages types TODO:Ross.
 
-  :underline:`Direct`
+:underline:`WebChat`
 
-  .. code-block:: JSON
+.. code-block:: JSON
 
     {        
-      "integrationType": "TODO: Ross",
-      "echo": true,
-      "webhookUrl": "https://url_end_point.com",
-      "start": [
-        {
-          "type": "text",
-          "text": "Welcome to Hubster! How can we help you?"
-        }              
-      ]
+      "allowedOrigins": [
+          "localhost",
+          "hubster.io"          
+      ],        
+      "start": 
+          [
+            {
+              "type": "text",
+              "text": "Welcome to Hubster! How can we help you?"
+            }
+          ]
     }
 
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
 
-    * - Property     
-      - Mandatory
-      - Details
-    * - integrationType
-      - Yes
-      - Must be a supported :ref:`integration<ref_api_integration_types>` type.
-    * - echo
-      - No
-      - TODO: Ross.
-    * - webhookUrl
-      - Yes (If echo = false)
-      - TODO: Ross.
-    * - start
-      - No
-      - An array of Hubster messages types TODO:Ross.
+  * - Property     
+    - Mandatory
+    - Details
+  * - allowedOrigins
+    - Yes
+    - One or more domains hosting the WebChat component.
+  * - start
+    - No
+    - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
+
+**Example Response Body**
+
+.. code-block:: JSON   
+
+  {
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "Customer",
+      "channelId": "WebChat",
+      "name": "Webchat",
+      "statusId": 3000,
+      "configuration": {
+          "AllowedOrigins": [
+              "localhost",
+              "hubster.io"
+          ],
+          "Echo": true,
+          "Start": [
+              {
+                  "type": "text",
+                  "text": "Welcome to Hubster! How can we help you?"
+              }
+          ]
+      }
+  }
+
+
+:underline:`Direct`
+
+.. code-block:: JSON
+
+  {        
+    "integrationType": "Agent",
+    "echo": true,    
+    "webhookUrl": "https://url_end_point.com",
+    "regenerateKeys": true,
+    "start": [
+      {
+        "type": "text",
+        "text": "Welcome to Hubster! How can we help you?"
+      }              
+    ]
+  }
+
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
+
+  * - Property     
+    - Mandatory
+    - Details
+  * - integrationType
+    - Yes
+    - Must be a supported :ref:`integration<ref_api_integration_types>` type.
+  * - echo
+    - No
+    - If yes, when an activity is received from this integration, it will echo it back.
+  * - webhookUrl
+    - No
+    - | The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
+      | If not supplied, activities will be delivered via websockets.        
+  * - regenerateKeys
+    - No
+    - This forces a new set of public/private keys to be generated.
+  * - start
+    - No
+    - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
+
+**Example Response Body**
+
+.. code-block:: JSON
+
+  {                        	
+    "integrationId": "00000000-0000-0000-0000-000000000000",
+    "hubId": "00000000-0000-0000-0000-000000000000",
+    "integrationTypeId": "Agent",      
+    "channelId": "Direct",
+    "name": "My cool integration name.",
+    "statusId": 3000,        
+    "configuration": {        
+    "integrationType": "Agent",
+    "echo": true,
+    "webhookUrl": "https://url_end_point.com",
+    "publicSigningKey": "6DF60E ...",
+    "privateSigningKey": "E0A42 ...",
+    "start": [
+      {
+        "type": "text",
+        "text": "Welcome to Hubster! How can we help you?"
+      }
+    ]      
+  }
+
+:underline:`System`
+
+.. code-block:: JSON
+
+  {    
+    "webhookUrl": "https://url_end_point.com",
+    "regenerateKeys": true,
+    "events": [
+      "message:customer",
+      "message:agent",
+      "message:bot"              
+    ]
+  }
+
+.. list-table::
+  :widths: 15 10 60
+  :header-rows: 1
+
+  * - Property     
+    - Mandatory
+    - Details
+  * - webhookUrl
+    - Yes
+    - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
+  * - regenerateKeys
+    - No
+    - This forces a new set of public/private keys to be generated.
+  * - events
+    - Yes
+    - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
+
+**Example Response Body**
+
+.. code-block:: JSON
+
+  {
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "System",
+      "channelId": "System",
+      "name": "My cool integration name.",
+      "statusId": 3000,
+      "configuration": {
+          "events": [
+              "message:customer",
+              "message:agent",
+              "message:bot"
+          ],
+          "webhookUrl": "https://url_end_point.com",
+          "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
+          "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
+      }
+  }
+
 
 Get
 ***
