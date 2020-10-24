@@ -27,8 +27,8 @@ Get Client
 .. code-block:: JSON
 
     {
-      "tenantId": "00000000...",
-      "clientId": "hubster.portal.api.00000000000000000000000000000001",
+      "tenantId": "B205B3EC-A9D7-4243-B88C-017533957DEB",
+      "clientId": "hubster.portal.api.B205B3ECA9D74243B88C017533957DEB",
       "name": "Hubster Portal API Client (Public)",
       "enabled": true,
       "allowedScopes": [
@@ -41,25 +41,25 @@ Get Client
         },
         {
           "type": "tenant",
-          "value": "00000000..."
+          "value": "B205B3EC-A9D7-4243-B88C-017533957DEB"
         }
       ],
       "secrets": [
         {
           "id": 9,
-          "name": "my_secret_1",
-          "token": "my secret 1 token here"
+          "name": "my secret 1",
+          "token": "SMWvD7WUAn8bkdl..."
         },
         {
           "id": 15,
-          "name": "my_secret_3",
-          "token": "my secret 3 token here"
+          "name": "my secret 2",
+          "token": "SMWvD7WUAn8bkdl..."
         },
         {
           "id": 16,
-          "name": "my_secret_4",
-          "token": "my secret 4 token here",
-          "expiration": "2018-08-30T00:00:00"
+          "name": "my secret 3",
+          "token": "SMWvD7WUAn8bkdl...",
+          "expiration": "2030-01-31T00:00:00"
         }
       ]
     }
@@ -120,15 +120,16 @@ Add Client Token
      - Unique tenant name for Hub.
    * - expiration       
      - No
-     - Expiration time for issued token (you can set your own expiration time if needed).
+     - | Expiration date when this token will no longer be valid. If no expiration date 
+       | was provide, then this token lives forever.     
 
 **Example Request Body**
 
 .. code-block:: JSON
 
     {  
-      "name": "my_secret_4",
-      "expiration": "2018-08-30"
+      "name": "my secret 3",          
+      "expiration": "2030-01-31T00:00:00"
     }
 
 
@@ -138,9 +139,9 @@ Add Client Token
 
     {
       "id": 16,
-      "name": "my_secret_4",
-      "token": "/l8Ls1J1/fEzy7AQNCUKAXdCg1M=",
-      "expiration": "2018-08-30T00:00:00"
+      "name": "my secret 3",
+      "token": "7AQNCUKAXdCg1M...",
+      "expiration": "2030-01-31T00:00:00"
     }
 
 .. list-table::
@@ -198,8 +199,6 @@ Delete Client Token
       - Unauthorized. Token is invalid.
     * - 403
       - Forbidden. Access to the requested resource is forbidden.
-    * - 404
-      - Not found. Resource not found.
     * - 408
       - Timed out. The request timed out.
     * - 429

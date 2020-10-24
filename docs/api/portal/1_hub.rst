@@ -41,15 +41,20 @@ Create Hub.
      - Hub description.
    * - closeDormantConversation       
      - No
-     - | The number of days to close this conversation if dormant.
-       | If no value supplied, the conversation will remain open until
-       | a command has been initiated.
+     - | The number of days to close this conversation if dormant. If no value 
+       | was supplied or is equal to 0 (zero), the conversation will remain open.
+
+       | It should be noted that conversations can be closed by the business
+       | at any time.
    * - statusId
      - No
-     - | Hub status. Default is *Active* = 2000, if no value supplied.
+     - | Hub status.
+
        | Valid options are:        
-       | -  *Active* = 2000
-       | -  *Paused* = 2002
+       |  - *Active* = 2000
+       |  - *Paused* = 2002
+
+       | Default is *Active* = 2000, if no value supplied.
 
 **Example Request Body**
 
@@ -57,7 +62,7 @@ Create Hub.
 
     {
         "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",
+        "description": "This hub is cool",
         "closeDormantConversation": 30,
         "statusId": 2000
     }
@@ -68,13 +73,11 @@ Create Hub.
 
     {
         "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
-        "tenantId": "00000000-0000-0000-0000-000000000001",
+        "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a00",
         "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",        
+        "description": "This hub is cool",    
         "closeDormantConversation": 30,
-        "statusId": 2000,
-        "created": "2020-10-13T02:42:26.9932101Z",
-        "modified": "2020-10-13T02:42:26.9932101Z"
+        "statusId": 2000
     }
 
 .. list-table::
@@ -138,26 +141,31 @@ Update Hub.
      - Hub description.
    * - closeDormantConversation       
      - No
-     - | The number of days to close this conversation if dormant.
-       | If no value supplied, the conversation will remain open until
-       | a command has been initiated.
+     - | The number of days to close this conversation if dormant. If no value 
+       | was supplied or is equal to 0 (zero), the conversation will remain open.
+
+       | It should be noted that conversations can be closed by the business
+       | at any time.
    * - statusId
      - No
-     - | Hub status. Default is *Active* = 2000, if no value supplied.
+     - | Hub status.
+
        | Valid options are:        
-       | -  *Active* = 2000
-       | -  *Paused* = 2002
+       |  - *Active* = 2000
+       |  - *Paused* = 2002
+
+       | Default is *Active* = 2000, if no value supplied.
 
 **Example Request Body**
 
 .. code-block:: JSON
 
-    {
+     {
         "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",
+        "description": "This hub is cool",
         "closeDormantConversation": 30,
         "statusId": 2000
-    }
+     }
 
 **Response** : 200 (OK)
 
@@ -165,13 +173,11 @@ Update Hub.
 
     {
         "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
-        "tenantId": "00000000-0000-0000-0000-000000000001",
+        "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a00",
         "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",        
+        "description": "This hub is cool",    
         "closeDormantConversation": 30,
-        "statusId": 2000,
-        "created": "2020-10-13T02:42:26.9932101Z",
-        "modified": "2020-10-13T02:42:26.9932101Z"
+        "statusId": 2000
     }
 
 .. list-table::
@@ -270,13 +276,11 @@ Get Hub.
 
     {
         "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
-        "tenantId": "00000000-0000-0000-0000-000000000001",
+        "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a00",
         "name": "Your New Cool Hub Name",
-        "description": "Provide some brief description for your new Hub",        
+        "description": "This hub is cool",    
         "closeDormantConversation": 30,
-        "statusId": 2000,
-        "created": "2020-10-13T02:42:26.9932101Z",
-        "modified": "2020-10-13T02:42:26.9932101Z"
+        "statusId": 2000
     }
 
 .. list-table::
@@ -349,20 +353,22 @@ Get Hub Collection.
         "pageSize": 50,
         "total": 2,
         "results": [
-            {
-                "hubId": "00000000-0000-0000-0000-0000000000a2",
-                "tenantId": "00000000-0000-0000-0000-000000000001",
-                "name": "Dev Hub 1",
-                "description": "Dev Hub 1 (Websocket)",
-                "statusId": 2000
-            },
-            {
-                "hubId": "00000000-0000-0000-0000-0000000000a3",
-                "tenantId": "00000000-0000-0000-0000-000000000001",
-                "name": "Hubster Demo (blank)",
-                "description": "Hubster Demo mainly used for Videos",
-                "statusId": 2000
-            }
+           {
+            "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
+            "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a00",
+            "name": "Your New Cool Hub Name",
+            "description": "This hub is cool",    
+            "closeDormantConversation": 30,
+            "statusId": 2000
+          },
+          {
+            "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a32",
+            "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a01",
+            "name": "Your New Cool Hub Name 2",
+            "description": "This hub is cool 2",    
+            "closeDormantConversation": 30,
+            "statusId": 2000
+          }
         ]
     }
 

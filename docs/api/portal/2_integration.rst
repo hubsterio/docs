@@ -39,18 +39,23 @@ Create
      - Unique name for integration per Hub.
    * - statusId
      - No
-     - | Integration status. Default is *Active* = 3000, if no value supplied.
+     - | Integration status. 
+
        | Valid options are:        
-       | -  *Active* = 3000
-       | -  *Paused* = 3002
+       |  - *Active* = 3000
+       |  - *Paused* = 3002
+       
+       | Default is *Active* = 3000, if no value supplied.
    * - configuration
      - Yes
      - See :ref:`configuration<ref_portal_integration_create_config>` properties for each individual **channelId**.
 
 **Example Request Body** 
 
-.. note:: The request body below is using **TwilioSMS** as an example. However, The :ref:`configuration<ref_portal_integration_create_config>` 
-          properties for each channel type differs. Please use the correct JSON format specific to the **channelId** value defined. 
+.. note:: 
+    The request body below uses **TwilioSMS** as an example. It should be noted that  
+    :ref:`configuration<ref_portal_integration_create_config>` properties for each channel type differs. 
+    Please use the correct configuration specific to the **channelId** value defined. 
 
 .. code-block:: JSON
 
@@ -112,13 +117,13 @@ Create
       - Details
     * - authToken
       - Yes
-      - Authorization token.
+      - Twilio authorization token.
     * - accountSid
       - Yes
-      - Account SID.
+      - Twilio account SID.
     * - numberSid
       - Yes
-      - Phone number SID.
+      - Twilio phone number SID.
   
   **Example Response Body**
 
@@ -182,24 +187,22 @@ Create
       }	
     }
 
-  :underline:`Web Chat`
+  :underline:`WebChat`
 
   .. code-block:: JSON
 
-      {        
-        "allowedOrigins": [
-            "localhost",
-            "hubster.io",
-            "demo1.hubster.io"
-        ],        
-        "start": 
-            [
-              {
-                "type": "text",
-                "text": "Welcome to Hubster! How can we help you?"
-              }
-            ]
-	}
+    {        
+      "allowedOrigins": [
+        "localhost",
+        "hubster.io"        
+      ],        
+      "start": [
+        {
+          "type": "text",
+          "text": "Welcome to Hubster! How can we help you?"
+        }
+      ]
+    }
 
   .. list-table::
     :widths: 15 10 60
@@ -213,17 +216,44 @@ Create
       - One or more domains hosting the WebChat component.
     * - start
       - No
-      - An array of Hubster messages types TODO:Ross.
+      - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
+
+  **Example Response Body**
+
+  .. code-block:: JSON   
+
+    {
+        "integrationId": "00000000-0000-0000-0000-000000000000",
+        "hubId": "00000000-0000-0000-0000-000000000000",
+        "integrationTypeId": "Customer",
+        "channelId": "WebChat",
+        "name": "Webchat",
+        "statusId": 3000,
+        "configuration": {
+            "AllowedOrigins": [
+                "localhost",
+                "hubster.io"
+            ],
+            "Echo": true,
+            "Start": [
+                {
+                    "type": "text",
+                    "text": "Welcome to Hubster! How can we help you?"
+                }
+            ]
+        }
+    }
+
 
   :underline:`Direct`
 
   .. code-block:: JSON
 
-      {        
-        "integrationType": "Agent",
-        "echo": true,
-        "webhookUrl": "https://url_end_point.com"
-	  }
+    {        
+      "integrationType": "Agent",
+      "echo": true,
+      "webhookUrl": "https://url_end_point.com"
+    }
 
   .. list-table::
     :widths: 15 10 60
@@ -240,10 +270,11 @@ Create
       - If yes, when an activity is received from this integration, it will echo it back.
     * - webhookUrl
       - No
-      - If not supplied, activities will be delivered via websockets.
+      - | The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
+        | If not supplied, activities will be delivered via websockets.        
     * - start
       - No
-      - An array of Hubster messages types TODO:Ross.
+      - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
   **Example Response Body**
 
@@ -255,25 +286,20 @@ Create
       "integrationTypeId": "Agent",      
       "channelId": "Direct",
       "name": "My cool integration name.",
-      "statusId": 3000,  
-      "created": "2020-10-16T22:43:53.8835551Z",
-      "modified": "2020-10-16T22:43:53.8835551Z",
-      "configuration": 
-      {        
-        "integrationType": "Agent",
-        "echo": true,
-        "webhookUrl": "https://url_end_point.com",
-        "publicSigningKey": "6DF60E ...",
-        "privateSigningKey": "E0A42 ...",
-        "start": 
-        [
-          {
+      "statusId": 3000,        
+      "configuration": {        
+      "integrationType": "Agent",
+      "echo": true,
+      "webhookUrl": "https://url_end_point.com",
+      "publicSigningKey": "6DF60E ...",
+      "privateSigningKey": "E0A42 ...",
+      "start": [
+        {
           "type": "text",
           "text": "Welcome to Hubster! How can we help you?"
-          }
-        ]
-      }	
-   }
+        }
+      ]      
+    }
   
   :underline:`System`
 
@@ -313,8 +339,6 @@ Create
         "channelId": "System",
         "name": "My cool integration name.",
         "statusId": 3000,
-        "created": "2020-10-16T22:43:53.8835551Z",
-        "modified": "2020-10-16T22:43:53.8835551Z",
         "configuration": {
             "events": [
                 "message:customer",
@@ -468,18 +492,17 @@ Update
 
   .. code-block:: JSON
 
-      {        
-        "integrationType": "TODO: Ross",
-        "echo": true,
-        "webhookUrl": "https://url_end_point.com",
-        "start": 
-            [
-              {
-                "type": "text",
-                "text": "Welcome to Hubster! How can we help you?"
-              }              
-            ]
-	}
+    {        
+      "integrationType": "TODO: Ross",
+      "echo": true,
+      "webhookUrl": "https://url_end_point.com",
+      "start": [
+        {
+          "type": "text",
+          "text": "Welcome to Hubster! How can we help you?"
+        }              
+      ]
+    }
 
   .. list-table::
     :widths: 15 10 60
@@ -535,8 +558,6 @@ Get
       "channelId": 102,
       "name": "Twilio Test Number: 1647...",
       "statusId": 3000,
-      "created": "2017-01-01T00:00:00",
-      "modified": "2017-01-01T00:00:00",
       "configuration": {
         "AcccountSid": "AC1fc1c172244...",
         "AuthToken": "cb8c5367c3c458...",
@@ -634,13 +655,62 @@ Get
         "integrationType": "TODO: Ross",
         "echo": true,
         "webhookUrl": "https://url_end_point.com",
-        "start":
-          [
+        "start":[
             {
               "type": "text",
               "text": "Welcome to Hubster! How can we help you?"
             }
           ]
+        }
+    }
+
+  :underline:`System`
+
+  .. code-block:: JSON
+
+    {
+      "webhookUrl": "https://url_end_point.com",
+      "events": [
+        "message:customer",
+        "message:agent",
+        "message:bot"              
+      ]
+    }
+
+  .. list-table::
+    :widths: 15 10 60
+    :header-rows: 1
+
+    * - Property     
+      - Mandatory
+      - Details
+    * - webhookUrl
+      - Yes
+      - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
+    * - events
+      - Yes
+      - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
+
+  **Example Response Body**
+
+  .. code-block:: JSON
+
+    {
+        "integrationId": "00000000-0000-0000-0000-000000000000",
+        "hubId": "00000000-0000-0000-0000-000000000000",
+        "integrationTypeId": "System",
+        "channelId": "System",
+        "name": "My cool integration name.",
+        "statusId": 3000,
+        "configuration": {
+            "events": [
+                "message:customer",
+                "message:agent",
+                "message:bot"
+            ],
+            "webhookUrl": "https://url_end_point.com",
+            "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
+            "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
         }
     }
 
