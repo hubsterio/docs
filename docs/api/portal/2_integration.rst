@@ -18,7 +18,7 @@ Creates an Integration.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -31,7 +31,7 @@ Creates an Integration.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - hubId
      - The hub id affected.
 
@@ -43,7 +43,7 @@ Creates an Integration.
 
    * - Property     
      - Mandatory
-     - Details
+     - Description
    * - channelId
      - Yes
      - Has to be one of the following :ref:`Channel Types<ref_api_channel_types>`.
@@ -89,7 +89,7 @@ Creates an Integration.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 400
@@ -127,7 +127,7 @@ Creates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - authToken
     - Yes
     - Twilio authorization token.
@@ -176,7 +176,7 @@ Creates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - pageAccessToken
     - Yes
     - Facebook page access token.
@@ -223,7 +223,7 @@ Creates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - allowedOrigins
     - Yes
     - One or more domains hosting the WebChat component.
@@ -274,7 +274,7 @@ Creates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - integrationType
     - Yes
     - Must be a supported :ref:`integration<ref_api_integration_types>` type.
@@ -333,7 +333,7 @@ Creates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - webhookUrl
     - Yes
     - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
@@ -379,7 +379,7 @@ Creates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - code
     - Yes
     - Slack oauth2 code.
@@ -422,7 +422,7 @@ Updates an Integration.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -435,7 +435,7 @@ Updates an Integration.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - integrationId
      - The integration id affected.
 
@@ -447,7 +447,7 @@ Updates an Integration.
 
    * - Property     
      - Mandatory
-     - Details
+     - Description
    * - name
      - No
      - Unique name for integration per Hub.
@@ -520,7 +520,7 @@ Updates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - allowedOrigins
     - Yes
     - One or more domains hosting the WebChat component.
@@ -579,7 +579,7 @@ Updates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - integrationType
     - Yes
     - Must be a supported :ref:`integration<ref_api_integration_types>` type.
@@ -642,7 +642,7 @@ Updates an Integration.
 
   * - Property     
     - Mandatory
-    - Details
+    - Description
   * - webhookUrl
     - Yes
     - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
@@ -691,7 +691,7 @@ Gets an Integration.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -704,7 +704,7 @@ Gets an Integration.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - integrationId
      - The integration to get.
 
@@ -743,7 +743,7 @@ Gets an Integration.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 401
@@ -912,7 +912,7 @@ Gets a list of integrations for a given :ref:`Channel Type<ref_api_channel_types
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -925,7 +925,7 @@ Gets a list of integrations for a given :ref:`Channel Type<ref_api_channel_types
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - hubId
      - The hub id to obtain all integrations.
    * - channelType
@@ -969,7 +969,7 @@ Gets a list of integrations for a given :ref:`Channel Type<ref_api_channel_types
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 401
@@ -1000,7 +1000,7 @@ Gets a list of integrations.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -1014,7 +1014,7 @@ Gets a list of integrations.
 
    * - Argument     
      - Mandatory
-     - Details
+     - Description
    * - hubId
      - No
      - Filter by hub id.
@@ -1060,7 +1060,7 @@ Gets a list of integrations.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 400

@@ -18,7 +18,7 @@ Creates a Hub.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -32,7 +32,7 @@ Creates a Hub.
 
    * - Property     
      - Mandatory
-     - Details
+     - Description
    * - name
      - Yes
      - Unique Hub name for tenant.
@@ -85,7 +85,7 @@ Creates a Hub.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 400
@@ -118,7 +118,7 @@ Updates a Hub.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -131,7 +131,7 @@ Updates a Hub.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - hubId
      - The hub id affected.
 
@@ -143,7 +143,7 @@ Updates a Hub.
 
    * - Property     
      - Mandatory
-     - Details
+     - Description
    * - name
      - No
      - Unique Hub name for tenant.
@@ -196,7 +196,7 @@ Updates a Hub.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 400
@@ -234,7 +234,7 @@ Deletes a Hub.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -247,7 +247,7 @@ Deletes a Hub.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - hubId
      - The hub id affected.
 
@@ -258,7 +258,7 @@ Deletes a Hub.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 401
@@ -290,7 +290,7 @@ Gets a Hub.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -303,7 +303,7 @@ Gets a Hub.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - hubId
      - The hub id to get.
 
@@ -326,7 +326,7 @@ Gets a Hub.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 401
@@ -359,7 +359,7 @@ Gets a list of Hubs.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -373,7 +373,7 @@ Gets a list of Hubs.
 
    * - Argument     
      - Mandatory
-     - Details
+     - Description
    * - pageNumber
      - No
      - The requested page number. *Must be >= 0*
@@ -416,7 +416,7 @@ Gets a list of Hubs.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 400

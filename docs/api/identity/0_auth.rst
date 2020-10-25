@@ -15,7 +15,7 @@ Authentication
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Content-Type
      - ``application/x-www-form-urlencoded``
 
@@ -28,7 +28,7 @@ Authentication
 
    * - Property     
      - Mandatory
-     - Details
+     - Description
    * - grant_type
      - Yes
      - Has to be ``client_credentials``.

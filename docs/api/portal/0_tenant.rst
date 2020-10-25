@@ -18,7 +18,7 @@ Gets a Client.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -31,7 +31,7 @@ Gets a Client.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - clientId
      - The client id to get.
 
@@ -83,7 +83,7 @@ Gets a Client.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 401
@@ -116,7 +116,7 @@ Adds a new Client Token.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -129,7 +129,7 @@ Adds a new Client Token.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - clientId
      - The client id affected.
 
@@ -142,7 +142,7 @@ Adds a new Client Token.
 
    * - Property     
      - Mandatory
-     - Details
+     - Description
    * - name
      - Yes
      - Unique tenant name for Hub.
@@ -177,7 +177,7 @@ Adds a new Client Token.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 400
@@ -209,7 +209,7 @@ Deletes (revokes) a Client Token.
    :header-rows: 1
 
    * - Header     
-     - Details
+     - Description
    * - Authorization
      - Bearer ``your portal access token``
    * - Content-Type
@@ -222,7 +222,7 @@ Deletes (revokes) a Client Token.
    :header-rows: 1
 
    * - Segment     
-     - Details
+     - Description
    * - clientId
      - The client id affected.
    * - tokenId
@@ -235,7 +235,7 @@ Deletes (revokes) a Client Token.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 401
