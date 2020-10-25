@@ -41,7 +41,7 @@ steps:
 
 - task: CopyFiles@2
   inputs:
-    SourceFolder: '$(Build.SourcesDirectory)/doc/build/html'
+    SourceFolder: '$(Build.SourcesDirectory)/docs/build/html'
     TargetFolder: '$(Build.ArtifactStagingDirectory)'
     Contents: '**'
   displayName: 'Copy documentation files to artifact directory'
