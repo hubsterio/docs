@@ -78,11 +78,11 @@ Below is an example configuration on how one would style the component using a b
             styling: false,
             styles: {
                 header: {
-                    style: {
-                        'backgroundColor': '#004F99'
-                    },
                     title: 'My Company Title',
                     iconUrl: 'https://hubsterdevcdn.azureedge.net/pub/demo/webchat/rcm/chat_logo.png',
+                    style: {
+                        'backgroundColor': '#004F99'
+                    }
                 },
                 mount: {
                     style: {
@@ -244,7 +244,8 @@ Hubster decided to adhered to the **HTML** *style* property format as shown belo
 
 The only stipulation is that any style property that is normally **hyphenated**, will be replace with 
 its **camelCase** equivalent:
-
+    
+    * **text-decoration** will be represented as **'textDecoration'**
     * **z-index** will be represented as **'zIndex'**
     * **background-color** will be represented as **'backgroundColor'**
     * **color** will be represented as **'color'** (in this example, the property name remains the same)
@@ -257,6 +258,7 @@ See a more formal example below.
     window.HUBSTER_CONFIG = {
         styles: {
             mount: {
+                iconUrl: 'https://cdn.com/logo.png',
                 style: {
                     'backgroundColor': '#004F99',
                     'bottom': '5rem',
@@ -341,7 +343,7 @@ See a more formal example below.
                 styles: {
                     header: {
                         title: 'My Company Title',
-                        iconUrl: 'https://cdn.com/my_logo.png',                    
+                        iconUrl: 'https://cdn.com/logo.png',                    
                         style: {
                             'color': 'white'
                             'backgroundColor': 'blue'
@@ -374,6 +376,7 @@ See a more formal example below.
             window.HUBSTER_CONFIG = {
                 styles: {
                     mount: {
+                        iconUrl: 'https://cdn.com/logo.png',
                         style: {
                             'backgroundColor': '#004F99',
                             'bottom': '5rem',
@@ -390,7 +393,7 @@ See a more formal example below.
         
         .. image:: images/postback_buttons.png
                         
-        | To change the look-and-feel, we provided the following configurations.
+        | To change the look-and-feel, see the following configuration.
 
         
         .. code-block:: JAVASCRIPT
@@ -437,7 +440,7 @@ See a more formal example below.
         
         .. image:: images/quick_reply_buttons.png
                         
-        | To change the look-and-feel, we provided the following configurations.
+        | To change the look-and-feel, see the following configuration.
 
         
         .. code-block:: JAVASCRIPT
@@ -484,8 +487,7 @@ See a more formal example below.
         
         .. image:: images/link_buttons.png
                         
-        | To change the look-and-feel, we provided the following configurations.
-
+        | To change the look-and-feel, see the following configuration.
         
         .. code-block:: JAVASCRIPT
                 
@@ -531,22 +533,105 @@ See a more formal example below.
             };  
 
     * - listItemButtons      
-      - Hubster supports the following **List Item** buttons. See buttons within the red outline.
-        
-        
+      - Hubster supports the following **List Item** buttons. See buttons outlined in red.
+                
         .. image:: images/list_item_buttons.png
                         
-        | To change the look-and-feel, we provided the following configurations.
+        | To change the look-and-feel, see the following configuration.
+
+        .. code-block:: JAVASCRIPT
+                
+            window.HUBSTER_CONFIG = {
+                styles: {                    
+                    listItemButtons: {
+                        primary: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black',
+                            'textDecoration': 'none'
+                        },
+                        primaryHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow',
+                            'textDecoration': 'underline'
+                        },
+                        info: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black',
+                            'textDecoration': 'none'
+                        },
+                        infoHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                            'textDecoration': 'underline'
+                        },
+                        // see above properties for examples
+                        secondary: { ... },
+                        secondaryHover: { ... },
+                        success: { ... },
+                        successHover: { ... },
+                        warning: { ... },
+                        warningHover: { ... },
+                        danger: { ... },
+                        dangerHover: { ... },
+                    }                    
+                },
+                ...
+            };          
 
     * - listButtons      
-      - Hubster supports the following **List** buttons. See buttons within the red outline.
+      - Hubster supports the following **List** buttons. See buttons outlined in red.
         
         .. image:: images/list_buttons.png
                         
-        | To change the look-and-feel, we provided the following configurations.
-
-
-    
+        | To change the look-and-feel, see the following configuration.
+        
+        .. code-block:: JAVASCRIPT
+                
+            window.HUBSTER_CONFIG = {
+                styles: {                    
+                    listButtons: {
+                        primary: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black',
+                            'textDecoration': 'none'
+                        },
+                        primaryHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow',
+                            'textDecoration': 'underline'
+                        },
+                        info: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black',
+                            'textDecoration': 'none'
+                        },
+                        infoHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                            'textDecoration': 'underline'
+                        },
+                        // see above properties for examples
+                        secondary: { ... },
+                        secondaryHover: { ... },
+                        success: { ... },
+                        successHover: { ... },
+                        warning: { ... },
+                        warningHover: { ... },
+                        danger: { ... },
+                        dangerHover: { ... },
+                    }                    
+                },
+                ...
+            };          
+   
 
 Webchat Script Versions
 ***********************

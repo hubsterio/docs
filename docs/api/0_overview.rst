@@ -74,7 +74,7 @@ such as Hubster’s Portal, Engine and Events resources.
 .. image:: images/identity_api_resource_interactions.png
 
 .. note:: 
-    API **access tokens** use the **client_credential** **grant_type**, meaning you can only obtain a access 
+    API **access tokens** use the **client_credential** **grant_type**, Description you can only obtain a access 
     tokens using **client_ids** and **client_secrets** respectively. These access tokens are longed-lived and last 
     no longer than 30 days. When an access token expires, accessing an API resource yields an HTTP Status **401** - *Unauthorized Access*. 
 
@@ -116,7 +116,7 @@ Below is an example of a **Bad Request** (400) returned by the Portal API.
     :header-rows: 1   
 
     * - Property
-      - Meaning
+      - Description
     * - status
       - The :ref:`HTTP Status code<ref_api_status_codes>`. This will value always equals header's HTTP Status code.
     * - errors
@@ -164,7 +164,7 @@ Below is an example from Portal API resource returning Hubs as paginated respons
     :header-rows: 1   
 
     * - Property
-      - Meaning
+      - Description
     * - pageNumber
       - The requested page number. 
     * - pageSize
@@ -189,7 +189,7 @@ Hubster API HTTP Status codes.
     :header-rows: 1   
 
     * - HTTP Status
-      - Meaning
+      - Description
     * - 200
       - OK response. The body of the response will include the data requested.
     * - 201
