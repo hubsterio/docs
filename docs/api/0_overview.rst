@@ -61,7 +61,10 @@ Below are the list of Hubster environments:
     * - Production
       - https://events.hubster.io        
 
-Identity to API Resource Interaction 
+
+.. _ref_api_identity_interaction:
+
+Identity to API Resource Interaction
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Below is a depiction on how a business application first obtains an **access token**, 
@@ -80,7 +83,7 @@ such as Hubster’s Portal, Engine and Events resources.
     These design was intentional as scopes for each API resource are vastly different. 
     *There's an exception to this rule. Accessing the Events API requires an Engine access token.*
 
-    To obtain an access_token, please refer to our :ref:`Identity Service API documentation<ref_auth>`.
+    To obtain an **access_token**, please refer to the :ref:`Authentication API<ref_auth>` for more details.
 
 Standard Error Response
 ^^^^^^^^^^^^^^^^^^^^^^^

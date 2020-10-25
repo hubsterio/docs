@@ -51,10 +51,8 @@ the **publicSigningKey** as a reference key to obtain their **privateSigningKey*
 
 .. warning::
     Please make sure all **private keys** are stored securely. 
-    If you suspect your private key was compromised, you can regenerate new public/private key pair by 
-    updating your custom integration. Just pass the argument **regenerate-keys=true** to the following API:
-             
-    **PUT** */api/v1/integrations/{integrationId}?regenerate-key=true*
+    If you suspect your private key was compromised, you can regenerate new **public/private key pair** by 
+    updating your custom integration. Click :ref:`here<ref_integration_update_direct>` for more info.    
 
 C# Sample
 *********
@@ -209,7 +207,7 @@ Webhook Retry Policy
       - 10 seconds
       
 .. warning:: 
-    Once all retries attempts have been exhausted, Hubster will send a notification to the tenant account holder
-    with details to as to why the endpoint has failed. It is up to the the account holder to rectify 
+    Once all retries attempts are exhausted, Hubster will send a **notification** to the tenant account holder
+    with details to as to why the endpoint failed. It is up to the the account holder to rectify 
     their integration issue. 
 

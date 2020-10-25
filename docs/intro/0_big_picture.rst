@@ -44,19 +44,16 @@ For example, a business can create a hub for various lines of business, campaign
 Customer Channels
 =================
 
-For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+TODO
 
 =================
 Business Channels
 =================
 
-For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+TODO
 
-* **Agents**    
-    
-* **Bots**
-    
-
+* **Agents**        
+* **Bots**    
 * **Handover rules**
 
 ============
@@ -64,9 +61,13 @@ CRM Channels
 ============
 .. 	Keyword/Phrase spotting
 
+TODO
+
 ========
 Webhooks
 ========
+
+TODO
 
 ========
 Commands
@@ -75,6 +76,8 @@ Commands
 .. 	Dynamic
 .. 	Transfer
 
+TODO
+
 =============
 Preliminaries
 =============
@@ -82,20 +85,26 @@ Preliminaries
 .. 	Sentiment Analysis
 .. 	Open Hours
 
-
+TODO
 
 .. _ref_pipeline:
 
 Pipeline
 ^^^^^^^^
 
+TODO
+
 .. _ref_BYOI:
 
 Bring your own Integration (BYOI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TODO
 
 
 .. _ref_ux_framework:
 
 UX Multi-rendering/Response Framework
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TODO

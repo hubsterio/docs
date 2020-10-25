@@ -554,6 +554,7 @@ Updates an Integration.
       }
   }
 
+.. _ref_integration_update_direct:
 
 :underline:`Direct`
 

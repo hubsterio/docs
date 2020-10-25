@@ -4,10 +4,7 @@
 .. _ref_auth:
 
 Authentication
-^^^^^^^^^^^^^^
-
-Client Credentials - Portal
-***************************
+**************
 
 **POST** */connect/token*
 
@@ -21,8 +18,6 @@ Client Credentials - Portal
      - Details
    * - Content-Type
      - ``application/x-www-form-urlencoded``
-
-.. note:: The request body has to be raw text (string).
 
 
 **Request Properties**
@@ -39,15 +34,24 @@ Client Credentials - Portal
      - Has to be ``client_credentials``.
    * - client_id       
      - Yes
-     - | portal client token, for example ``hubster.portal.api.00000000000000000000000000000001``.
-       | Portal token consists of:        
-       | **hubster.portal.api** - predefined string.
-       | ...000001 - Hub Id.
+     - | The client id of the Hubster service you plan to authenticate against.
+       
+       | Typical, it will be one of following:       
+       |  - **hubster.portal.api.000000000....**
+       |  - **hubster.engine.api.000000000....**
+
+       | Please refer to :ref:`Identity to API Resource Interaction<ref_api_identity_interaction>` for the resources accessible
+       | on a per **client_id** basis.
    * - client_secret       
      - Yes
-     - ``eyJhbGciOiJSUzI1NiIsImtpZCI...``
+     - The client secret for the **client_id** used.
 
-**Example Reponse Body** 
+.. note:: 
+    | The request body is of **grant_type** see the following example format below:
+
+    | *grant_type=client_credentials&client_id=hubster.portal.api.0000000...&client_secret=SMWvD7W...*
+
+**Response** : 200 (OK)
 
 .. code-block:: JSON
 
@@ -58,54 +62,3 @@ Client Credentials - Portal
         "scope": "hubster-portal-api"
     }
 
-Client Credentials - Engine
-***************************
-
-**POST** */connect/token*
-
-**Headers**
-
-.. list-table::
-   :widths: 15 60
-   :header-rows: 1
-
-   * - Header     
-     - Details
-   * - Content-Type
-     - ``application/x-www-form-urlencoded``
-
-.. note:: The request body has to be raw text (string).
-
-
-**Request Properties**
-
-.. list-table::
-   :widths: 15 10 60
-   :header-rows: 1
-
-   * - Property     
-     - Mandatory
-     - Details
-   * - grant_type
-     - Yes
-     - Has to be ``client_credentials``.
-   * - client_id       
-     - Yes
-     - | engine token, for example ``hubster.engine.api.00000000000000000000000000000001``.
-       | Engine tokens consists of:        
-       | **portal.engine.api** - predefined string.
-       | ...000001 - Hub Id.
-   * - client_secret       
-     - Yes
-     - ``eyJhbGciOiJSUzI1NiIsImtpZCI...``
-
-**Example Reponse Body** 
-
-.. code-block:: JSON
-
-    {
-        "access_token": "eyJhbGciOiJSUzI1NiIsImtpZCI...",
-        "expires_in": 2592000,
-        "token_type": "Bearer",
-        "scope": "hubster-engine-api"
-    }

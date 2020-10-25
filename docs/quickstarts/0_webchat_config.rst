@@ -530,9 +530,20 @@ See a more formal example below.
             };  
 
     * - listItemButtons      
-      - xxx
+      - Hubster supports the following **Link** buttons.
+        
+        .. image:: images/list_item_buttons.png
+                        
+        | To change the look-and-feel, we provide the following configures
+
     * - listButtons      
-      - xxx
+      - Hubster supports the following **Link** buttons.
+        
+        .. image:: images/list_buttons.png
+                        
+        | To change the look-and-feel, we provide the following configures
+
+
     
 
 Webchat Script Versions
