@@ -26,6 +26,7 @@ steps:
 
 - script: |
     pip install --upgrade sphinx
+    pip install sphinx_rtd_theme
   displayName: 'Install sphynx'
 
 #- script: |
