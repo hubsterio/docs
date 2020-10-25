@@ -7,6 +7,8 @@ Integrations
 Create
 ******
 
+Creates an Integration.
+
 **POST** */api/v1/integrations/hubs/{hubId}*
 
 **Headers**
@@ -21,6 +23,17 @@ Create
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - hubId
+     - The hub id affected.
 
 **Request Properties**
 
@@ -125,7 +138,7 @@ Create
     - Yes
     - Twilio phone number SID.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -169,7 +182,7 @@ Create
     - Facebook page access token.
 
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -218,7 +231,7 @@ Create
     - No
     - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON   
 
@@ -276,7 +289,7 @@ Create
     - No
     - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -328,7 +341,7 @@ Create
     - Yes
     - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -346,8 +359,8 @@ Create
               "message:bot"
           ],
           "webhookUrl": "https://url_end_point.com",
-          "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
-          "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
+          "publicSigningKey": "6DF60E ...",
+          "privateSigningKey": "E0A42 ...",
       }
   }
 
@@ -374,7 +387,7 @@ Create
     - Yes
     - UNIX timespan plus client secret.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -398,6 +411,8 @@ Create
 Update
 ******
 
+Updates an Integration.
+
 **POST** */api/v1/integrations/hubs/{integrationId}*
 
 **Headers**
@@ -412,6 +427,17 @@ Update
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - integrationId
+     - The integration id affected.
 
 **Request Properties**
 
@@ -502,7 +528,7 @@ Update
     - No
     - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON   
 
@@ -570,7 +596,7 @@ Update
     - No
     - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -626,7 +652,7 @@ Update
     - Yes
     - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
 
-**Example Response Body**
+**Response** 200 (OK)
 
 .. code-block:: JSON
 
@@ -644,14 +670,16 @@ Update
               "message:bot"
           ],
           "webhookUrl": "https://url_end_point.com",
-          "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
-          "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
+          "publicSigningKey": "6DF60E ...",
+          "privateSigningKey": "E0A42 ...",
       }
   }
 
 
 Get
 ***
+
+Gets an Integration.
 
 **GET** */api/v1/integrations/{integrationId}*
 
@@ -668,11 +696,22 @@ Get
    * - Content-Type
      - ``application/json``
 
-**Example Response Body** 
+**Url Segments**
 
-.. note:: The response body below is using **TwilioSMS** as an example. However, The :ref:`configuration<ref_portal_integration_create_config>` 
-          properties for each channel type differs. Below only configuration object part will be presented since, other properties like ``name`` will be same.
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
 
+   * - Segment     
+     - Details
+   * - integrationId
+     - The integration to get.
+
+**Response** 200 (OK)
+
+.. note:: 
+    The request body below uses **TwilioSMS** as an example. It should be noted that  
+    :ref:`configuration<ref_portal_integration_create_config>` properties for each channel type differs.
 
 .. code-block:: JSON
 
@@ -706,6 +745,323 @@ Get
       - Meaning
     * - 200
       - OK response. The body of the response will include the data requested.
+    * - 401
+      - Unauthorized. Token is invalid.
+    * - 403
+      - Forbidden. Access to the requested resource is forbidden.
+    * - 404
+      - Not found. Resource not found.
+    * - 408
+      - Timed out. The request timed out.
+    * - 429
+      - Too many requests. API usage limit has been reached.
+    * - 500
+      - Internal server error. There was an internal issue with the service.
+    * - 503
+      - Service unavailable. The service is unavailable.
+
+**Response Body Examples**
+
+:underline:`TwilioSMS`
+
+.. code-block:: JSON
+
+   {
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "inboundId": "AC1fc1c1722444b0c6313d3....",
+      "integrationTypeId": "Customer",
+      "channelId": "TwilioSMS",
+      "name": "Twilio Test Number: 16476960489",
+      "statusId": 3000,
+      "configuration": {
+          "AccountSid": "AC1fc1c1722444b0c6313d...",
+          "AuthToken": "cb8c5367c3c4586ecb589e2...",
+          "NumberSid": "PN667435536f4d1cefdf054...",
+          "PhoneNumber": "+16476960489",
+          "Capabilities": {
+              "Mms": true,
+              "Sms": true,
+              "Voice": true
+          }
+      }
+  }
+
+:underline:`Messenger`
+
+.. code-block:: JSON
+
+    {
+        "integrationId": "00000000-0000-0000-0000-000000000000",
+        "hubId": "00000000-0000-0000-0000-000000000000",
+        "inboundId": "27623838....",
+        "integrationTypeId": "Customer",
+        "channelId": "Messenger",
+        "name": "Messenger: Hubster Biz",
+        "statusId": 3000,
+        "configuration": {
+            "AppId": "218851140...",
+            "PageId": "27623838...",
+            "PageAccessToken": "EAAfGcISnoh0BAEZBihIAC..."
+        }
+    }
+
+:underline:`Web Chat`
+
+.. code-block:: JSON
+
+   {
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "Customer",
+      "channelId": "WebChat",
+      "name": "Webchat for Hubster Demo (Blank) ",
+      "statusId": 3000,
+      "configuration": {
+          "allowedOrigins": [
+              "localhost",
+              "hubster.io"              
+          ],
+          "echo": true,
+          "start": [
+              {
+                  "type": "text",
+                  "text": "Welcome to Hubster! How can we help you?"
+              }
+          ]
+      }
+  }
+
+:underline:`Direct`
+
+.. code-block:: JSON
+
+  {
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "Customer",
+      "channelId": "Direct",
+      "name": "Direct Customer (Webhook)",
+      "statusId": 3000,
+      "configuration": {
+          "WebhookUrl": "http://localhost:5100/v1/api/integration?customer=1",
+          "publicSigningKey": "6DF60E ...",
+          "privateSigningKey": "E0A42 ...",
+          "Echo": false,
+          "WelcomeMessage": "Welcome to Hubster! How can we help you?"
+      }
+  }
+
+:underline:`System`
+
+.. code-block:: JSON
+
+  {
+      "integrationId": "00000000-0000-0000-0000-000000000000",
+      "hubId": "00000000-0000-0000-0000-000000000000",
+      "integrationTypeId": "System",
+      "channelId": "System",
+      "name": "My cool integration name.",
+      "statusId": 3000,
+      "configuration": {
+          "events": [
+              "message:customer",
+              "message:agent",
+              "message:bot"
+          ],
+          "webhookUrl": "https://url_end_point.com",
+          "publicSigningKey": "6DF60E ...",
+          "privateSigningKey": "E0A42 ...",
+      }
+  }
+
+:underline:`Slack`
+
+.. code-block:: JSON
+
+    {
+        "integrationId": "00000000-0000-0000-0000-000000000000",
+        "hubId": "00000000-0000-0000-0000-000000000000",
+        "integrationTypeId": "Agent",
+        "channelId": "Slack",
+        "name": "Slack for Hubster Demo",
+        "statusId": 3000,
+        "configuration": {
+            "BotAccessToken": "xoxb-...",
+            "AppAccessToken": "xoxp-...",
+            "DefaultPublicChannel": "general",
+            "TeamId": "T017QM...",
+            "BotName": "Hubster.io"
+        }
+    }
+
+
+
+Get by Channel Type
+*******************
+
+Gets a list of integrations for a given :ref:`Channel Type<ref_api_channel_types>`.
+
+**GET** */api/v1/integrations/hubs/{hubId}/{channelType}*
+
+**Headers**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Header     
+     - Details
+   * - Authorization
+     - Bearer ``your portal access token``
+   * - Content-Type
+     - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - hubId
+     - The hub id to obtain all integrations.
+   * - channelType
+     - The :ref:`Channel Type<ref_api_channel_types>` to filter by.
+
+**Response** : 200 (OK)
+
+.. code-block:: JSON
+
+  [
+      {
+          "integrationId": "00000000-0000-0000-0000-000000000001",
+          "hubId": "00000000-0000-0000-0000-000000000000",
+          "integrationTypeId": "Customer",
+          "channelId": "Direct",
+          "name": "Direct Customer 2 (Webhook)",
+          "statusId": 3000,
+          "configuration": {
+              "WebhookUrl": "http://localhost:5100/v1/api/integration?customer=1",
+              "publicSigningKey": "6DF60E ...",
+              "privateSigningKey": "E0A42 ...",
+              "Echo": false,
+              "WelcomeMessage": "Welcome to Hubster! How can we help you?"
+          }
+      },
+      {
+          "integrationId": "00000000-0000-0000-0000-000000000002",
+          "hubId": "00000000-0000-0000-0000-000000000000",
+          "integrationTypeId": "Agent",
+          "channelId": "Direct",
+          "name": "Direct Agent (Websocket)",
+          "statusId": 3000,
+          "configuration": {
+              "Echo": true
+          }
+      }
+  ]
+
+.. list-table::
+    :widths: 5 50
+    :header-rows: 1   
+
+    * - HTTP Status
+      - Meaning
+    * - 200
+      - OK response. The body of the response will include the data requested.
+    * - 401
+      - Unauthorized. Token is invalid.
+    * - 403
+      - Forbidden. Access to the requested resource is forbidden.
+    * - 408
+      - Timed out. The request timed out.
+    * - 429
+      - Too many requests. API usage limit has been reached.
+    * - 500
+      - Internal server error. There was an internal issue with the service.
+    * - 503
+      - Service unavailable. The service is unavailable.  
+
+
+Get Collection
+**************
+
+Gets a list of integrations.
+
+**GET** */api/v1/integrations*
+
+**Headers**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Header     
+     - Details
+   * - Authorization
+     - Bearer ``your portal access token``
+   * - Content-Type
+     - ``application/json``
+
+**Url Arguments**
+
+.. list-table::
+   :widths: 15 10 60
+   :header-rows: 1
+
+   * - Argument     
+     - Mandatory
+     - Details
+   * - hubId
+     - No
+     - Filter by hub id.
+   * - pageNumber
+     - No
+     - The requested page number. *Must be >= 0*.
+   * - pageSize
+     - No
+     - The requested page size. *Must be >= 1 and <= 100*.
+
+| **Response** : 200 (OK) 
+
+| :ref:`paginated<ref_api_paginated_results>`
+
+.. code-block:: JSON
+
+  {
+        "pageNumber": 0,
+        "pageSize": 50,
+        "total": 2,
+        "results": [
+           {
+            "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a31",
+            "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a00",
+            "name": "Your New Cool Hub Name",
+            "description": "This hub is cool",    
+            "closeDormantConversation": 30,
+            "statusId": 2000
+          },
+          {
+            "hubId": "3bc1e69f-c520-446f-ab2c-01751fd66a32",
+            "tenantId": "abc1e69f-c888-875f-ee2c-45789fd66a01",
+            "name": "Your New Cool Hub Name 2",
+            "description": "This hub is cool 2",    
+            "closeDormantConversation": 30,
+            "statusId": 2000
+          }
+        ]
+    }
+
+.. list-table::
+    :widths: 5 50
+    :header-rows: 1   
+
+    * - HTTP Status
+      - Meaning
+    * - 200
+      - OK response. The body of the response will include the data requested.
     * - 400
       - Bad request. The body of the response will have :ref:`more info<ref_api_portal_error_codes>`.
     * - 401
@@ -720,136 +1076,4 @@ Get
       - Internal server error. There was an internal issue with the service.
     * - 503
       - Service unavailable. The service is unavailable.
-
-**Response Body Examples**
-
-  :underline:`TwilioSMS`
-
-  .. code-block:: JSON
-
-    {      
-      "configuration": {
-        "AcccountSid": "AC1fc1c172244...",
-        "AuthToken": "cb8c5367c3c458...",
-        "NumberSid": "PN667435536f4d...",
-        "PhoneNumber": "+1647...",
-          "Capabilities": {
-          "Mms": true,
-          "Sms": true,
-          "Voice": true
-          }
-        }
-    }
-
-  :underline:`Messenger`
-
-  .. code-block:: JSON
-
-    {        
-      "configuration": {
-        "PageAccessToken": "EAAeZ ..."
-      }
-    }
-
-  :underline:`Web Chat`
-
-  .. code-block:: JSON
-
-    {        
-      "configuration": {
-        "allowedOrigins": [
-          "localhost",
-          "hubster.io",
-          "demo1.hubster.io"
-        ],
-        "start":
-          [
-            {
-              "type": "text",
-              "text": "Welcome to Hubster! How can we help you?"
-            }
-          ]
-      }
-    }
-
-  :underline:`Direct`
-
-  .. code-block:: JSON
-
-    {        
-      "configuration": {
-        "integrationType": "TODO: Ross",
-        "echo": true,
-        "webhookUrl": "https://url_end_point.com",
-        "start":[
-            {
-              "type": "text",
-              "text": "Welcome to Hubster! How can we help you?"
-            }
-          ]
-        }
-    }
-
-  :underline:`System`
-
-  .. code-block:: JSON
-
-    {
-      "webhookUrl": "https://url_end_point.com",
-      "events": [
-        "message:customer",
-        "message:agent",
-        "message:bot"              
-      ]
-    }
-
-  .. list-table::
-    :widths: 15 10 60
-    :header-rows: 1
-
-    * - Property     
-      - Mandatory
-      - Details
-    * - webhookUrl
-      - Yes
-      - The endpoint to receive Hubster :ref:`Activities<ref_activities>`
-    * - events
-      - Yes
-      - The :ref:`activity event filter(s)<ref_webhooks_events>` to be event on.
-
-  **Example Response Body**
-
-  .. code-block:: JSON
-
-    {
-        "integrationId": "00000000-0000-0000-0000-000000000000",
-        "hubId": "00000000-0000-0000-0000-000000000000",
-        "integrationTypeId": "System",
-        "channelId": "System",
-        "name": "My cool integration name.",
-        "statusId": 3000,
-        "configuration": {
-            "events": [
-                "message:customer",
-                "message:agent",
-                "message:bot"
-            ],
-            "webhookUrl": "https://url_end_point.com",
-            "publicSigningKey": "3EF951F619CD4F5E820C73622C0F1A3C",
-            "privateSigningKey": "FA96D15568654A4482772E00BA941BCB"
-        }
-    }
-
-  :underline:`Slack`
-
-  .. code-block:: JSON
-
-    {        
-      "configuration": {
-        "BotAccessToken": "xoxb...",
-        "AppAccessToken": "xoxp...",
-        "DefaultPublicChannel": "general",
-        "TeamId": "T5P19466N"
-      }
-    }
 

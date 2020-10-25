@@ -46,9 +46,7 @@ the HTML webpage.
 
 By default, the webchat component will look like this:
 
-.. image:: images/default_chat.png
-           :align: center
-
+.. image:: images/default_chat.png           
 
 **Configuring the look-and-feel**
 
@@ -126,8 +124,7 @@ Below is an example configuration on how one would style the component using a b
 
 The above configuration yields the following theme.
 
-.. image:: images/blue_sample_chat.png
-           :align: center
+.. image:: images/blue_sample_chat.png           
 
 .. note::
     Before going live, it's best to **style** the webchat component first to suite your site's look-and-feel. 
@@ -215,6 +212,22 @@ Configuration
         | receives an :ref:`activity<ref_activities>` before it's displayed on the webchat list
         |
         | *onReceivedActivity(activity: Activity): void;*
+    * - onBeforeActivitySend
+      - No
+      - | A **JavaScript** method that will be invoked when the webchat component is 
+        | about to send a user :ref:`activity<ref_activities>` to Hubster's Engine service. The programer 
+        | has the option to inspect the activity and perform any action as it deems 
+        | necessary.
+        |
+        | Return **true** to allow the user activity to be sent, otherwise **false** to 
+        | ignore it.    
+        |
+        | *onBeforeActivitySend(activity: Activity): boolean;*
+
+        .. note::
+            | Typically this event is used when the user presses a **postback** button 
+            | event. The payload may contain a special action the program can then 
+            | inspect and preform a local action on the browser.
 
 
 .. _ref_styles_config:
@@ -371,25 +384,163 @@ See a more formal example below.
                 ...
             };  
       
-    * - buttons      
-      - xxx
+    * - buttons     
+      - Hubster supports the following **Postback** buttons.
+        
+        .. image:: images/postback_buttons.png
+                        
+        | To change the look-and-feel, we provide the following configures
+
+        
+        .. code-block:: JAVASCRIPT
+                
+            window.HUBSTER_CONFIG = {
+                styles: {                    
+                    buttons: {
+                        primary: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black'
+                        },
+                        primaryHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                        },
+                        info: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black'
+                        },
+                        infoHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                        },
+                        // see above properties for examples
+                        secondary: { ... },
+                        secondaryHover: { ... },
+                        success: { ... },
+                        successHover: { ... },
+                        warning: { ... },
+                        warningHover: { ... },
+                        danger: { ... },
+                        dangerHover: { ... },
+                    }                    
+                },
+                ...
+            };  
+
     * - quickReplies      
-      - xxx
+      - Hubster supports the following **Quick Reply** buttons.
+        
+        .. image:: images/quick_reply_buttons.png
+                        
+        | To change the look-and-feel, we provide the following configures
+
+        
+        .. code-block:: JAVASCRIPT
+                
+            window.HUBSTER_CONFIG = {
+                styles: {                    
+                    quickReplies: {
+                        primary: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black'
+                        },
+                        primaryHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                        },
+                        info: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black'
+                        },
+                        infoHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                        },
+                        // see above properties for examples
+                        secondary: { ... },
+                        secondaryHover: { ... },
+                        success: { ... },
+                        successHover: { ... },
+                        warning: { ... },
+                        warningHover: { ... },
+                        danger: { ... },
+                        dangerHover: { ... },
+                    }                    
+                },
+                ...
+            };  
+
     * - links      
-      - xxx
+      - Hubster supports the following **Link** buttons.
+        
+        .. image:: images/link_buttons.png
+                        
+        | To change the look-and-feel, we provide the following configures
+
+        
+        .. code-block:: JAVASCRIPT
+                
+            window.HUBSTER_CONFIG = {
+                styles: {                    
+                    links: {
+                        primary: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black',
+                            'textDecoration': 'none'
+                        },
+                        primaryHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow',
+                            'textDecoration': 'underline'
+                        },
+                        info: {
+                            'color': '#004F99',
+                            'backgroundColor': '#004F99',
+                            'borderColor': 'black',
+                            'textDecoration': 'none'
+                        },
+                        infoHover: {
+                            'color': 'white',
+                            'backgroundColor': 'green',
+                            'borderColor': 'yellow'
+                            'textDecoration': 'underline'
+                        },
+                        // see above properties for examples
+                        secondary: { ... },
+                        secondaryHover: { ... },
+                        success: { ... },
+                        successHover: { ... },
+                        warning: { ... },
+                        warningHover: { ... },
+                        danger: { ... },
+                        dangerHover: { ... },
+                    }                    
+                },
+                ...
+            };  
+
     * - listItemButtons      
       - xxx
     * - listButtons      
       - xxx
     
 
-
 Webchat Script Versions
 ***********************
 
 .. list-table::
     :widths: 5 50
-    :header-rows: 1
+    :header-rows: 1        
 
     * - Version
       - Reference

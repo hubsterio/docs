@@ -7,7 +7,7 @@ Hubs
 Create
 ******
 
-Create Hub.
+Creates a Hub.
 
 **POST** */api/v1/hubs*
 
@@ -107,7 +107,7 @@ Create Hub.
 Update
 ******
 
-Update Hub.
+Updates a Hub.
 
 **PUT** */api/v1/hubs/{hubId}*
 
@@ -123,6 +123,17 @@ Update Hub.
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - hubId
+     - The hub id affected.
 
 **Request Properties**
 
@@ -208,7 +219,11 @@ Update Hub.
 Delete
 ******
 
-Delete Hub.
+Deletes a Hub.
+
+.. warning:: 
+    This will delete all integrations and their registrations to their service provider.
+
 
 **DELETE** */api/v1/hubs/{hubId}*
 
@@ -224,6 +239,17 @@ Delete Hub.
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - hubId
+     - The hub id affected.
 
 **Response** : 200 (OK)
 
@@ -253,7 +279,7 @@ Delete Hub.
 Get
 ***
 
-Get Hub.
+Gets a Hub.
 
 **GET** */api/v1/hubs/{hubId}*
 
@@ -269,6 +295,18 @@ Get Hub.
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - hubId
+     - The hub id to get.
+
 
 **Response** : 200 (OK)
 
@@ -310,7 +348,7 @@ Get Hub.
 Get Collection
 **************
 
-Get Hub Collection.
+Gets a list of Hubs.
 
 **GET** */api/v1/hubs*
 
@@ -344,6 +382,7 @@ Get Hub Collection.
      - The requested page size. *Must be >= 1 and <= 100*
 
 | **Response** : 200 (OK) 
+
 | :ref:`paginated<ref_api_paginated_results>`
 
 .. code-block:: JSON

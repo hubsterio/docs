@@ -7,6 +7,8 @@ Tenants
 Get Client
 **********
 
+Gets a Client.
+
 **GET** */api/v1/tenants/clients/{clientId}*
 
 **Headers**
@@ -21,6 +23,18 @@ Get Client
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - clientId
+     - The client id to get.
+
 
 **Response** : 200 (OK)
 
@@ -91,6 +105,8 @@ Get Client
 Add Client Token
 ****************
 
+Adds a new Client Token.
+
 **POST** */api/v1/tenants/clients/{clientId}/tokens*
 
 **Headers**
@@ -105,6 +121,18 @@ Add Client Token
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - clientId
+     - The client id affected.
+
 
 **Request Properties**
 
@@ -170,6 +198,8 @@ Add Client Token
 Delete Client Token
 *******************
 
+Deletes (revokes) a Client Token.
+
 **DELETE** */api/v1/tenants/clients/{clientId}/tokens/{tokenId}*
 
 **Headers**
@@ -184,6 +214,19 @@ Delete Client Token
      - Bearer ``your portal access token``
    * - Content-Type
      - ``application/json``
+
+**Url Segments**
+
+.. list-table::
+   :widths: 15 60
+   :header-rows: 1
+
+   * - Segment     
+     - Details
+   * - clientId
+     - The client id affected.
+   * - tokenId
+     - The the token id to delete.
 
 **Response** : 200 (OK)
 
