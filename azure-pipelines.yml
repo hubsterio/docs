@@ -35,7 +35,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: 'make html'
-    workingDirectory: '$(Build.SourcesDirectory)/doc/'
+    workingDirectory: '$(Build.SourcesDirectory)/docs/docs/'
   displayName: 'Compile documentation'
 
 - task: CopyFiles@2
