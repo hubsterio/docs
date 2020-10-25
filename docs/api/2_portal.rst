@@ -12,7 +12,7 @@ Below is the list of API collections for Hubster's Portal service.
    portal/0_tenant
    portal/1_hub
    portal/2_integration
-   portal/3_transfers
+   portal/3_transfer_commands
    portal/4_response_commands
    
    

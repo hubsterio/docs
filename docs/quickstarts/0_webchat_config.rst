@@ -209,14 +209,15 @@ Configuration
     * - onReceivedActivity
       - No
       - | A **JavaScript** method that will be invoked when the webchat component 
-        | receives an :ref:`activity<ref_activities>` before it's displayed on the webchat list
+        | receives an :ref:`activity<ref_activities>` from the Hubster Engine service before it's displayed 
+        | on the webchat list.
         |
         | *onReceivedActivity(activity: Activity): void;*
     * - onBeforeActivitySend
       - No
       - | A **JavaScript** method that will be invoked when the webchat component is 
         | about to send a user :ref:`activity<ref_activities>` to Hubster's Engine service. The programer 
-        | has the option to inspect the activity and perform any action as it deems 
+        | has the option to inspect the activity and perform any action as deemed
         | necessary.
         |
         | Return **true** to allow the user activity to be sent, otherwise **false** to 
@@ -226,8 +227,8 @@ Configuration
 
         .. note::
             | Typically this event is used when the user presses a **postback** button 
-            | event. The payload may contain a special action the program can then 
-            | inspect and preform a local action on the browser.
+            | event. The **payload** of the postback may contain a special action that 
+            | programer can then inspect and preform a local action on the browser.
 
 
 .. _ref_styles_config:
@@ -389,7 +390,7 @@ See a more formal example below.
         
         .. image:: images/postback_buttons.png
                         
-        | To change the look-and-feel, we provide the following configures
+        | To change the look-and-feel, we provided the following configurations.
 
         
         .. code-block:: JAVASCRIPT
@@ -436,7 +437,7 @@ See a more formal example below.
         
         .. image:: images/quick_reply_buttons.png
                         
-        | To change the look-and-feel, we provide the following configures
+        | To change the look-and-feel, we provided the following configurations.
 
         
         .. code-block:: JAVASCRIPT
@@ -483,7 +484,7 @@ See a more formal example below.
         
         .. image:: images/link_buttons.png
                         
-        | To change the look-and-feel, we provide the following configures
+        | To change the look-and-feel, we provided the following configurations.
 
         
         .. code-block:: JAVASCRIPT
@@ -530,18 +531,19 @@ See a more formal example below.
             };  
 
     * - listItemButtons      
-      - Hubster supports the following **Link** buttons.
+      - Hubster supports the following **List Item** buttons. See buttons within the red outline.
+        
         
         .. image:: images/list_item_buttons.png
                         
-        | To change the look-and-feel, we provide the following configures
+        | To change the look-and-feel, we provided the following configurations.
 
     * - listButtons      
-      - Hubster supports the following **Link** buttons.
+      - Hubster supports the following **List** buttons. See buttons within the red outline.
         
         .. image:: images/list_buttons.png
                         
-        | To change the look-and-feel, we provide the following configures
+        | To change the look-and-feel, we provided the following configurations.
 
 
     
