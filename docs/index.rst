@@ -1,4 +1,4 @@
-Welcome to Hubster's Documentation
+Welcome to Hubster's Documentation Portal
 =========================================
 
 .. image:: images/logo.png
