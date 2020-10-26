@@ -72,3 +72,6 @@ dev.db-journal
 /readthedocs/settings/proxito_docker.py
 /readthedocs/settings/web_docker.py
 /build
+/.vs/docs/v16/.suo
+/.vs/ProjectSettings.json
+/.vs/slnx.sqlite
