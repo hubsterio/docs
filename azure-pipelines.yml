@@ -57,7 +57,7 @@ steps:
     rootDirectory: '$(Build.ArtifactStagingDirectory)'
     remoteDirectory: '/hubster-docs'
     trustSSL: true
-    displayName: 'FTP upload'
+  displayName: 'FTP upload'
 
 #- task: PublishBuildArtifacts@1
 #  inputs:
