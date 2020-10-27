@@ -46,6 +46,19 @@ steps:
     Contents: '**'
   displayName: 'Copy documentation files to artifact directory'
 
+# FTP upload
+# Upload files using FTP
+- taks FtpUpload@2
+  inputs:
+    credentialsOption: inputs
+    serverUrl: 40.79.79.150:21
+    username: devops
+    password: hU85T3rD0c5-Au7o&Bu1Ld
+    rootDirectory: '$(Build.ArtifactStagingDirectory)'
+    remoteDirectory: '/hubster-docs'
+    trustSSL: true
+    displayName: 'FTP upload'
+
 #- task: PublishBuildArtifacts@1
 #  inputs:
 #    PathtoPublish: '$(Build.ArtifactStagingDirectory)'
