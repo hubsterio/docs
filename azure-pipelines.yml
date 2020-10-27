@@ -51,7 +51,7 @@ steps:
 - taks FtpUpload@2
   inputs:
     credentialsOption: inputs
-    serverUrl: 40.79.79.150:21
+    serverUrl: '40.79.79.150:21'
     username: devops
     password: hU85T3rD0c5-Au7o&Bu1Ld
     rootDirectory: '$(Build.ArtifactStagingDirectory)'
