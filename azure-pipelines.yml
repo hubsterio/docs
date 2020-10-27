@@ -48,7 +48,7 @@ steps:
 
 # FTP upload
 # Upload files using FTP
-- taks FtpUpload@2
+- task: FtpUpload@2
   inputs:
     credentialsOption: inputs
     serverUrl: '40.79.79.150:21'
