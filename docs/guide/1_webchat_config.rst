@@ -115,7 +115,26 @@ Below is an example configuration on how one would style the component using a b
             }, 
             onReceivedActivity(activity) {                
                 console.log(activity);                        
-            },                                      
+            }, 
+            onConversation() {        
+                return {
+                    "bindingKey": "some_unique_userId",
+                    "properties": {
+                        "profile": {
+                            "full name": "SomeUserName",
+                            "gender": "female",
+                            "custom1": "value1",
+                            "custom2": "value2",
+                            ...
+                        },
+                        "additional": {
+                            "custom1": "value1",
+                            "custom2": "value2",
+                            ...
+                        }
+                    }
+                };
+            }                                                 
         };
         </script>
         <script src="https://hubsterdevcdn.azureedge.net/pub/scripts/webchat/hubster-webchat-1.0.min.js"></script>
@@ -229,6 +248,41 @@ Configuration
             | Typically this event is used when the user presses a **postback** button 
             | event. The **payload** of the postback may contain a special action that 
             | programer can then inspect and preform a local action on the browser.
+
+    * - onConversation
+      - No
+      - | A **JavaScript** method that will be invoked when the webchat component
+        | is about to **establish a conversation**. The developer has the option to 
+        | provide a unique binding key (typically a user id) and other properties,
+        | such as the user's name, etc.
+        |
+        | *onConversation(): EstablishConversation;*
+
+        .. code-block:: JAVASCRIPT            
+
+            {
+                "bindingKey": "some_unique_userId",
+                "properties": {
+                    "profile": {
+                        "full name": "SomeUserName",
+                        "gender": "female",
+                        "prop1": "value1",
+                        "prop2": "value2"                        
+                    },
+                    "additional": {
+                        "prop1": "value1",
+                        "prop2": "value2"                        
+                    }
+                }                
+            }
+
+        .. note::
+            | Typically this method is used if the web app hosting the webchat 
+            | component, knows some thing about the logged user. The web app can 
+            | provide a unique value for the **bindingKey**, typically the user Id and 
+            | at minimum, provide the user's name in the **properties.profile."full name"** 
+            | property.
+            
 
 
 .. _ref_styles_config:
