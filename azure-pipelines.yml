@@ -48,16 +48,28 @@ steps:
 
 # FTP upload
 # Upload files using FTP
-- task: FtpUpload@2
+# - task: FtpUpload@2
+#   inputs:
+#     credentialsOption: inputs
+#     serverUrl: 'ftp://40.79.79.150'
+#     username: devops
+#     password: hU85T3rD0c5-Au7o&Bu1Ld
+#     rootDirectory: '$(Build.ArtifactStagingDirectory)'
+#     remoteDirectory: '/hubster-docs'
+#     trustSSL: true
+#   displayName: 'FTP upload'
+
+- task: CopyFilesOverSSH@0
   inputs:
-    credentialsOption: inputs
-    serverUrl: 'sftp://40.79.79.150'
-    username: devops
-    password: hU85T3rD0c5-Au7o&Bu1Ld
-    rootDirectory: '$(Build.ArtifactStagingDirectory)'
-    remoteDirectory: '/hubster-docs'
-    trustSSL: true
-  displayName: 'FTP upload'
+    sshEndpoint: 'hubster-docs'
+    sourceFolder: '$(Build.ArtifactStagingDirectory)'
+    #contents: '**' 
+    targetFolder: 'home/ftp/hubster-docs'
+    cleanTargetFolder: true
+    #overwrite: true # Optional
+    failOnEmptySource: true
+    #flattenFolders: false # Optional
+  displayName: 'Copy files over SSH'
 
 #- task: PublishBuildArtifacts@1
 #  inputs:
