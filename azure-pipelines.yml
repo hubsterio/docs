@@ -63,8 +63,8 @@ steps:
   inputs:
     sshEndpoint: 'hubster-docs'
     sourceFolder: '$(Build.ArtifactStagingDirectory)'
-    #contents: '**' 
-    targetFolder: 'home/ftp/hubster-docs'
+    contents: '**' 
+    targetFolder: 'ftp/hubster-docs'
     cleanTargetFolder: true
     #overwrite: true # Optional
     failOnEmptySource: true
