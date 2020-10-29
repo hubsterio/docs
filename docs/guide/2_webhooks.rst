@@ -151,8 +151,120 @@ head over to Hubster's public `sample <https://github.com/hubsterio/samples>`_  
     `github <https://github.com/hubsterio/Hubster.Abstractions/tree/develop/Hubster.Abstractions/Models/Direct>`_  
     for direct reference.
 
-System Integration Activity Event Filters
-*****************************************
+
+Webhook - Payload 
+*****************
+
+Webhook endpoints will receive a payload that looks similar to the JSON snippet shown below.
+The root node contains the **conversation** details and the **activities** node contains 
+one or more :ref:`activities<ref_activities>`.
+
+.. code-block:: JSON
+
+    {
+      "hubId": "00000000-0000-0000-0000-000000000001",
+      "tenantId": "00000000-0000-0000-0000-000000000002",
+      "integrationId": "00000000-0000-0000-0000-000000000003",
+      "conversationId": "00000000-0000-0000-0000-000000000004",
+      "conversationProperties": {
+        "profile": {
+          "device": "Direct",
+          "full name": "Some customer name",
+          "prop1": "value1",
+          "prop2": "value2"
+        },
+        "additional": {
+          "prop1": "value1",
+          "prop2": "value2"
+        }
+      },	
+      "activities": [
+        {
+          "type": "message",
+          "eventTrigger": "message:customer",
+          "eventId": 1603933721542,
+          "externalId": "my-external-id",
+          "isEcho": false,
+          "interactionId": "00000000-0000-0000-0000-000000000005",
+          "flowProcess": "Default",
+          "sender": {
+            "integrationId": "00000000-0000-0000-0000-000000000001",
+            "integrationType": "Customer",
+            "channelType": "Direct",
+            "tokenId": "t+8qymYD1jp7wDSHG+3eUA=="
+          },
+          "recipient": {
+            "integrationId": "00000000-0000-0000-0000-000000000006",
+            "integrationType": "Agent",
+            "channelType": "Direct",
+            "tokenId": "971480cb-938c-4dfd-be4e-01756c833490.00000000-0000-0000-0000-000000000003"
+          },
+          "message": {
+            "type": "text",
+            "text": "Hi there!"			
+          }
+        }
+      ]
+    }
+
+
+Direct - Payload 
+****************
+
+The Direct outbound payload is similar to the Webhook outbound payload accept that, rather than
+having a collection of activities, the activities will be replaced with an :ref:`activity<ref_activities>` node.
+
+.. code-block:: JSON
+
+    {      
+      "hubId": "00000000-0000-0000-0000-000000000001",
+      "tenantId": "00000000-0000-0000-0000-000000000002",
+      "integrationId": "00000000-0000-0000-0000-000000000003",
+      "conversationId": "00000000-0000-0000-0000-000000000004",
+      "conversationProperties": {
+        "profile": {
+          "device": "Direct",
+          "full name": "Some customer name",
+          "prop1": "value1",
+          "prop2": "value2"
+        },
+        "additional": {
+          "prop1": "value1",
+          "prop2": "value2"
+        }
+      },	
+      "activity": {
+          "type": "message",
+          "eventTrigger": "message:customer",
+          "eventId": 1603933721542,
+          "externalId": "my-external-id",
+          "isEcho": false,
+          "interactionId": "00000000-0000-0000-0000-000000000005",
+          "flowProcess": "Default",
+          "sender": {
+            "integrationId": "00000000-0000-0000-0000-000000000001",
+            "integrationType": "Customer",
+            "channelType": "Direct",
+            "tokenId": "t+8qymYD1jp7wDSHG+3eUA=="
+          },
+          "recipient": {
+            "integrationId": "00000000-0000-0000-0000-000000000006",
+            "integrationType": "Agent",
+            "channelType": "Direct",
+            "tokenId": "971480cb-938c-4dfd-be4e-01756c833490.00000000-0000-0000-0000-000000000003"
+          },
+          "message": {
+            "type": "text",
+            "text": "Hi there!"			
+          }
+      }    
+    }
+
+
+
+
+Activity Event Filters
+**********************
 
 Below are list of of activity events that **system** integrations can register too. 
 System integrations must register to at least one event but can register to more as deemed necessary.
