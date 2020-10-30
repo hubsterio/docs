@@ -7,7 +7,9 @@ This section will provide guidance and usage on how to interact with Hubster’s
 
 Hubster’s APIs are designed using **REST** principles and most of our payloads are structured using **JSON**. Any exception to this rule will be noted where necessary.
 
-.. note:: Hubster APIs incorporate cross-origin resource sharing (**CORS**) whereby facilitating web applications to freely use our API in an authenticated and secure manner.
+.. note:: 
+    Hubster APIs incorporate cross-origin resource sharing (**CORS**) whereby facilitating web applications to 
+    freely use our API in an authenticated and secure manner.
 
 
 Environments
