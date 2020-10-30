@@ -3,10 +3,12 @@
 Activities
 ==========
 
-When integrating with disparate systems, data coming in or data going out, mostly like will come in 
-various shapes and formats. When dealing with a lot of integrations with similar functional 
-characteristics, but each having their own proprietary data specifics, it's important generalize these 
-differences in an agnostic common format. At Hubster, we call this common format an **Activity**. 
+When integrating with disparate systems, data coming in or data going out, most likely come in 
+various shapes and formats. When dealing with numerous integrations with similar functional 
+characteristics, each integration can have their own proprietary formats that differ from each other. 
+Because of these differences, it's important to generalize them into a common format that 
+is agnostic and consistent. At Hubster, we call this consistent format an **Activity**. 
+This is in essence, is the hallmark behind the **unified messaging platform as service**.
 
 This section will explain what an activity is, it's constituents and how it’s consumed by Hubster’s conversation pipeline. 
 See the depiction below for annotated description on how Hubster transforms both in and outbound data models.
@@ -78,13 +80,13 @@ or an :ref:`Action Type<ref_activities_action_types>`, but not both.
     * - Property
       - Description
     * - type
-      - The is the type of activity being described. Can only be **message** or **action** at this time. 
+      - The is the type of activity being described. Can either be a **message** or **action**. 
     * - eventTrigger
       - The source of the trigger. Typically this is the **sender** of of the activity. See :ref:`Integration Types<ref_api_integration_types>` 
     * - eventId
       - The epoch UNIX time in milliseconds when this event was initiated.
     * - externalId
-      - A custom external id that can be sent by custom integrations. Typically, this will is null.
+      - A custom external id that can be sent by custom integrations. Typically, this value will be null.
     * - isEcho
       - | A boolean state indicating wither the activity is an echo. Some custom integrations when sending an 
         | activity may wish to receive a feedback activity. This is because when sending an activity, the sender
@@ -110,8 +112,26 @@ or an :ref:`Action Type<ref_activities_action_types>`, but not both.
 Activity Source
 ^^^^^^^^^^^^^^^
 
-An activity will always contain a **sender** node who sent the activity and a **recipient** node who will receive the activity. 
+An activity will always contain a **sender** node who sent the activity, and a **recipient** node who will be receiving the activity. 
 The properties are identical but the values and the node name, indicates details of the sending and receiving parties.
+
+.. code-block:: JSON
+
+    {
+        "sender": {
+            "integrationId": "00000000-0000-0000-0000-000000000001",
+            "integrationType": "Customer",
+            "channelType": "Direct",
+            "tokenId": "t+8qymYD1jp7wDSHG+3eUA=="
+        },
+        "recipient": {
+            "integrationId": "00000000-0000-0000-0000-000000000006",
+            "integrationType": "Agent",
+            "channelType": "Direct",
+            "tokenId": "971480cb-938c-4dfd-be4e-01756c833490.00000000-0000-0000-0000-000000000003"
+        }
+    }  
+
 
 .. list-table::
     :widths: 5 50
@@ -134,20 +154,51 @@ The properties are identical but the values and the node name, indicates details
 Message Types
 ^^^^^^^^^^^^^
 
+An activity **message** supports the following **types**. Messages are an activity's first-class-citizen 
+as the make up the majority events being sent and received.
 
-.. public const string Text = "text";
-.. public const string Contact = "contact";
-.. public const string Card = "card";
-.. public const string Location = "location";
-.. public const string Attachment = "attachment";
-.. public const string Video = "video";
-.. public const string Audio = "audio";
-.. public const string Youtube = "youtube";
-.. public const string Vimeo = "vimeo";
-.. public const string Image = "image";
-.. public const string List = "list";
-.. public const string Carousel = "carousel";
-.. public const string Command = "command";
+Text
+~~~~
+
+Image      
+~~~~~
+
+Attachment      
+~~~~~~~~~~
+
+Audio      
+~~~~~
+
+Video         
+~~~~~
+
+Youtube             
+~~~~~~~
+
+
+Vimeo      
+~~~~~
+
+
+Location          
+~~~~~~~~
+
+Contact
+~~~~~~~
+
+Card       
+~~~~
+
+Carousel         
+~~~~~~~~
+
+
+List
+~~~~
+
+Command
+~~~~~~~
+    
 
 .. public const string Link = "link";
 .. public const string Postback = "postback";
