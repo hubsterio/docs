@@ -163,7 +163,7 @@ Webhook - Header
 ****************
 
 .. list-table::
-  :widths: 5 50
+  :widths: 15 50
   :header-rows: 1
 
   * - Key
@@ -177,8 +177,8 @@ Webhook - Header
   * - x-conversation-id
     - The conversation that this activity was enacted on.
   * - x-hubster-public-key
-    - | The public key for this integration. The endpoint can use this value to determine the 
-      | **private key** used to sign the payload.
+    - The public key for this integration. The endpoint can use this value to determine the 
+      **private key** used to sign the payload.
   * - x-hubster-signature
     - The HMAC signature of the payload. 
 
@@ -322,7 +322,7 @@ Webhook Retry Policy
 ********************
 
 .. list-table::
-    :widths: 10 20 20
+    :widths: 15 15 20
     :header-rows: 1
 
     * - Retry Attempt      

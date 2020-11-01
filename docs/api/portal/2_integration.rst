@@ -85,7 +85,7 @@ Creates an Integration.
 
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -370,7 +370,7 @@ Creates an Integration.
 
   {
     "code": "EAAFBmgAdBToBADCvmo5w10tmlh97uxhtorpi5Adrdo0wtwFfXfkNxxLAY29AxwBHJNfXH5rR...",
-    "state" : "TODO:"
+    "nonce" : "mo5w10t.mlh97uxh"
   }	
 
 .. list-table::
@@ -383,9 +383,9 @@ Creates an Integration.
   * - code
     - Yes
     - Slack oauth2 code.
-  * - state
+  * - nonce
     - Yes
-    - UNIX timespan plus client secret.
+    - Verification signature.
 
 **Response** 200 (OK)
 
@@ -453,14 +453,14 @@ Updates an Integration.
      - Unique name for integration per Hub.
    * - statusId
      - No
-     - | Integration status. 
+     - Integration status. 
        
        | Valid options are:        
-       | -- *Active* = 3000
-       | -- *Paused* = 3002
+       | -- *Active* = 3000 
+       | -- *Paused* = 3002               
    * - configuration
      - No
-     - | See :ref:`configuration<ref_portal_integration_update_config>` properties for each individual **channelId**.       
+     - See :ref:`configuration<ref_portal_integration_update_config>` properties for each individual **channelId**.       
 
 
 **Example Request Body** 
@@ -738,7 +738,7 @@ Gets an Integration.
 
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -964,7 +964,7 @@ Gets a list of integrations for a given :ref:`Channel Type<ref_api_channel_types
   ]
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -1055,7 +1055,7 @@ Gets a list of integrations.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status

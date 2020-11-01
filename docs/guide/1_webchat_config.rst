@@ -242,8 +242,8 @@ Configuration
         has the option to inspect the activity and perform any action as deemed
         necessary.
         
+        |
         | Return **true** to allow the user activity to be sent, otherwise **false** to ignore it.
-
         |
         | *onBeforeActivitySend(activity: Activity): boolean;*
 

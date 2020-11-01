@@ -187,7 +187,7 @@ HTTP Status Codes
 Hubster API HTTP Status codes.
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status

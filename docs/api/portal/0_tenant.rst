@@ -79,7 +79,7 @@ Gets a Client.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -173,7 +173,7 @@ Adds a new Client Token.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -231,7 +231,7 @@ Deletes (revokes) a Client Token.
 **Response** : 200 (OK)
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status

@@ -80,7 +80,7 @@ Creates a Hub.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -191,7 +191,7 @@ Updates a Hub.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -253,7 +253,7 @@ Deletes a Hub.
 **Response** : 200 (OK)
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -321,7 +321,7 @@ Gets a Hub.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -411,7 +411,7 @@ Gets a list of Hubs.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status

@@ -48,23 +48,7 @@ Get Conversation object using conversation identifier.
             "hubId": "...0000000000a2",
             "hub": {
                 "hubId": "...0000000000a2",
-                "tenantId": "...000000000001",
-                "tenant": {
-                    "tenantId": "...000000000001",
-                    "name": "Dev Tenant",
-                    "tenantTypeId": 105,
-                    "servicePackageTypeId": "Internal",
-                    "dataRetention": 90,
-                    "responseCommands": true,
-                    "externalCommands": true,
-                    "transferCommands": true,
-                    "translations": true,
-                    "sentiment": true,
-                    "historicalAccess": true,
-                    "statusId": 1000,
-                    "created": "2017-07-18T03:52:34.53",
-                    "modified": "2017-07-18T03:52:34.53"
-                },
+                "tenantId": "...000000000001",               
                 "name": "Dev Hub (Websocket)",
                 "description": "Dev Hub 2 (Websocket)",
                 "statusId": 2000,
@@ -73,8 +57,7 @@ Get Conversation object using conversation identifier.
             },
             "integrationTypeId": "Customer",
             "channelId": "Direct",
-            "name": "Direct Customer Webhook",
-            "configuration": "{\"webhook_url\": ... }",
+            "name": "Direct Customer Webhook",            
             "statusId": 3000,
             "created": "2018-01-01T00:00:00",
             "modified": "2018-01-01T00:00:00"
@@ -90,7 +73,7 @@ Get Conversation object using conversation identifier.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -162,7 +145,7 @@ Establish (create) new Conversation object.
 
 
 .. note:: 
-    Ross to explain dynamic nature of properties object.
+    TODO: explain dynamic nature of properties object.
 
 **Properties**
 
