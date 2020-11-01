@@ -1,14 +1,17 @@
+.. role:: underline
+    :class: underline
+
 .. _ref_activities:
 
 Activities
 ==========
 
 When integrating with disparate systems, data coming in or data going out, most likely come in 
-various shapes and formats. When dealing with numerous integrations with similar functional 
-characteristics, each integration can have their own proprietary formats that differ from each other. 
-Because of these differences, it's important to generalize them into a common format that 
-is agnostic and consistent. At Hubster, we call this consistent format an **Activity**. 
-This is in essence, is the hallmark behind the **unified messaging platform as service**.
+various shapes and formats. In Hubster's case, most integrations may have similar functionalities, 
+however, each integration on their own, have proprietary formats that differ from each other. 
+Because of these numerous differences, it's important to generalize their formats into a common format that 
+is agnostic and most of all consistent. At Hubster, we call this common format an **Activity**. 
+This in essence, is the hallmark behind the concept of **unified messaging**.
 
 This section will explain what an activity is, it's constituents and how it’s consumed by Hubster’s conversation pipeline. 
 See the depiction below for annotated description on how Hubster transforms both in and outbound data models.
@@ -20,7 +23,8 @@ See the depiction below for annotated description on how Hubster transforms both
 
 #. When data is sent by a specific integration type, the **inbound** RRF will transform this data into a Hubster activity for further consumption. 
 #. The conversation pipeline can now freely work and amend the activity without any knowledge of its original source format.
-#. Once the conversation pipeline completes its workflow, it will send the response to the **outbound** RRF which transforms the activity to the appropriate integration type’s proprietary format.
+#. Once the conversation pipeline completes its workflow, it will send the response to the **outbound** RRF which transforms 
+   the activity to the appropriate integration type’s proprietary format.
 
 
 Activity
@@ -30,7 +34,7 @@ An activity is fairly simple structure that either contains an :ref:`Message Typ
 or an :ref:`Action Type<ref_activities_action_types>`, but not both.
 
 .. note:: 
-    For sake of sample, both the **message** and **action** nodes are shown. 
+    For sake of sample, both **message** and **action** nodes are shown. 
     However, these nodes are mutually exclusive and will never be presented together 
     in actuality.
 
@@ -84,17 +88,18 @@ or an :ref:`Action Type<ref_activities_action_types>`, but not both.
     * - eventTrigger
       - The source of the trigger. Typically this is the **sender** of of the activity. See :ref:`Integration Types<ref_api_integration_types>` 
     * - eventId
-      - The epoch UNIX time in milliseconds when this event was initiated.
+      - The epoch UNIX time in milliseconds when this event was initiated. 
     * - externalId
       - A custom external id that can be sent by custom integrations. Typically, this value will be null.
     * - isEcho
-      - | A boolean state indicating wither the activity is an echo. Some custom integrations when sending an 
-        | activity may wish to receive a feedback activity. This is because when sending an activity, the sender
-        | tends to send minimal data. Having echo enabled, the sender will receive a more enriched payload 
-        | with additional data that can be important to the sender. For example, if the sender sends a 
-        | youtube link in the message text, Hubster will convert the activity to youtube :ref:`message type<ref_activities_message_types>` instead.
+      - A boolean state indicating wither the activity is an echo. Some custom integrations when sending an 
+        activity may wish to receive a feedback activity. This is because when sending an activity, the sender
+        tends to send minimal data. Having echo enabled, the sender will receive a more enriched payload 
+        with additional data that can be important to the sender. For example, if the sender sends a 
+        youtube link in the message text, Hubster will convert the activity to youtube 
+        :ref:`message type<ref_activities_message_types>` instead.
     * - interactionId
-      - The interaction id for this activity. This only applicable to **message** types.
+      - The interaction id for this activity. This only applies to **message** types.
     * - flowProcess
       - The pipeline flow that was taken. The current values are **Default** or **AutoReplay**.
     * - sender
@@ -102,9 +107,11 @@ or an :ref:`Action Type<ref_activities_action_types>`, but not both.
     * - recipient
       - The recipient (receiver) :ref:`source<ref_activities_sources>` of this activity.
     * - message
-      - If the activity.type is **message** then this value will be set. See :ref:`message type<ref_activities_message_types>` for more details
+      - If the *activity.type* is **message** then this value will is set. 
+        See :ref:`message type<ref_activities_message_types>` for more details
     * - action
-      - If the activity.type is **action** then tis value will be set. See :ref:`action type<ref_activities_action_types>` for more details
+      - If the *activity.type* is **action** then tis value will is set. 
+        See :ref:`action type<ref_activities_action_types>` for more details
 
 
 .. _ref_activities_sources:
@@ -155,7 +162,7 @@ Message Types
 ^^^^^^^^^^^^^
 
 An activity **message** supports the following **types**. Messages are an activity's first-class-citizen 
-as the make up the majority events being sent and received.
+as they make up the majority of events being sent and received.
 
 Text
 ~~~~

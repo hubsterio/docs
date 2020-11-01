@@ -7,7 +7,7 @@ Conversations
 Get Conversation
 ****************
 
-Get Conversation object using convresation identifier.
+Get Conversation object using conversation identifier.
 
 **GET** */api/v1/conversations/{conversationId}*
 
@@ -149,10 +149,11 @@ Establish (create) new Conversation object.
      - Binding key used to get conversation.
    * - channelType
      - Yes
-     - | Type of channel to filter by.
+     - Type of channel to filter by.
+     
+       Valid options is:
 
-       | Valid options is:        
-       |  - *Direct* = 2000       
+       -- *Direct* = 2000       
    * - properties
      - No
      - See :ref:`properties<ref_engine_properties_establish_conversation>` object for more info.

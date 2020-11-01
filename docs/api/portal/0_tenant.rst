@@ -148,8 +148,8 @@ Adds a new Client Token.
      - Unique tenant name for Hub.
    * - expiration       
      - No
-     - | Expiration date when this token will no longer be valid. If no expiration date 
-       | was provide, then this token lives forever.     
+     - Expiration date when this token will no longer be valid. If no expiration date 
+       was provide, then this token lives forever.     
 
 **Example Request Body**
 

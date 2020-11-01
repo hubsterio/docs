@@ -121,12 +121,10 @@ Below is a full list of all possible Hubster Portal REST API error codes.
      - Validation failed. Property not supported.
    * - PRT000304
      - 400
-     - | Request parameter has bad format. Expected to be a valid ``decimal``
-       | value.
+     - Request parameter has bad format. Expected to be a valid ``decimal`` value.
    * - PRT000305
      - 400
-     - | Request parameter has bad format. Expected to be a valid ``GUID`` 
-       | value.
+     - Request parameter has bad format. Expected to be a valid ``GUID`` value.
    * - PRT000306
      - 400
      - Request collection must contain one or more elements.
@@ -135,8 +133,7 @@ Below is a full list of all possible Hubster Portal REST API error codes.
      - Messaged was empty.
    * - PRT000308
      - 400
-     - | Request body must contain Location, either an address and/or 
-       | latitude/longitude coordinates.
+     - Request body must contain Location, either an address and/or latitude/longitude coordinates.
    * - PRT000400
      - 400
      - Tenant already exists.
@@ -157,8 +154,7 @@ Below is a full list of all possible Hubster Portal REST API error codes.
      - An integration with name already exists.
    * - PRT000701
      - 400
-     - | An integration with same name has already been assign to a hub. You can 
-       | only add this channel once across all hubs.
+     - An integration with same name has already been assign to a hub. You can only add this channel once across all hubs.
    * - PRT000799
      - 404
      - Integration not found.
@@ -264,8 +260,7 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - Conversation request is missing required property.
    * - ENG003002
      - 400
-     - | Conversation request parameter has bad format. Expected to be a valid 
-       | ``GUID`` value.
+     - Conversation request parameter has bad format. Expected to be a valid ``GUID`` value.
    * - ENG005000
      - 400
      - Direct Inbound request requires ``body`` to be present.
@@ -277,37 +272,31 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - Direct Inbound request does not support provided property.
    * - ENG005003
      - 400
-     - | Direct Inbound request must contain one of the following sections: ``root.message`` 
-       | or ``root.action``.
+     - Direct Inbound request must contain one of the following sections: ``root.message`` or ``root.action``.
    * - ENG005004
      - 400
-     - | Direct Inbound request can only contain one root with the following sections: 
-       | ``root.message`` or ``root.action``.
+     - Direct Inbound request can only contain one root with the following sections: ``root.message`` or ``root.action``.
    * - ENG005015
      - 400
      - Direct Inbound request collection must contain one or more elements.
    * - ENG005020
      - 400
-     - | Direct Inbound request parameter has bad format. Expected to be a valid ``GUID`` 
-       | value.
+     - Direct Inbound request parameter has bad format. Expected to be a valid ``GUID`` value.
    * - ENG005021
      - 400
-     - | Direct Inbound request parameter has bad format. Expected to be a valid 
-       | ``decimal`` value.
+     - Direct Inbound request parameter has bad format. Expected to be a valid ``decimal`` value.
    * - ENG005023
      - 400
      - Direct Inbound request body was empty.
    * - ENG005024
      - 400
-     - | Direct Inbound request body must contain ``Location``, either an ``address`` and/or 
-       | ``latitude/longitude`` coordinates.
+     - Direct Inbound request body must contain ``Location``, either an ``address`` and/or ``latitude/longitude`` coordinates.
    * - ENG005500
      - 404
      - Hub does not exist.
    * - ENG005501
      - 400
-     - | Provided Hub does not have any Agent or Bot integration configured to receive or 
-       | interact with customer messages.
+     - Provided Hub does not have any Agent or Bot integration configured to receive or interact with customer messages.
    * - ENG006000
      - 404
      - Provided integration does not exist.
@@ -319,8 +308,7 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - Customer is no longer responding to messages.
    * - ENG006502
      - 400
-     - | Your Hubster integration has been terminated and is no longer active. Please contact 
-       | your Administrator.
+     - Your Hubster integration has been terminated and is no longer active. Please contact your Administrator.
    * - ENG006503
      - 400
      - Conversation was paused.
@@ -335,8 +323,7 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - Conversation encountered a runtime related issue.
    * - ENG007510
      - 400
-     - | Customer failed to receive your message. This was due to an unauthorized issue on 
-       | their end. Please check with your Administrator.
+     - Customer failed to receive your message. This was due to an unauthorized issue on their end. Please check with your Administrator.
    * - ENG007511
      - 400
      - A web related issue was detected on Hub.
@@ -366,15 +353,13 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - The other party tried to send you a file but failed.
    * - ENG009000
      - 400
-     - | Invalid command. You must have an actually command in front of the double 
-       | colon e.g. ``::mycommand [args]...``
+     - Invalid command. You must have an actually command in front of the double colon e.g. ``::mycommand [args]...``
    * - ENG009001
      - 400
      - Unknown command.
    * - ENG009200
      - 400
-     - | Command was not found. Please type ``::{1} --list`` to see the full list of available 
-       | commands.
+     - Command was not found. Please type ``::{1} --list`` to see the full list of available commands.
    * - ENG009201
      - 400
      - No commands have been configured for this hub.

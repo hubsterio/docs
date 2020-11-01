@@ -55,10 +55,10 @@ Creates an Integration.
      - | Integration status. 
 
        | Valid options are:        
-       |  - *Active* = 3000
-       |  - *Paused* = 3002
+       | -- *Active* = 3000
+       | -- *Paused* = 3002
        
-       | Default is *Active* = 3000, if no value supplied.
+       Default is *Active* = 3000, if no value supplied.
    * - configuration
      - Yes
      - See :ref:`configuration<ref_portal_integration_create_config>` properties for each individual **channelId**.
@@ -283,8 +283,8 @@ Creates an Integration.
     - If yes, when an activity is received from this integration, it will echo it back.
   * - webhookUrl
     - No
-    - | The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
-      | If not supplied, activities will be delivered via websockets.        
+    - The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
+      If not supplied, activities will be delivered via websockets.        
   * - start
     - No
     - An array of Hubster :ref:`messages types<ref_activities_message_types>`.
@@ -454,11 +454,10 @@ Updates an Integration.
    * - statusId
      - No
      - | Integration status. 
-
+       
        | Valid options are:        
-       |  - *Active* = 3000
-       |  - *Paused* = 3002
-
+       | -- *Active* = 3000
+       | -- *Paused* = 3002
    * - configuration
      - No
      - | See :ref:`configuration<ref_portal_integration_update_config>` properties for each individual **channelId**.       
@@ -588,8 +587,8 @@ Updates an Integration.
     - If yes, when an activity is received from this integration, it will echo it back.
   * - webhookUrl
     - No
-    - | The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
-      | If not supplied, activities will be delivered via websockets.        
+    - The endpoint to receive Hubster :ref:`Activities<ref_activities>`.
+      If not supplied, activities will be delivered via websockets.        
   * - regenerateKeys
     - No
     - This forces a new set of public/private keys to be generated.

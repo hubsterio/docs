@@ -1,19 +1,25 @@
 Webhooks
 ========
 
-This section describes the necessary considerations along with an example, **on-how-to** prepare your webhook endpoint, 
-to safely trust incoming messages sent by Hubster. This only applies to integration types that support 
-webhooks such as the integration types below:
+This section describes the necessary steps and considerations when developing a webhook integration. An example is  
+provided, detailing how to implement your webhook endpoint to trust incoming payloads sent by Hubster. 
+
+Webhooks are only supported by the following integration types:
 
 * System
 * Direct
 * BYOI (Bring your own Integration)
 
+
+
 .. warning:: 
     For **Direct** and **BYOI** integration types, they have the option to either receive 
-    activities via **webhooks** vs **websockets**. If an integration has been configured using websockets and 
+    activities via **webhooks** or **websockets**. If an integration has been configured using websockets and 
     its endpoint is unreachable, Hubster will not enforce it's :ref:`retry policy<ref_webhooks_retry>` as websockets 
     adhere to **fire-and-forget** paradigm.
+
+    Furthermore, if an integration is configured for **websockets**, then this section is **not applicable**. 
+    Websockets are secured through an authenticated connection thus HMAC verification is redundant and unnecessary.
 
 
 HMAC Signature Validation
@@ -152,7 +158,32 @@ head over to Hubster's public `sample <https://github.com/hubsterio/samples>`_  
     for direct reference.
 
 
-Webhook - Payload 
+
+Webhook - Header
+****************
+
+.. list-table::
+  :widths: 5 50
+  :header-rows: 1
+
+  * - Key
+    - Value
+  * - x-source-system
+    - The sending system source. This value will always be **engine.hubster.io**
+  * - x-hub-id
+    - The hub that that triggered integration belongs too.
+  * - x-integration-id
+    - The integration that was triggered.
+  * - x-conversation-id
+    - The conversation that this activity was enacted on.
+  * - x-hubster-public-key
+    - | The public key for this integration. The endpoint can use this value to determine the 
+      | **private key** used to sign the payload.
+  * - x-hubster-signature
+    - The HMAC signature of the payload. 
+
+
+System - Payload 
 *****************
 
 Webhook endpoints will receive a payload that looks similar to the JSON snippet shown below.
@@ -259,8 +290,6 @@ having a collection of activities, the activities will be replaced with an :ref:
           }
       }    
     }
-
-
 
 
 Activity Event Filters

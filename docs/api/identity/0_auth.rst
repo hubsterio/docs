@@ -37,19 +37,19 @@ Authentication
      - | The client id of the Hubster service you plan to authenticate against.
        
        | Typical, it will be one of following:       
-       |  - **hubster.portal.api.000000000....**
-       |  - **hubster.engine.api.000000000....**
+       |  -- **hubster.portal.api.000000000....**
+       |  -- **hubster.engine.api.000000000....**
 
-       | Please refer to :ref:`Identity to API Resource Interaction<ref_api_identity_interaction>` for the resources accessible
-       | on a per **client_id** basis.
+       Please refer to :ref:`Identity to API Resource Interaction<ref_api_identity_interaction>` for the resources accessible
+       on a per **client_id** basis.
    * - client_secret       
      - Yes
      - The client secret for the **client_id** used.
 
 .. note:: 
-    | The request body is of **grant_type** see the following example format below:
-
-    | *grant_type=client_credentials&client_id=hubster.portal.api.0000000...&client_secret=SMWvD7W...*
+    The request body is of **grant_type** see the following example format below:
+    
+    *grant_type=client_credentials&client_id=hubster.portal.api.0000000...&client_secret=SMWvD7W...*
 
 **Response** : 200 (OK)
 
