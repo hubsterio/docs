@@ -162,33 +162,489 @@ Message Types
 ^^^^^^^^^^^^^
 
 An activity **message** supports the following **types**. Messages are an activity's first-class-citizen 
-as they make up the majority of events being sent and received.
+as they make up the majority of events being sent and received between integrations.
 
 Text
 ~~~~
 
-Image      
-~~~~~
+Sources allowed to send: **customer**, **agent** and **bot**.
 
-Attachment      
-~~~~~~~~~~
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **text**.
+    * - text
+      - See **note**
+      - | The text message to send.
+           
+        | Links such as **Image**, **Youtube**, **Vimeo**, **Video**, **Audio** or **location**, may convert this message type to it's property message equivalent 
+          if no additional text was provided. If additional text was provided, then Hubster will add a message equivalent, such as **Youtube**, for example
+          to the items array.
+    * - items
+      - See **note**
+      - | A list of items containing zero or more of the following **messages types**:
+        
+        * youtube 
+        * vimeo
+        * video 
+        * audio
+        * image
+        * attachment
+        * location
+        * contact
+        * card
+    * - actions
+      - See **note**
+      - | A list of actions containing zero or more of the following **action types**:      
 
-Audio      
-~~~~~
+        * postback
+        * reply
+        * link        
 
-Video         
-~~~~~
+.. note:: 
+    The **text message** type must provide one or more of the following **mandatory** values:
+    
+    * text
+    * items
+    * actions
+
+**Examples**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "text",								
+            "text": "Hello there, how can I help you?"
+          }  
+
+      - .. image:: images/activity_text_ex_01.png
+
+    * - .. code-block:: JSON
+
+          {
+            "type": "text",
+            "text": "Here's my contact info",
+            "items": [
+              {
+                "type": "contact",
+                "imageUrl": "https://site.com/eva.png",
+                "title": "Eva Green",
+                "subtitle": "Mighty Health",
+                "properties": [
+                  { 
+                    "key": "Title",
+                    "value": "Mighty Health"
+                  },
+                  {
+                    "key": "Address",
+                    "value": "123 Main Street, Maple, ON",
+                    "type": "address;work"
+                  },
+                  {
+                    "key": "Cell",
+                    "value": "(416) 555-0001",
+                    "type": "phone;cell"
+                  },
+                  {
+                    "key": "Email",
+                    "value": "eva@mightyhealth.com",
+                    "type": "email"
+                  }
+                ],
+                "channels": [
+                  {
+                    "type": "Webchat",
+                    "metadata": [
+                      {
+                        "key": "caption-show",
+                        "value": "true"
+                      },
+                      {
+                        "key": "caption-color",
+                        "value": "white"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }          
+
+      - .. image:: images/activity_text_ex_02.png            
+
+    * - .. code-block:: JSON
+
+          {
+            "type": "text",
+            "text": "Select one of the following options",
+            "actions": [
+              {
+                "type": "postback",
+                "title": "Yes",
+                "payload": "Yes",
+                "channels": [
+                  {
+                    "type": "Webchat",
+                    "metadata": [
+                      {
+                        "key": "type",
+                        "value": "primary"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "postback",
+                "title": "Maybe",
+                "payload": "Maybe",
+                "channels": [
+                  {
+                    "type": "Webchat",
+                    "metadata": [
+                      {
+                        "key": "type",
+                        "value": "danger"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "reply",
+                "title": "No",
+                "payload": "No",
+                "channels": [
+                  {
+                    "type": "Webchat",
+                    "metadata": [
+                      {
+                        "key": "type",
+                        "value": "success"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "link",
+                "title": "hubster",
+                "url": "https://hubster.io",
+                "channels": [
+                  {
+                    "type": "Webchat",
+                    "metadata": [
+                      {
+                        "key": "type",
+                        "value": "info"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+
+
+      - .. image:: images/activity_text_ex_03.png          
 
 Youtube             
 ~~~~~~~
+
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **youtube**.
+    * - url
+      - Yes
+      - | The youtube url, which can be in anyone of the following formats:
+        
+        * `https://youtube.com/embed/x1245b` (preferred)
+        * `https://youtube.com/watch?v=x1245b`
+        * `https://m.youtube.com/watch?v=x1245b`
+        * `https://youtu.be/watch?v=x1245b`     
+        
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "youtube",								
+            "url": "https://youtube.com/watch?v=x1245b"
+          }  
+
+      - .. image:: images/activity_youtube_ex_01.png
 
 
 Vimeo      
 ~~~~~
 
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **vimeo**.
+    * - url
+      - Yes
+      - | The Vimeo url, which can be in anyone of the following formats:
+        
+        * `https://player.vimeo.com/video/12345678` (preferred)
+        * `https://vimeo.com/12345678`
+        
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "vimeo",								
+            "url": "player.vimeo.com/video/12345678"
+          }  
+
+      - .. image:: images/activity_vimeo_ex_01.png
+
+
+Video         
+~~~~~
+
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **video**.
+    * - url
+      - Yes
+      - | The video url, which can be in anyone of the following formats:
+        
+        * `.mp4` (preferred)
+        * `.mov`
+
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "video",
+            "url": "http://site.com/myvideo.mp4"
+          }  
+
+      - .. image:: images/activity_video_ex_01.png
+
+
+Audio      
+~~~~~
+
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **audio**.
+    * - url
+      - Yes
+      - | The audio url, which can be in anyone of the following formats:
+        
+        * `.mp3` (preferred)
+        * `.mp4`
+        * `.wav`
+    
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "audio",
+            "url": "http://site.com/myaudio.mp3"
+          }  
+
+      - .. image:: images/activity_audio_ex_01.png
+
+
+Image      
+~~~~~
+
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **image**.
+    * - url
+      - Yes
+      - The image url.
+    * - urlAnchor
+      - No
+      - The url anchor. Used when user clicks on image.
+    * - alt
+      - No
+      - The alternate text for this image.
+    * - title
+      - No
+      - The text to show on the image. 
+        
+        | **Note**: title is channel specific and may not render on certain channel.
+    * - channels
+      - No
+      - Channel specific applied properties. The example below shows how to render 
+        the title on a **Webchat** channel.
+
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "image",
+            "url": "http://site.com/myimage.png",
+            "alt": "Some alternate text",
+            "Eva Green",
+            "channels": [{
+                "type": "Webchat",
+                "metadata": [
+                    { 
+                      "key": "caption-show", 
+                      "value": "true" 
+                    },
+                    { 
+                      "key": "caption-color", 
+                      "value": "white" 
+                    }
+                ]
+            }]
+          }  
+
+      - .. image:: images/activity_image_ex_01.png
+
+
+
+Attachment      
+~~~~~~~~~~
+
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **attachment**.
+    * - label
+      - Yes
+      - The label for this attachment.
+    * - mimeType
+      - Yes
+      - The mime type for this attachment i.e pdf, etc.
+    * - url
+      - Yes
+      - The attachment url.
+    
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "attachment",
+            "label": "Year end report",
+            "mimeType": "pdf",
+            "url": "http://site.com/myfile.pdf"
+          }  
+
+      - .. image:: images/activity_attachment_ex_01.png
+
+
 
 Location          
 ~~~~~~~~
+
+
 
 Contact
 ~~~~~~~
@@ -198,7 +654,6 @@ Card
 
 Carousel         
 ~~~~~~~~
-
 
 List
 ~~~~
