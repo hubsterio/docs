@@ -108,7 +108,7 @@ Below is an example of a **Bad Request** (400) returned by the Portal API.
             },
             {
                 "code": 206,
-                "description": "Value '50000 'for parameter type 'statusId' is not supported. (code: PRT000206)"
+                "description": "Value '50000' is not valid. (code: PRT000206)"
             }
         ]
     }
@@ -172,11 +172,11 @@ Below is an example from Portal API resource returning Hubs as paginated respons
     * - pageSize
       - The requested page size.
     * - total
-      - | The total number of results across all pages. 
-        | **Note**: the total number of items does not necessary equal the number of result items.            
+      - The total number of results across all pages. 
+        **Note**: the total number of items does not necessary equal the number of result items.            
     * - results
-      - | A list of response models returned by the API resource.
-        | **Note**: the result models may differ on per call basis.
+      - A list of response models returned by the API resource. 
+        **Note**: the result models may differ on per call basis.
 
 
 .. _ref_api_status_codes:
@@ -187,7 +187,7 @@ HTTP Status Codes
 Hubster API HTTP Status codes.
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status

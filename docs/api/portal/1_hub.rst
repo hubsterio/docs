@@ -42,19 +42,18 @@ Creates a Hub.
    * - closeDormantConversation       
      - No
      - | The number of days to close this conversation if dormant. If no value 
-       | was supplied or is equal to 0 (zero), the conversation will remain open.
-
-       | It should be noted that conversations can be closed by the business
-       | at any time.
+         was supplied or is equal to 0 (zero), the conversation will remain open. 
+       
+       It should be noted that conversations can be closed by the business at any time.
    * - statusId
      - No
      - | Hub status.
-
+       |
        | Valid options are:        
-       |  - *Active* = 2000
-       |  - *Paused* = 2002
+       | -- *Active* = 2000
+       | -- *Paused* = 2002
 
-       | Default is *Active* = 2000, if no value supplied.
+       Default is *Active* = 2000, if no value supplied.
 
 **Example Request Body**
 
@@ -81,7 +80,7 @@ Creates a Hub.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -153,19 +152,19 @@ Updates a Hub.
    * - closeDormantConversation       
      - No
      - | The number of days to close this conversation if dormant. If no value 
-       | was supplied or is equal to 0 (zero), the conversation will remain open.
+         was supplied or is equal to 0 (zero), the conversation will remain open.
 
-       | It should be noted that conversations can be closed by the business
-       | at any time.
+       It should be noted that conversations can be closed by the business
+       at any time.
    * - statusId
      - No
      - | Hub status.
 
        | Valid options are:        
-       |  - *Active* = 2000
-       |  - *Paused* = 2002
+       | -- *Active* = 2000
+       | -- *Paused* = 2002
 
-       | Default is *Active* = 2000, if no value supplied.
+       Default is *Active* = 2000, if no value supplied.
 
 **Example Request Body**
 
@@ -192,7 +191,7 @@ Updates a Hub.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -254,7 +253,7 @@ Deletes a Hub.
 **Response** : 200 (OK)
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -322,7 +321,7 @@ Gets a Hub.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status
@@ -412,7 +411,7 @@ Gets a list of Hubs.
     }
 
 .. list-table::
-    :widths: 5 50
+    :widths: 10 50
     :header-rows: 1   
 
     * - HTTP Status

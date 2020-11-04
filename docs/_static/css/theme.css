@@ -11,3 +11,13 @@ html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}article,aside,det
 .underline {
 	text-decoration: underline;
 }
+
+/* override table no-wrap */
+.wy-table-responsive table td, 
+.wy-table-responsive table th {
+	white-space: normal;	
+}
+
+html.writer-html5 .rst-content table.docutils td>p {    
+    line-height: 20px;	
+}

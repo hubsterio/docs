@@ -185,76 +185,78 @@ Configuration
         | The default is: https://events.hubster.io (production)
     * - sessionTTL 
       - No
-      - | How long the user's conversation should last in mins. The user's conversion is 
-        | maintain even after they close their browser. If the user does not visit the 
-        | site after the sessionTLL has expired, a new conversation will be established.
-        | Sessions are based on a rolling window, meaning that the session's start time
-        | will reset if the user revisits the site prior to the session expiring.
-        | The default is 1440 (1 day).
+      - How long the user's conversation should last in mins. The user's conversion is 
+        maintain even after they close their browser. If the user does not visit the 
+        site after the sessionTLL has expired, a new conversation will be established.
+        Sessions are based on a rolling window, meaning that the session's start time
+        will reset if the user revisits the site prior to the session expiring.
+        The default is 1440 (1 day).
     * - integrationId
       - Yes
       - The integration id for this Webchat integration. 
     * - openOnNewMessage
       - No
-      - | This tells the webchat component when closed, to open the chat window if 
-        | a new message immediately arrives.
-        | The default is false.
+      - This tells the webchat component when closed, to open the chat window if 
+        a new message immediately arrives. The default is false.
     * - styling
       - No
-      - | Set this value to true when styling the webchat component. The webchat 
-        | will provide a list of all the available webchat widgets for you to style.
-        | The default is false.
+      - Set this value to true when styling the webchat component. The webchat 
+        will provide a list of all the available webchat widgets for you to style. The default is false.
     * - styles
       - No
       - A collection of styles. See the :ref:`Styles Configuration<ref_styles_config>` section.
     * - mountOnLoad
       - No
-      - | A **JavaScript** method that will be invoked when the webchat component 
-        | is first loaded on the host webpage. This method when provided, allows
-        | the developer to determine how long of a **delay** (in milliseconds) the 
-        | webchat component should wait before **mounting** (open).
+      - A **JavaScript** method that will be invoked when the webchat component 
+        is first loaded on the host webpage. This method when provided, allows
+        the developer to determine how long of a **delay** (in milliseconds) the 
+        webchat component should wait before **mounting** (open).
+        
         |
         | :underline:`On page reload`          
-        | - a return value < 0 indicates no mounting should occur
-        | - a return value >= 0 indicates mount after number of milliseconds
-        |
-        | *mountOnLoad(): number;*
+        | -- a return value < 0 indicates no mounting should occur
+        | -- a return value >= 0 indicates mount after number of milliseconds
+        
+        *mountOnLoad(): number;*
+
     * - onMount
       - No
-      - | A **JavaScript** method that will be invoked when the webchat component 
-        | has been mounted (open) or docked (closed).
+      - A **JavaScript** method that will be invoked when the webchat component 
+        has been mounted (open) or docked (closed).
+        
         |
         | *onMount(mounted: boolean): void;*
+
     * - onReceivedActivity
       - No
-      - | A **JavaScript** method that will be invoked when the webchat component 
-        | receives an :ref:`activity<ref_activities>` from the Hubster Engine service before it's displayed 
-        | on the webchat list.
+      - A **JavaScript** method that will be invoked when the webchat component 
+        receives an :ref:`activity<ref_activities>` from the Hubster Engine service before it's displayed 
+        on the webchat list.
+
         |
         | *onReceivedActivity(activity: Activity): void;*
     * - onBeforeActivitySend
       - No
-      - | A **JavaScript** method that will be invoked when the webchat component is 
-        | about to send a user :ref:`activity<ref_activities>` to Hubster's Engine service. The programer 
-        | has the option to inspect the activity and perform any action as deemed
-        | necessary.
+      - A **JavaScript** method that will be invoked when the webchat component is 
+        about to send a user :ref:`activity<ref_activities>` to Hubster's Engine service. The programer 
+        has the option to inspect the activity and perform any action as deemed
+        necessary.
+        
         |
-        | Return **true** to allow the user activity to be sent, otherwise **false** to 
-        | ignore it.    
+        | Return **true** to allow the user activity to be sent, otherwise **false** to ignore it.
         |
         | *onBeforeActivitySend(activity: Activity): boolean;*
 
-        .. note::
-            | Typically this event is used when the user presses a **postback** button 
-            | event. The **payload** of the postback may contain a special action that 
-            | programer can then inspect and preform a local action on the browser.
+        .. note:: 
+            | Typically this event is used when the user presses a **postback** button event. The **payload** of the postback may contain a special action that  programer can then inspect and preform a local action on the browser.
 
     * - onConversation
       - No
-      - | A **JavaScript** method that will be invoked when the webchat component
-        | is about to **establish a conversation**. The developer has the option to 
-        | provide a unique binding key (typically a user id) and other properties,
-        | such as the user's name, etc.
+      - A **JavaScript** method that will be invoked when the webchat component
+        is about to **establish a conversation**. The developer has the option to 
+        provide a unique binding key (typically a user id) and other properties,
+        such as the user's name, etc.
+        
         |
         | *onConversation(): EstablishConversation;*
 
@@ -277,12 +279,8 @@ Configuration
             }
 
         .. note::
-            | Typically this method is used if the web app hosting the webchat 
-            | component, knows some thing about the logged user. The web app can 
-            | provide a unique value for the **bindingKey**, typically the user Id and 
-            | at minimum, provide the user's name in the **properties.profile."full name"** 
-            | property.
-            
+            | Typically this method is used if the web app hosting the webchat component, knows some thing about the logged user. The web app can provide a unique value for the **bindingKey**, typically the user Id and at minimum, provide the user's name in the **properties.profile."full name"** property.
+
 
 
 .. _ref_styles_config:
@@ -341,11 +339,10 @@ See a more formal example below.
     * - Style      
       - Comments
     * - chatBackgroundColor      
-      - | This style controls the background color for the webchat list view.
-        | Examples: '#ABDCEF' or 'red' ...
+      - This style controls the background color for the webchat list view. Examples: '#ABDCEF' or 'red' ...
     * - userTextMessage      
-      - | This style controls the **user text message** bubble. See example below:        
-         
+      - | This style controls the **user text message** bubble. See example below:
+
         .. code-block:: JAVASCRIPT
             
             window.HUBSTER_CONFIG = {
@@ -360,7 +357,7 @@ See a more formal example below.
 
     * - agentTextMessage      
       - | This style controls the **agent text message** bubble. See example below:        
-         
+
         .. code-block:: JAVASCRIPT
             
             window.HUBSTER_CONFIG = {
