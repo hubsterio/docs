@@ -465,6 +465,15 @@ Sources allowed to send: **customer**, **agent** and **bot**.
         
         * `.mp4` (preferred)
         * `.mov`
+    * - label
+      - No
+      - | The label of this audio. Think of the label as a title to be displayed.
+        | **Note**: label is channel specific and may not render on certain channels.
+    * - mimeType
+      - No
+      - The mime type of the video. Hubster will try it's best to determine the mime type 
+        based on the **url**.
+
 
 
 **Example**
@@ -507,6 +516,14 @@ Sources allowed to send: **customer**, **agent** and **bot**.
         * `.mp3` (preferred)
         * `.mp4`
         * `.wav`
+    * - label
+      - No
+      - | The label of this audio. Think of the label as a title to be displayed.
+        | **Note**: label is channel specific and may not render on certain channels.
+    * - mimeType
+      - No
+      - The mime type of this audio. Hubster will try it's best to determine the mime type 
+        based on the **url**.
     
 **Example**
 
@@ -552,9 +569,8 @@ Sources allowed to send: **customer**, **agent** and **bot**.
       - The alternate text for this image.
     * - title
       - No
-      - The text to show on the image. 
-        
-        | **Note**: title is channel specific and may not render on certain channel.
+      - | The text to show on the image.         
+        | **Note**: title is channel specific and may not render on certain channels.
     * - channels
       - No
       - Channel specific applied properties. The example below shows how to render 
@@ -575,7 +591,7 @@ Sources allowed to send: **customer**, **agent** and **bot**.
             "type": "image",
             "url": "http://site.com/myimage.png",
             "alt": "Some alternate text",
-            "Eva Green",
+            "title": "Eva Green",
             "channels": [{
                 "type": "Webchat",
                 "metadata": [

@@ -34,11 +34,14 @@ The Hub Anatomy
 
 At Hubster, a **hub** (hence our company name), is the center where all configurations are managed and stored. 
 Hubs are used by engine’s :ref:`pipeline<ref_pipeline>` which drives the workflows and what actions are taken. 
-A business can create as many hubs they need, each having specific configurations for different aspects of the business. 
-For example, a business can create a hub for various lines of business, campaigns or events, and so much more.
+A business can create as many hubs needed, with each having a specific configuration for a given business segment. 
+For example, a business can create hubs for various lines-of-businesses, campaigns, events, and more.
 
 .. image:: images/hub.png
    :align: center
+
+TODO: Hub Integration with image
+
 
 =================
 Customer Channels

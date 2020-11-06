@@ -198,6 +198,14 @@ Configuration
       - No
       - This tells the webchat component when closed, to open the chat window if 
         a new message immediately arrives. The default is false.
+    * - hideCloseIcon
+      - No
+      - Don't show the header's close Icon. The default is false. 
+        **Note**: If the hideCloseIcon property is set to true, then there is no way to close the 
+        webchat window.
+    * - fullWindow
+      - No
+      - If set to to true, the webchat window will open in full window mode.    
     * - styling
       - No
       - Set this value to true when styling the webchat component. The webchat 
