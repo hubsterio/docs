@@ -660,6 +660,54 @@ Sources allowed to send: **customer**, **agent** and **bot**.
 Location          
 ~~~~~~~~
 
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **location**.
+    * - Address
+      - See **note**
+      - A fully qualified address.
+    * - latitude
+      - See **note**
+      - A latitude coordinate value. **Note**: The longitude coordinate value must be supplied.
+    * - longitude
+      - See **note**
+      - A longitude coordinate value. **Note**: The latitude coordinate value must be supplied.
+
+    
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "location",
+            "address": "2640 Matheson Blvd E, Mississauga, ON L4W5S4",
+            "latitude": 43.8425254,
+            "longitude": -79.5240196
+          }  
+
+      - .. image:: images/activity_location_ex_01.png
+
+.. note:: 
+    Either a fully qualified **address** or **latitude/longitude** coordinate values must be supplied. 
+    If both are supplied, Hubster will resort to using the **latitude/longitude** coordinate values as the preferred option. 
+    
+    Please note, if using **latitude/longitude** coordinates, it may yield a different **address** than what is supplied. 
+    Try be be as exact as possible.
 
 
 Contact
