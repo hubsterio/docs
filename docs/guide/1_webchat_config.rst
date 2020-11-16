@@ -256,7 +256,9 @@ Configuration
         | *onBeforeActivitySend(activity: Activity): boolean;*
 
         .. note:: 
-            | Typically this event is used when the user presses a **postback** button event. The **payload** of the postback may contain a special action that  programer can then inspect and preform a local action on the browser.
+            Typically this event is used when the user presses a **postback** button event. 
+            The **payload** of the postback may contain a special action that  programer can then inspect and preform a 
+            local action on the browser.
 
     * - onConversation
       - No

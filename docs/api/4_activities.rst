@@ -164,6 +164,13 @@ Message Types
 An activity **message** supports the following **types**. Messages are an activity's first-class-citizen 
 as they make up the majority of events being sent and received between integrations.
 
+Header
+~~~~~~
+
+TODO
+
+
+
 Text
 ~~~~
 
@@ -245,7 +252,7 @@ Sources allowed to send: **customer**, **agent** and **bot**.
                 "properties": [
                   { 
                     "key": "Title",
-                    "value": "Mighty Health"
+                    "value": "Health Advisor/Coach"
                   },
                   {
                     "key": "Address",
@@ -282,7 +289,7 @@ Sources allowed to send: **customer**, **agent** and **bot**.
             ]
           }          
 
-      - .. image:: images/activity_text_ex_02.png            
+      - .. image:: images/activity_text_ex_02.png          
 
     * - .. code-block:: JSON
 
@@ -695,7 +702,7 @@ Sources allowed to send: **customer**, **agent** and **bot**.
 
           {
             "type": "location",
-            "address": "2640 Matheson Blvd E, Mississauga, ON L4W5S4",
+            "address": "2640 Matheson, Mississauga, ON",
             "latitude": 43.8425254,
             "longitude": -79.5240196
           }  
@@ -703,15 +710,116 @@ Sources allowed to send: **customer**, **agent** and **bot**.
       - .. image:: images/activity_location_ex_01.png
 
 .. note:: 
-    Either a fully qualified **address** or **latitude/longitude** coordinate values must be supplied. 
-    If both are supplied, Hubster will resort to using the **latitude/longitude** coordinate values as the preferred option. 
+    Either a fully qualified **address** or a set of **latitude/longitude** coordinates must be supplied. 
+    If both **address** or **latitude/longitude** are supplied, Hubster will resort to using 
+    the **latitude/longitude** coordinates as the preferred option. 
     
-    Please note, if using **latitude/longitude** coordinates, it may yield a different **address** than what is supplied. 
-    Try be be as exact as possible.
+    Please note, when using **latitude/longitude** coordinates, Hubster will try to yield the appropriate address. 
+    However, if the address yielded is not exact, then the **latitude/longitude** coordinates may be off. 
+    Alternatively, you can always use the **address** property without the need to provide **latitude/longitude** coordinates.
 
 
 Contact
 ~~~~~~~
+
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **contact**.
+    * - imageUrl
+      - No
+      - The image url to the contact.
+    * - title
+      - Yes
+      - At minimum, the contact message requires a title. i.e. Person's name, company name, job title, etc.
+    * - subtitle
+      - No
+      - A subtitle for the contact. i.e. company name, job title, etc.
+    * - properties
+      - No
+      - | A tuplet made out of key/value/type set that can used to provide more metadata for the contact. See example.
+        |
+
+        .. note:: 
+            The **type** portion of the tuplet is not required, however, if used, can provide additional 
+            metadata for certain property types. For example, if Hubster detects that a 
+            recipient device supports **vcards**, such as an SMS device, Hubster will create a 
+            contact element, allowing the recipient of the message to store the contact to their device's contact list.
+            
+            Hubster supports the following **vcard** types and their counterpart:
+            
+            * address; ``work``, ``home``
+            * phone; ``work``, ``home``, ``cell``
+            * email
+    * - channels
+      - No
+      - Channel specific applied properties. The example below shows how to render 
+        the title on a **Webchat** channel.
+    
+
+    
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "contact",
+            "imageUrl": "https://site.com/eva.png",
+            "title": "Eva Green",
+            "subtitle": "Mighty Health",
+            "properties": [
+              { 
+                "key": "Title",
+                "value": "Health Advisor/Coach"
+              },
+              {
+                "key": "Address",
+                "value": "123 Main Street, Maple, ON",
+                "type": "address;work"
+              },
+              {
+                "key": "Cell",
+                "value": "(416) 555-0001",
+                "type": "phone;cell"
+              },
+              {
+                "key": "Email",
+                "value": "eva@mightyhealth.com",
+                "type": "email"
+              }
+            ],
+            "channels": [
+              {
+                "type": "Webchat",
+                "metadata": [
+                  {
+                    "key": "caption-show",
+                    "value": "true"
+                  },
+                  {
+                    "key": "caption-color",
+                    "value": "white"
+                  }
+                ]
+              }
+            ]
+          }           
+
+      - .. image:: images/activity_contact_ex_01.png
 
 Card       
 ~~~~
