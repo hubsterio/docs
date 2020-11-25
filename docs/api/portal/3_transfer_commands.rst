@@ -6,7 +6,7 @@ Transfer Commands
 
 Creates a Transfer Command.
 
-**POST** */api/v1/tranfser/{hubId}*
+**POST** */api/v1/commands/transfers/{hubId}*
 
 **Headers**
 
@@ -114,7 +114,7 @@ Update
 
 Updates a Transfer Command.
 
-**PUT** */api/v1/tranfser/{commandId}*
+**PUT** */api/v1/commands/transfers/{commandId}*
 
 **Headers**
 
@@ -225,7 +225,7 @@ Deletes a Transfer Command.
     This will do hard delete.
 
 
-**DELETE** */api/v1/tranfser/{commandId}*
+**DELETE** */api/v1/commands/transfers/{commandId}*
 
 **Headers**
 
@@ -281,7 +281,7 @@ Get
 
 Gets a Transfer Command.
 
-**GET** */api/v1/tranfser/{commandId}*
+**GET** */api/v1/commands/transfers/{commandId}*
 
 **Headers**
 
@@ -351,7 +351,7 @@ Get Collection
 
 Gets a list of Transfer Commands.
 
-**GET** */api/v1/tranfser/hub/{hubId}*
+**GET** */api/v1/commands/transfers/hub/{hubId}*
 
 **Headers**
 
