@@ -31,7 +31,7 @@ Activity
 ^^^^^^^^
 
 An activity is fairly simple structure that either contains an :ref:`Message Type<ref_activities_message_types>`  
-or an :ref:`Action Type<ref_activities_action_types>`, but not both.
+or an :ref:`Event Type<ref_activities_event_types>`, but not both.
 
 .. note:: 
     For sake of sample, both **message** and **action** nodes are shown. 
@@ -109,9 +109,9 @@ or an :ref:`Action Type<ref_activities_action_types>`, but not both.
     * - message
       - If the *activity.type* is **message** then this value will is set. 
         See :ref:`message type<ref_activities_message_types>` for more details
-    * - action
+    * - event
       - If the *activity.type* is **action** then tis value will is set. 
-        See :ref:`action type<ref_activities_action_types>` for more details
+        See :ref:`event type<ref_activities_event_types>` for more details
 
 
 .. _ref_activities_sources:
@@ -839,9 +839,9 @@ Command
 .. public const string Reply = "reply";
 
 
-.. _ref_activities_action_types:
+.. _ref_activities_event_types:
 
-Action Types
+Event Types
 ^^^^^^^^^^^^
 
 TODO
