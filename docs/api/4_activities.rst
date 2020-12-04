@@ -824,6 +824,38 @@ Sources allowed to send: **customer**, **agent** and **bot**.
 Card       
 ~~~~
 
+Sources allowed to send: **customer**, **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **card**.
+    * - urlType
+      - No
+      - xxx
+    * - url
+      - No
+      - xxx 
+    * - title
+      - No
+      - xxx
+    * - subtitle
+      - No
+      - xxx
+    * - content
+      - No
+      - xxx
+    * - channels
+      - No
+      - Channel specific applied properties. The example below shows how to render 
+        the title on a **Webchat** channel. Note: only applicable if the **urlType=image** 
+
 Carousel         
 ~~~~~~~~
 

@@ -4,6 +4,15 @@
 Transfer Commands
 ^^^^^^^^^^^^^^^^^
 
+.. note:: 
+    Transfer Commands are only respected by the **WebChat** device 
+    at this time. Sending transfers to other devices will be 
+    ignored.
+
+
+Create
+******
+
 Creates a Transfer Command.
 
 **POST** */api/v1/commands/transfers/{hubId}*
@@ -50,14 +59,16 @@ Creates a Transfer Command.
    * - url       
      - Yes
      - Command url.
-   * - linkdescription       
+   * - linkDescription       
      - Yes
-     - Command link description description.
-   * - mountdelay
-     - Yes
-     - | Amount of seconds before mount happens.
-        
-       Default is 0, if no value supplied.
+     - The description used for the link anchor on the WebChat device.
+   * - mountDelay
+     - No
+     - | Amount of in milliseconds before mounting occurs.       
+               
+       | Default is 0, if no value supplied.
+       | mountDelay < 0, will not mount the WebChat
+       | mountDelay = 0, will immediately mount the WebChat 
 
 **Example Request Body**
 
@@ -65,10 +76,10 @@ Creates a Transfer Command.
 
     {
         "name": "new cool command",    
-        "description": "your perfect description",
+        "description": "Description for command",
         "url": "https://mysite.io",
-        "linkdescription": "some info regarding url",
-        "mountdelay": "1"
+        "linkDescription": "Click here to be transferred",
+        "mountDelay": 1000
     }
 
 **Response** : 200 (OK)
@@ -79,10 +90,10 @@ Creates a Transfer Command.
         "commandId": "5a0623b0-d51a-4b3c-ace1-0175e34fae2f",
         "hubId": "00000000-0000-0000-0000-0000000000a1",
         "name": "new cool command",
-        "description": "your perfect description",
+        "description": "Description for command",
         "url": "https://mysite.io",
-        "linkDescription": "some info regarding url",
-        "mountDelay": 1
+        "linkDescription": "Click here to be transferred",
+        "mountDelay": 1000
     }
 
 .. list-table::
@@ -158,12 +169,17 @@ Updates a Transfer Command.
    * - url       
      - No
      - Command url.
-   * - linkdescription       
+   * - linkDescription       
+     - Yes
+     - The description used for the link anchor on the WebChat device.
+   * - mountDelay
      - No
-     - Command link description description.
-   * - mountdelay
-     - No
-     - Amount of seconds before mount happens.       
+     - | Amount of in milliseconds before mounting occurs.       
+               
+       | Default is 0, if no value supplied.
+       | mountDelay < 0, will not mount the WebChat
+       | mountDelay = 0, will immediately mount the WebChat 
+
 
 **Example Request Body**
 
@@ -171,10 +187,10 @@ Updates a Transfer Command.
 
     {
         "name": "new cool command",    
-        "description": "your perfect description",
+        "description": "Description for command",
         "url": "https://mysite.io",
-        "linkdescription": "some info regarding url",
-        "mountdelay": "1"
+        "linkDescription": "Click here to be transferred",
+        "mountDelay": 1000
     }
 
 **Response** : 200 (OK)
@@ -185,10 +201,10 @@ Updates a Transfer Command.
         "commandId": "5a0623b0-d51a-4b3c-ace1-0175e34fae2f",
         "hubId": "00000000-0000-0000-0000-0000000000a1",
         "name": "new cool command",
-        "description": "your perfect description",
+        "description": "Description for command",
         "url": "https://mysite.io",
-        "linkDescription": "some info regarding url",
-        "mountDelay": 1
+        "linkDescription": "Click here to be transferred",
+        "mountDelay": 1000
     }
 
 .. list-table::
@@ -220,9 +236,6 @@ Delete
 ******
 
 Deletes a Transfer Command.
-
-.. warning:: 
-    This will do hard delete.
 
 
 **DELETE** */api/v1/commands/transfers/{commandId}*
@@ -316,10 +329,10 @@ Gets a Transfer Command.
         "commandId": "5a0623b0-d51a-4b3c-ace1-0175e34fae2f",
         "hubId": "00000000-0000-0000-0000-0000000000a1",
         "name": "new cool command",
-        "description": "your perfect description",
+        "description": "Description for command",
         "url": "https://mysite.io",
-        "linkDescription": "some info regarding url",
-        "mountDelay": 1
+        "linkDescription": "Click here to be transferred",
+        "mountDelay": 1000
     }
 
 .. list-table::
@@ -380,17 +393,16 @@ Gets a list of Transfer Commands.
 **Response** : 200 (OK)
 
 .. code-block:: JSON
-
     
     [
         {
             "commandId": "5a0623b0-d51a-4b3c-ace1-0175e34fae2f",
             "hubId": "00000000-0000-0000-0000-0000000000a1",
             "name": "new command 2",
-            "description": "Ross Dev Hub",
-            "url": "https://hubster.io",
-            "linkDescription": "some text",
-            "mountDelay": "2"
+            "description": "Description for command",
+            "url": "https://mysite.io",
+            "linkDescription": "Click here to be transferred",
+            "mountDelay": 1000
         }
     ]
     

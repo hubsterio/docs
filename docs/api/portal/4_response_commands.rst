@@ -4,6 +4,9 @@
 Response Commands
 ^^^^^^^^^^^^^^^^^
 
+Create
+******
+
 Creates a Response Command.
 
 **POST** */api/v1/commands/responses/{hubId}*
@@ -52,40 +55,78 @@ Creates a Response Command.
      - Command description.
    * - integrationTypeId       
      - Yes
-     - | Type of intergration command is used for.
+     - | Type of integration command is used for.
        | Valid options are:
-       | -- *Agent* = 3 
-       | -- *Customer* = 2
+       | -- *agent*
+       | -- *customer*
    * - type
-     - No
+     - Yes
      - | Response command type.
        | Valid options are:
        | -- *message* 
        | -- *event*
-   * - response
+   * - responses
      - Yes
-     - TODO!!
+     - A list of :ref:`Message <ref_activities_message_types>` or :ref:`Event <ref_activities_event_types>` types.
        
 
 **Example Request Body**
 
 .. code-block:: JSON
 
-    {
-        "name": "Command-2",    
-        "description": "Command-1",
-        "category": "Command-1",
-        "integrationTypeId": "Agent",
-        "type": "event",    
-        "responses": [
-            {	
-                "type": "payload",            
-                "payloadType": "type1",
-                "payload": {
-                    "payload": "Hello"
-                }
-            }		
-        ]
+    {          
+      "name": "contact-eva.green",
+      "category": "contacts",
+      "description": "Eva's Contact",
+      "integrationTypeId": "customer",
+      "type": "message",
+      "responses": [
+          {
+              "type": "text",
+              "text": "Below is my contact info"
+          },
+          {
+              "type": "contact",
+              "imageUrl": "https://image.png",
+              "title": "Eva Green",
+              "properties": [
+                  {
+                      "key": "Title",
+                      "value": "Mighty Health"
+                  },
+                  {
+                      "key": "Address",
+                      "value": "108 Kirkbride Crescent, Maple, ON",
+                      "type": "address;work"
+                  },
+                  {
+                      "key": "Cell",
+                      "value": "+1 (714) 873-6202",
+                      "type": "phone;cell"
+                  },
+                  {
+                      "key": "Email",
+                      "value": "eva@mightyhealth.com",
+                      "type": "email"
+                  }
+              ],
+              "channels": [
+                  {
+                      "type": "Webchat",
+                      "metadata": [
+                          {
+                              "key": "caption-show",
+                              "value": "true"
+                          },
+                          {
+                              "key": "caption-color",
+                              "value": "white"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
     }
 
 **Response** : 200 (OK)
@@ -93,22 +134,60 @@ Creates a Response Command.
 .. code-block:: JSON
 
     {
-        "commandId": "297c91f3-4347-4834-b008-0175fd2f4c48",
-        "hubId": "00000000-0000-0000-0000-0000000000a1",
-        "name": "Command-2",
-        "category": "Command-1",
-        "description": "Command-1",
-        "integrationTypeId": "Agent",
-        "type": "event",
-        "responses": [
-            {
-                "type": "payload",
-                "payloadType": "type1",
-                "payload": {
-                    "payload": "Hello"
-                }
-            }
-        ]
+      "commandId": "00000000-0000-0000-0000-000000000005",
+      "hubId": "00000000-0000-0000-0000-0000000000a1",
+      "name": "contact-eva.green",
+      "category": "contacts",
+      "description": "Eva's Contact",
+      "integrationTypeId": "customer",
+      "type": "message",
+      "responses": [
+          {
+              "type": "text",
+              "text": "Below is my contact info"
+          },
+          {
+              "type": "contact",
+              "imageUrl": "https://image.png",
+              "title": "Eva Green",
+              "properties": [
+                  {
+                      "key": "Title",
+                      "value": "Mighty Health"
+                  },
+                  {
+                      "key": "Address",
+                      "value": "108 Kirkbride Crescent, Maple, ON",
+                      "type": "address;work"
+                  },
+                  {
+                      "key": "Cell",
+                      "value": "+1 (714) 873-6202",
+                      "type": "phone;cell"
+                  },
+                  {
+                      "key": "Email",
+                      "value": "eva@mightyhealth.com",
+                      "type": "email"
+                  }
+              ],
+              "channels": [
+                  {
+                      "type": "Webchat",
+                      "metadata": [
+                          {
+                              "key": "caption-show",
+                              "value": "true"
+                          },
+                          {
+                              "key": "caption-color",
+                              "value": "white"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
     }
 
 .. list-table::
@@ -176,7 +255,7 @@ Updates a Response Command.
      - Mandatory
      - Description
    * - name
-     - No
+     - Yes
      - Unique command name per Hub.
    * - category       
      - No
@@ -185,20 +264,20 @@ Updates a Response Command.
      - No
      - Command description.
    * - integrationTypeId       
-     - No
-     - | Type of intergration command is used for.
+     - Yes
+     - | Type of integration command is used for.
        | Valid options are:
-       | -- *Agent* = 3 
-       | -- *Customer* = 2
+       | -- *agent*
+       | -- *customer*
    * - type
-     - No
+     - Yes
      - | Response command type.
        | Valid options are:
        | -- *message* 
        | -- *event*
-   * - response
-     - No
-     - TODO!!
+   * - responses
+     - Yes
+     - A list of :ref:`Message <ref_activities_message_types>` or :ref:`Event <ref_activities_event_types>` types.
        
 
 **Example Request Body**
@@ -206,9 +285,8 @@ Updates a Response Command.
 .. code-block:: JSON
 
     {
-        "name": "Command-5",    
-        "description": "Command-5",
-        "category": "Command-5"        
+      "category": "Office contacts",
+      "description": "Eva's Office Contact",
     }
 
 **Response** : 200 (OK)
@@ -216,24 +294,61 @@ Updates a Response Command.
 .. code-block:: JSON
 
     {
-        "commandId": "297c91f3-4347-4834-b008-0175fd2f4c48",
-        "hubId": "00000000-0000-0000-0000-0000000000a1",
-        "name": "Command-5",
-        "category": "Command-5",
-        "description": "Command-5",
-        "integrationTypeId": "Agent",
-        "type": "event",
-        "responses": [
-            {
-                "type": "payload",
-                "payloadType": "type1",
-                "payload": {
-                    "payload": "Hello"
-                }
-            }
-        ]
+      "commandId": "00000000-0000-0000-0000-000000000005",
+      "hubId": "00000000-0000-0000-0000-0000000000a1",
+      "name": "contact-eva.green",
+      "category": "Office contacts",
+      "description": "Eva's Office Contact",
+      "integrationTypeId": "customer",
+      "type": "message",
+      "responses": [
+          {
+              "type": "text",
+              "text": "Below is my contact info"
+          },
+          {
+              "type": "contact",
+              "imageUrl": "https://image.png",
+              "title": "Eva Green",
+              "properties": [
+                  {
+                      "key": "Title",
+                      "value": "Mighty Health"
+                  },
+                  {
+                      "key": "Address",
+                      "value": "108 Kirkbride Crescent, Maple, ON",
+                      "type": "address;work"
+                  },
+                  {
+                      "key": "Cell",
+                      "value": "+1 (714) 873-6202",
+                      "type": "phone;cell"
+                  },
+                  {
+                      "key": "Email",
+                      "value": "eva@mightyhealth.com",
+                      "type": "email"
+                  }
+              ],
+              "channels": [
+                  {
+                      "type": "Webchat",
+                      "metadata": [
+                          {
+                              "key": "caption-show",
+                              "value": "true"
+                          },
+                          {
+                              "key": "caption-color",
+                              "value": "white"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
     }
-
 
 .. list-table::
     :widths: 10 50
@@ -264,9 +379,6 @@ Delete
 ******
 
 Deletes a Response Command.
-
-.. warning:: 
-    This will do hard delete.
 
 
 **DELETE** */api/v1/commands/responses/{commandId}*
@@ -357,22 +469,60 @@ Gets a Response Command.
 .. code-block:: JSON
 
     {
-        "commandId": "297c91f3-4347-4834-b008-0175fd2f4c48",
-        "hubId": "00000000-0000-0000-0000-0000000000a1",
-        "name": "Command-5",
-        "category": "Command-5",
-        "description": "Command-5",
-        "integrationTypeId": "Agent",
-        "type": "event",
-        "responses": [
-            {
-                "type": "payload",
-                "payloadType": "type1",
-                "payload": {
-                "payload": "Hello"
-                }
-            }
-        ]
+      "commandId": "00000000-0000-0000-0000-000000000005",
+      "hubId": "00000000-0000-0000-0000-0000000000a1",
+      "name": "contact-eva.green",
+      "category": "Office contacts",
+      "description": "Eva's Office Contact",
+      "integrationTypeId": "customer",
+      "type": "message",
+      "responses": [
+          {
+              "type": "text",
+              "text": "Below is my contact info"
+          },
+          {
+              "type": "contact",
+              "imageUrl": "https://image.png",
+              "title": "Eva Green",
+              "properties": [
+                  {
+                      "key": "Title",
+                      "value": "Mighty Health"
+                  },
+                  {
+                      "key": "Address",
+                      "value": "108 Kirkbride Crescent, Maple, ON",
+                      "type": "address;work"
+                  },
+                  {
+                      "key": "Cell",
+                      "value": "+1 (714) 873-6202",
+                      "type": "phone;cell"
+                  },
+                  {
+                      "key": "Email",
+                      "value": "eva@mightyhealth.com",
+                      "type": "email"
+                  }
+              ],
+              "channels": [
+                  {
+                      "type": "Webchat",
+                      "metadata": [
+                          {
+                              "key": "caption-show",
+                              "value": "true"
+                          },
+                          {
+                              "key": "caption-color",
+                              "value": "white"
+                          }
+                      ]
+                  }
+              ]
+          }
+      ]
     }
 
 .. list-table::
@@ -437,19 +587,75 @@ Gets a list of Response Commands.
     
     [
         {
-            "commandId": "297c91f3-4347-4834-b008-0175fd2f4c48",
+          "commandId": "00000000-0000-0000-0000-000000000005",
+          "hubId": "00000000-0000-0000-0000-0000000000a1",
+          "name": "contact-eva.green",
+          "category": "Office contacts",
+          "description": "Eva's Office Contact",
+          "integrationTypeId": "customer",
+          "type": "message",
+          "responses": [
+              {
+                  "type": "text",
+                  "text": "Below is my contact info"
+              },
+              {
+                  "type": "contact",
+                  "imageUrl": "https://image.png",
+                  "title": "Eva Green",
+                  "properties": [
+                      {
+                          "key": "Title",
+                          "value": "Mighty Health"
+                      },
+                      {
+                          "key": "Address",
+                          "value": "108 Kirkbride Crescent, Maple, ON",
+                          "type": "address;work"
+                      },
+                      {
+                          "key": "Cell",
+                          "value": "+1 (714) 873-6202",
+                          "type": "phone;cell"
+                      },
+                      {
+                          "key": "Email",
+                          "value": "eva@mightyhealth.com",
+                          "type": "email"
+                      }
+                  ],
+                  "channels": [
+                      {
+                          "type": "Webchat",
+                          "metadata": [
+                              {
+                                  "key": "caption-show",
+                                  "value": "true"
+                              },
+                              {
+                                  "key": "caption-color",
+                                  "value": "white"
+                              }
+                          ]
+                      }
+                  ]
+              }
+          ]
+        },        
+        {
+            "commandId": "00000000-0000-0000-0000-000000000006",
             "hubId": "00000000-0000-0000-0000-0000000000a1",
             "name": "Command-5",
             "category": "Command-5",
             "description": "Command-5",
-            "integrationTypeId": "Agent",
+            "integrationTypeId": "agent",
             "type": "event",
             "responses": [
                 {
                     "type": "payload",
                     "payloadType": "type1",
                     "payload": {
-                    "payload": "Hello"
+                        "payload": "Hello"
                     }
                 }
             ]
