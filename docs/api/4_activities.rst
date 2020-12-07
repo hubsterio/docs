@@ -27,14 +27,16 @@ See the depiction below for annotated description on how Hubster transforms both
    the activity to the appropriate integration type’s proprietary format.
 
 
+.. _ref_activity:
+
 Activity
 ^^^^^^^^
 
-An activity is fairly simple structure that either contains an :ref:`Message Type<ref_activities_message_types>`  
-or an :ref:`Event Type<ref_activities_event_types>`, but not both.
+An activity is fairly simple structure that contains either a single :ref:`Message <ref_activities_message_types>`  
+or a :ref:`Event <ref_activities_event_types>` type, but not both.
 
 .. note:: 
-    For sake of sample, both **message** and **action** nodes are shown. 
+    For sake of sample, both **message** and **event** nodes are shown. 
     However, these nodes are mutually exclusive and will never be presented together 
     in actuality.
 
@@ -64,7 +66,7 @@ or an :ref:`Event Type<ref_activities_event_types>`, but not both.
             "type": "text",
             "text": "Hi there!"			
         },
-        "action": {
+        "event": {
             "type": "payload",
             "payloadType": "hubster.transfer",
             "payload": {
@@ -90,7 +92,9 @@ or an :ref:`Event Type<ref_activities_event_types>`, but not both.
     * - eventId
       - The epoch UNIX time in milliseconds when this event was initiated. 
     * - externalId
-      - A custom external id that can be sent by custom integrations. Typically, this value will be null.
+      - This can be any string value and will be attached to the lifetime of this activity if provided by the sender. 
+        Typically this is used by tenants to maintain a reference or metadata to a given tenant resource. 
+        For the most part this value will be null.
     * - isEcho
       - A boolean state indicating wither the activity is an echo. Some custom integrations when sending an 
         activity may wish to receive a feedback activity. This is because when sending an activity, the sender
@@ -107,20 +111,76 @@ or an :ref:`Event Type<ref_activities_event_types>`, but not both.
     * - recipient
       - The recipient (receiver) :ref:`source<ref_activities_sources>` of this activity.
     * - message
-      - If the *activity.type* is **message** then this value will is set. 
+      - If the *activity.type* is **message** then this value is required. 
         See :ref:`message type<ref_activities_message_types>` for more details
     * - event
-      - If the *activity.type* is **action** then tis value will is set. 
+      - If the *activity.type* is **event** then this value is required. 
         See :ref:`event type<ref_activities_event_types>` for more details
 
 
 .. _ref_activities_sources:
 
+Activity Header 
+^^^^^^^^^^^^^^^
+
+When sending activities, there's a minimal amount of header properties that are required. 
+See details below:
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - The type of activity to send. 
+        This can only :ref:`message type<ref_activities_message_types>` or 
+        :ref:`event type<ref_activities_event_types>`
+    * - **sender**.integrationId
+      - See **Description**
+      - | If the source of **integrationId** is bound to a **customer** integration, then this property is **not** required.       
+        |
+        | However, if the **integrationId** is bound to either an **agent** or **bot** integration, then this property **is** required.
+    * - externalId
+      - No
+      - This can be any string value and will be attached to the lifetime of this activity if provided by the sender. 
+        Typically this is used by tenants to maintain a reference or metadata to a given tenant resource.
+        For the most part this value will be null.
+        
+
+.. code-block:: JSON
+
+    {
+        "externalId": "some-external-id",
+        "type": "message | event"
+        "sender": {
+            "integrationId": "00000000-0000-0000-0000-000000000001"
+        },
+        "message": {
+            "type": "text",
+            "text": "Hi there!"			
+        },
+        "event": {
+            "type": "payload",
+            "payloadType": "hubster.transfer",
+            "payload": {
+                "url": "http://localhost:4200",
+                "label": "Click here to be transferred",
+                "mount": 1000,
+                "force": false
+            }
+        }                
+    }  
+
+
 Activity Source
 ^^^^^^^^^^^^^^^
 
-An activity will always contain a **sender** node who sent the activity, and a **recipient** node who will be receiving the activity. 
-The properties are identical but the values and the node name, indicates details of the sending and receiving parties.
+An activity will always contain a **sender** and **recipient** nodes. 
+The the sender is the source of the activity and 
+the recipient is the source that will receive the activity. 
 
 .. code-block:: JSON
 
@@ -161,15 +221,14 @@ The properties are identical but the values and the node name, indicates details
 Message Types
 ^^^^^^^^^^^^^
 
-An activity **message** supports the following **types**. Messages are an activity's first-class-citizen 
+An activity **message** supports the following **types**. Messages are an activity's **first-class-citizen** 
 as they make up the majority of events being sent and received between integrations.
 
-Header
-~~~~~~
-
-TODO
-
-
+.. note:: 
+    Activities are send via the :ref:`Direct API<ref_engine_direct>` endpoint. 
+    Sending an activity is quite simple and requires minimal amount of header details. 
+    Once Hubster receives an activity to process, the engine will enrich the activity with 
+    more details, such as sources, etc. See :ref:`Activity <ref_activity>` on this page.
 
 Text
 ~~~~
@@ -764,7 +823,6 @@ Sources allowed to send: **customer**, **agent** and **bot**.
       - Channel specific applied properties. The example below shows how to render 
         the title on a **Webchat** channel.
     
-
     
 **Example**
 
@@ -838,23 +896,93 @@ Sources allowed to send: **customer**, **agent** and **bot**.
       - Must be **card**.
     * - urlType
       - No
-      - xxx
+      - | If **url** is supplied, then this property is required. 
+        | The possible types are as follows:
+        
+        * image
+        * youtube 
+        * vimeo
+        * video 
+        * audio
     * - url
       - No
-      - xxx 
+      - | The link to the resource to display. The **urlType** property must be provided.
+        | The possible types are as follows:
+
+        * image
+        * youtube 
+        * vimeo
+        * video 
+        * audio
+    
+    * - fallbackImageUrl
+      - No
+      - When supplying a **url** that supports an image placeholder, such as youtube for example, 
+        and the link doesn't support an image, Hubster will use the **fallbackImageUrl** link as an alternate.
+
     * - title
       - No
-      - xxx
+      - A title to display.
     * - subtitle
       - No
-      - xxx
+      - A subtitle to display.
     * - content
       - No
-      - xxx
+      - The content to display.
     * - channels
       - No
       - Channel specific applied properties. The example below shows how to render 
-        the title on a **Webchat** channel. Note: only applicable if the **urlType=image** 
+        the title on a **Webchat** channel. Note: only applicable if **urlType=image** 
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "card",	
+            "urlType": "image",
+            "imageUrl": "https://site.com/car.png",
+            "title": "Victorious",
+            "subtitle": "European style",
+            "content": "Lorem Ipsum is simply..."
+            "channels": [
+              {
+                "type": "Webchat",
+                "metadata": [
+                  {
+                    "key": "caption-show",
+                    "value": "true"
+                  },
+                  {
+                    "key": "caption-color",
+                    "value": "white"
+                  }
+                ]
+              }
+            ]
+          }           
+
+      - .. image:: images/activity_card_ex_01.png
+
+    * - .. code-block:: JSON
+
+          {
+            "type": "card",	
+            "urlType": "youtube",
+            "imageUrl": "https://youtube.com/embed/abc",
+            "title": "Cosmic Journey",
+            "subtitle": "Space Odyssey",
+            "content": "Lorem Ipsum is simply..."
+          }           
+
+      - .. image:: images/activity_card_ex_02.png
+
 
 Carousel         
 ~~~~~~~~
@@ -862,9 +990,6 @@ Carousel
 List
 ~~~~
 
-Command
-~~~~~~~
-    
 
 .. public const string Link = "link";
 .. public const string Postback = "postback";
@@ -874,11 +999,25 @@ Command
 .. _ref_activities_event_types:
 
 Event Types
-^^^^^^^^^^^^
+^^^^^^^^^^^
 
-TODO
+Basic
+~~~~~
 
+.. this will be a future feature and currently not supported
+.. note: not all devices support these features
 .. public const string Seen = "seen";
 .. public const string TypingOn = "typing_on";
 .. public const string TypingOff = "typing_off";
+
+
+Response Command
+~~~~~~~~~~~~~~~~
+
 .. public const string Payload = "payload";
+
+
+Transfer Command
+~~~~~~~~~~~~~~~~
+
+.. public const string Payload = "payload";    

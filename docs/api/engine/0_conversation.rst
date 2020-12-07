@@ -143,7 +143,6 @@ Establish (create) new Conversation object.
 
 .. _ref_engine_properties_establish_conversation:
 
-
 .. note:: 
     **Properties** can be though of as **metadata** bound to a conversation during establishment. 
     When working for Direct interaction types, the developer can assigned any number properties as 

@@ -1,6 +1,21 @@
 Types
 =====
 
+Activity Types
+^^^^^^^^^^^^^^
+
+.. list-table::
+    :widths: 5 60
+    :header-rows: 1   
+
+    * - Type            
+      - Description
+    * - Message
+      - The :ref:`activity <ref_activities>` contains an :ref:`message <ref_activities_message_types>` node.
+    * - Event          
+      - The :ref:`activity <ref_activities>` contains an :ref:`event <ref_activities_event_types>` node.
+
+
 .. _ref_api_channel_types:
 
 Channel Types
