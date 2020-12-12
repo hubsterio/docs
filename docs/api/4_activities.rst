@@ -976,7 +976,7 @@ Sources allowed to send: **customer**, **agent** and **bot**.
             "type": "card",	
             "urlType": "youtube",
             "imageUrl": "https://youtube.com/embed/abc",
-            "title": "Cosmic Journey",
+            "title": "Cosmic Journeys",
             "subtitle": "Space Odyssey",
             "content": "Lorem Ipsum is simply..."
           }           
@@ -986,6 +986,190 @@ Sources allowed to send: **customer**, **agent** and **bot**.
 
 Carousel         
 ~~~~~~~~
+
+Sources allowed to send: **agent** and **bot**.
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **carousel**.
+    * - items
+      - yes
+      - | Must contain one or more of the following message types:
+        
+        * image
+        * youtube 
+        * vimeo
+        * video 
+        * audio
+    * - channels
+      - No
+      - Channel specific applied properties. The example below shows how to render 
+        the title on a **Webchat** channel. Note: only applicable to image items.
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "carousel",	
+            "items": [
+              {
+                "title": "Victorious",
+                "content": "Lorem Ipsum is...",
+                "urlType": "image",
+                "url": "http://site.com/image1.png",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Victorious"
+                  },
+                  {
+                    "type": "link",
+                    "title": "More Info",
+                    "url": "https://hubster.io"
+                  }
+                ]
+              },
+              {
+                "title": "Green Dragon",
+                "content": "Lorem Ipsum is...",
+                "urlType": "image",
+                "url": "http://site.com/image2.png",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Green Dragon"
+                  },
+                  {
+                    "type": "link",
+                    "title": "More Info",
+                    "url": "https://hubster.io"
+                  }
+                ]
+              },
+              {
+                "title": "Panther",
+                "content": "Lorem Ipsum is...",
+                "urlType": "image",                
+                "url": "http://site.com/image3.png",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Black Panther"
+                  },
+                  {
+                    "type": "link",
+                    "title": "More Info",
+                    "url": "https://hubster.io"
+                  }
+                ]
+              }
+            ],
+            "channels": [
+              {
+                "type": "Webchat",
+                "metadata": [
+                  {
+                    "key": "caption-show",
+                    "value": "true"
+                  },
+                  {
+                    "key": "caption-color",
+                    "value": "white"
+                  }
+                ]
+              }
+            ]
+          }           
+
+      - .. image:: images/activity_carousel_ex_01.png
+
+
+    * - .. code-block:: JSON
+
+          {
+            "type": "carousel",	
+            "items": [
+              {
+                "title": "Cosmic Journeys",
+                "content": "Lorem Ipsum is...",
+                "urlType": "youtube",
+                "url": "youtube.com/embed/1234",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Cosmic Journeys"
+                  },
+                  {
+                    "type": "link",
+                    "title": "Watch",
+                    "url": "youtube.com/embed/1234"
+                  }  
+                ]
+              },
+              {
+                "title": "Space",
+                "content": "Lorem Ipsum is...",
+                "urlType": "vimeo",
+                "url": "player.vimeo.com/video/1234",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Space"
+                  },
+                  {
+                    "type": "link",
+                    "title": "Watch",
+                    "url": "player.vimeo.com/video/1234"
+                  }  
+                ]
+              },
+              {
+                "title": "Elephants",
+                "content": "Lorem Ipsum is...",
+                "urlType": "video",
+                "url": "http://site.com/v1.mp4",                
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Elephants"
+                  },
+                  {
+                    "type": "link",
+                    "title": "Watch",
+                    "url": "https//site.com/v1.mp4"
+                  }  
+                ]
+              }
+            ]           
+          }           
+
+      - .. image:: images/activity_carousel_ex_02.png
+
+
+.. note:: 
+    Certain devices do not support carousels. If a device is unable to display a carousel,
+    Hubster will render the carousel as a list.    
+
 
 List
 ~~~~
