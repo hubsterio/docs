@@ -154,7 +154,7 @@ See details below:
 
     {
         "externalId": "some-external-id",
-        "type": "message | event"
+        "type": "message | event",
         "sender": {
             "integrationId": "00000000-0000-0000-0000-000000000001"
         },
@@ -999,7 +999,7 @@ Sources allowed to send: **agent** and **bot**.
       - Yes
       - Must be **carousel**.
     * - items
-      - yes
+      - Yes
       - | Must contain one or more of the following message types:
         
         * image
@@ -1191,7 +1191,7 @@ Sources allowed to send: **agent** and **bot**.
       - Yes
       - Must be **list**.
     * - items
-      - yes
+      - Yes
       - | Must contain one or more of the following message types:
         
         * image
@@ -1304,7 +1304,7 @@ Sources allowed to send: **agent** and **bot**.
 
 Commands are no different then sending a simple one line **text** message type. 
 The main difference is when issuing a command it must start with a double (colon) **::** 
-to be recognized. For example when issuing this text, **::some_command** *-arg1* *-arg2*, ... 
+to be recognized. For example when sending this text, **::some_command** *-arg1* *-arg2*, ... 
 Hubster will treat this as a command to be processed.
 
 See examples below:
@@ -1333,32 +1333,19 @@ See examples below:
 Event Types
 ^^^^^^^^^^^
 
-Event types are similar to message types and are must simpler in nature.
+Event types are similar to message types and but are simpler in nature.
+
+Basics
+~~~~~~
+
+.. note:: 
+    Apart from the **payload** event type, the other types are currently not supported by Hubster. 
+    These other types our current on Hubster's road-map.
 
 .. code-block:: JSON
 
-    {        
-        "type": "event"
-        "event": {
-            "type": "typing_on"
-        }                
-    }  
-
-
-
-.. code-block:: JSON
-
-    {        
-        "type": "event"
-        "event": {
-            "type": "payload",
-            "payloadType": "my.payload.01",
-            "payload": {
-                "data1": "value1",
-                "data2": "value2",
-                "data3": "value3"
-            }
-        }                
+    {         
+      "type": "seen | typing_on | typing_off | payload"
     }  
 
 
@@ -1366,46 +1353,49 @@ Event types are similar to message types and are must simpler in nature.
     :widths: 5 10 50
     :header-rows: 1   
   
-    * - Property     
+    * - Property
       - Mandatory
       - Description
-    * - type
+    * - type    
       - Yes
-      - Must be **list**.
-    * - items
-      - yes
-      - | Must contain one or more of the following message types:
+      - | Can be any one of the following types:
         
-        * image
-        * youtube 
-        * vimeo
-        * video 
-        * audio
-
-
-
-
-
-
-Basic
-~~~~~
-
-
-
-.. note:: 
-    Basic event types are currently not supported by Hubster. This feature is currently on our road-map.
-    
-
-
-
-
-
-.. this will be a future feature and currently not supported
-.. note: not all devices support these features
-.. public const string Seen = "seen";
-.. public const string TypingOn = "typing_on";
-.. public const string TypingOff = "typing_off";
+        * **seen** - *mark the message as been seen*
+        * **typing_on**  - *force the device to show the typing gif*
+        * **typing_off** - *force the device to turn off the typing gif*
+        * **payload** - *the event contains a payload - see payload description below*
 
 Payload
 ~~~~~~~
 
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property
+      - Mandatory
+      - Description
+    * - type    
+      - Yes
+      - Must be **payload**
+    * - payloadType    
+      - Yes
+      - A unique identifier that describes the payload type.
+    * - payload    
+      - Yes
+      - Can be any **json** object.
+
+
+**Example**
+
+.. code-block:: JSON
+
+    {        
+      "type": "payload",
+      "payloadType": "my.payload.01",
+      "payload": {
+          "data1": "value1",
+          "data2": "value2",
+          "data3": "value3"
+      }        
+    }  
