@@ -164,12 +164,11 @@ See details below:
         },
         "event": {
             "type": "payload",
-            "payloadType": "hubster.transfer",
+            "payloadType": "my.payload.01",
             "payload": {
-                "url": "http://localhost:4200",
-                "label": "Click here to be transferred",
-                "mount": 1000,
-                "force": false
+                "data1": "value1",
+                "data2": "value2",
+                "data3": "value3"
             }
         }                
     }  
@@ -1174,19 +1173,232 @@ Sources allowed to send: **agent** and **bot**.
 List
 ~~~~
 
+Sources allowed to send: **agent** and **bot**.
 
-.. public const string Link = "link";
-.. public const string Postback = "postback";
-.. public const string Reply = "reply";
+.. note:: 
+    Lists are similar to Carousels. The only differences are: 
+    how it's displayed and that a list provides the ability to offer a global 
+    set of **actions** for the message type.
+    
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **list**.
+    * - items
+      - yes
+      - | Must contain one or more of the following message types:
+        
+        * image
+        * youtube 
+        * vimeo
+        * video 
+        * audio
+    * - actions
+      - No
+      - | A list of actions containing zero or more of the following **action types**:      
 
+        * postback
+        * reply
+        * link 
+    * - channels
+      - No
+      - Channel specific applied properties. The example below shows how to render 
+        the title on a **Webchat** channel. Note: only applicable to image items.
+
+**Example**
+
+.. list-table::
+    :widths: 10 200
+    :header-rows: 1   
+
+    * - Request          
+      - View
+    * - .. code-block:: JSON
+
+          {
+            "type": "list",	
+            "items": [
+              {
+                "title": "Alien",
+                "content": "Lorem Ipsum is...",
+                "urlType": "image",                
+                "url": "http://site.com/image1.png",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Alien"
+                  },
+                  {
+                    "type": "link",
+                    "title": "More Info",
+                    "url": "https://hubster.io"
+                  }
+                ]
+              },
+              {
+                "title": "Red Baron",
+                "content": "Lorem Ipsum is...",
+                "urlType": "image",                
+                "url": "http://site.com/image2.png",
+                "actions": [
+                  {
+                    "type": "reply",
+                    "title": "Select",
+                    "payload": "Red Baron"
+                  },
+                  {
+                    "type": "link",
+                    "title": "More Info",
+                    "url": "https://hubster.io"
+                  }
+                ]
+              }
+            ],
+            "actions": [
+              {
+                "type": "postback",
+                "title": "See more options",
+                "payload": "More Options"
+              },
+              {
+                "type": "link",
+                "title": "Check our catalog",
+                "url": "https://hubster.io"
+              }
+            ],	            
+            "channels": [
+              {
+                "type": "Webchat",
+                "metadata": [
+                  {
+                    "key": "caption-show",
+                    "value": "true"
+                  },
+                  {
+                    "key": "caption-color",
+                    "value": "white"
+                  }
+                ]
+              }
+            ]
+          }           
+
+      - .. image:: images/activity_list_ex_01.png
+
+   
+.. note:: 
+    Certain devices do not support lists. If a device is unable to display a list,
+    Hubster will render the list as a carousel.    
+
+Commands
+~~~~~~~~
+
+Sources allowed to send: **agent** and **bot**.
+
+Commands are no different then sending a simple one line **text** message type. 
+The main difference is when issuing a command it must start with a double (colon) **::** 
+to be recognized. For example when issuing this text, **::some_command** *-arg1* *-arg2*, ... 
+Hubster will treat this as a command to be processed.
+
+See examples below:
+
+.. list-table::
+    :widths: 50
+    :header-rows: 1
+
+    * - Request                
+    * - .. code-block:: JSON
+
+          {
+            "type": "text",								
+            "text": "::resp -n contact.eva.green"
+          }  
+
+    * - .. code-block:: JSON
+
+          {
+            "type": "text",								
+            "text": "::trans -force -n shopify"
+          }  
 
 .. _ref_activities_event_types:
 
 Event Types
 ^^^^^^^^^^^
 
+Event types are similar to message types and are must simpler in nature.
+
+.. code-block:: JSON
+
+    {        
+        "type": "event"
+        "event": {
+            "type": "typing_on"
+        }                
+    }  
+
+
+
+.. code-block:: JSON
+
+    {        
+        "type": "event"
+        "event": {
+            "type": "payload",
+            "payloadType": "my.payload.01",
+            "payload": {
+                "data1": "value1",
+                "data2": "value2",
+                "data3": "value3"
+            }
+        }                
+    }  
+
+
+.. list-table::
+    :widths: 5 10 50
+    :header-rows: 1   
+  
+    * - Property     
+      - Mandatory
+      - Description
+    * - type
+      - Yes
+      - Must be **list**.
+    * - items
+      - yes
+      - | Must contain one or more of the following message types:
+        
+        * image
+        * youtube 
+        * vimeo
+        * video 
+        * audio
+
+
+
+
+
+
 Basic
 ~~~~~
+
+
+
+.. note:: 
+    Basic event types are currently not supported by Hubster. This feature is currently on our road-map.
+    
+
+
+
+
 
 .. this will be a future feature and currently not supported
 .. note: not all devices support these features
@@ -1194,14 +1406,6 @@ Basic
 .. public const string TypingOn = "typing_on";
 .. public const string TypingOff = "typing_off";
 
+Payload
+~~~~~~~
 
-Response Command
-~~~~~~~~~~~~~~~~
-
-.. public const string Payload = "payload";
-
-
-Transfer Command
-~~~~~~~~~~~~~~~~
-
-.. public const string Payload = "payload";    
