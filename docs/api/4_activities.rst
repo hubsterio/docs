@@ -136,8 +136,8 @@ See details below:
     * - type
       - Yes
       - The type of activity to send. 
-        This can only :ref:`message type<ref_activities_message_types>` or 
-        :ref:`event type<ref_activities_event_types>`
+        This can only be :ref:`message <ref_activities_message_types>` or 
+        :ref:`event <ref_activities_event_types>`
     * - **sender**.integrationId
       - See **Description**
       - | If the source of **integrationId** is bound to a **customer** integration, then this property is **not** required.       

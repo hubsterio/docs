@@ -33,7 +33,7 @@ Get :ref:`Activities <ref_activities>` for a given conversation.
    * - Segment     
      - Description
    * - conversationId
-     - The **conversationId id** to retrieve :ref:`activities <ref_activities>`.
+     - The conversationId id used to retrieve :ref:`activities <ref_activities>`.
 
 **Request Properties**
 
