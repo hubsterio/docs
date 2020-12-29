@@ -44,7 +44,6 @@ Our :ref:`APIs<ref_api_overview>` are designed using **REST** principles and mos
    :hidden:
    :caption: Guide
    
-   guide/0_first_steps
    guide/1_webchat_config
    guide/2_webhooks
    guide/3_direct

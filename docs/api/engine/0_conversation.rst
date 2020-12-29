@@ -134,7 +134,7 @@ Establish (create) new Conversation object.
      - Yes
      - Type of channel to filter by.
      
-       Valid options is:
+       Valid option is:
 
        -- *Direct* = 2000       
    * - properties

@@ -16,7 +16,7 @@ This in essence, is the hallmark behind the concept of **unified messaging**.
 This section will explain what an activity is, it's constituents and how it’s consumed by Hubster’s conversation pipeline. 
 See the depiction below for annotated description on how Hubster transforms both in and outbound data models.
 
-.. image:: images/transformation.png
+.. image:: images/transformation.png           
            :align: center
 
 **How Hubster’s UX Multi-rendering/Response Framework (RRF) works:**
@@ -1339,8 +1339,8 @@ Basics
 ~~~~~~
 
 .. note:: 
-    Apart from the **payload** event type, the other types are currently not supported by Hubster. 
-    These other types our current on Hubster's road-map.
+    Apart from the **payload** event type, the other types are currently not supported 
+    and will be on a future Hubster road-map.
 
 .. code-block:: JSON
 

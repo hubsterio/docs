@@ -500,6 +500,7 @@ See a more formal example below.
       - Hubster supports the following **Quick Reply** buttons.
         
         .. image:: images/quick_reply_buttons.png
+            :alt: ...
                         
         | To change the look-and-feel, see the following configuration.
 
