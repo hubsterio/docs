@@ -272,10 +272,10 @@ Below is a full list of all possible Hubster Engine REST API error codes.
      - Direct Inbound request does not support provided property.
    * - ENG005003
      - 400
-     - Direct Inbound request must contain one of the following sections: ``root.message`` or ``root.action``.
+     - Direct Inbound request must contain one of the following sections: ``root.message`` or ``root.event``.
    * - ENG005004
      - 400
-     - Direct Inbound request can only contain one root with the following sections: ``root.message`` or ``root.action``.
+     - Direct Inbound request can only contain one root with the following sections: ``root.message`` or ``root.event``.
    * - ENG005015
      - 400
      - Direct Inbound request collection must contain one or more elements.

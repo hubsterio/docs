@@ -18,6 +18,11 @@ You can find more information about RTD and Sphinx under the following links:
 * https://draft-edx-style-guide.readthedocs.io/en/latest/ExampleRSTFile.html
 * pip install sphinx_rtd_theme
 
+### How to run during editing
+* Run in the background **autobuild.bat** 
+* Navigate to: http://127.0.0.1:8000
+
+
 
 
 

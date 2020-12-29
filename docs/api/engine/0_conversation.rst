@@ -134,7 +134,7 @@ Establish (create) new Conversation object.
      - Yes
      - Type of channel to filter by.
      
-       Valid options is:
+       Valid option is:
 
        -- *Direct* = 2000       
    * - properties
@@ -142,7 +142,6 @@ Establish (create) new Conversation object.
      - See :ref:`properties<ref_engine_properties_establish_conversation>` object for more info.
 
 .. _ref_engine_properties_establish_conversation:
-
 
 .. note:: 
     **Properties** can be though of as **metadata** bound to a conversation during establishment. 
